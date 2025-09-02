@@ -180,7 +180,6 @@ struct AIMessageBubble: View {
                     .background(Color(hex: "2e2e2e"))
                     .clipShape(RoundedRectangle(cornerRadius: 18))
                     
-                    // AI Generated Images
                     if !message.images.isEmpty {
                         LazyVGrid(columns: [
                             GridItem(.flexible()),
@@ -295,8 +294,4 @@ private func formatTime(_ date: Date) -> String {
     let formatter = DateFormatter()
     formatter.dateFormat = "HH:mm"
     return formatter.string(from: date)
-}
-
-#Preview {
-    ChatView(viewModel: ChatViewModel())
 }
