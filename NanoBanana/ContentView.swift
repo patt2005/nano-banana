@@ -1,6 +1,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var chatViewModel = ChatViewModel()
+    @State private var showingChat = false
+    
     var body: some View {
         VStack(spacing: 0) {
             // Custom App Bar
@@ -46,16 +49,22 @@ struct ContentView: View {
                         .font(.body)
                         .foregroundColor(Color(hex: "9e9d99"))
                     
-                    // Upload Area
-                    Button(action: {}) {
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(Color(hex: "2e2e2e"))
-                            .frame(width: 200, height: 120)
-                            .overlay(
-                                Image(systemName: "photo")
-                                    .font(.system(size: 40))
-                                    .foregroundColor(Color(hex: "9e9d99"))
-                            )
+                    // Upload Area with Image Selection
+                    VStack {
+                        ImageSelectionView(selectedImages: $chatViewModel.selectedImages)
+                        
+                        if chatViewModel.selectedImages.isEmpty {
+                            Button(action: {}) {
+                                RoundedRectangle(cornerRadius: 16)
+                                    .fill(Color(hex: "2e2e2e"))
+                                    .frame(width: 200, height: 120)
+                                    .overlay(
+                                        Image(systemName: "photo")
+                                            .font(.system(size: 40))
+                                            .foregroundColor(Color(hex: "9e9d99"))
+                                    )
+                            }
+                        }
                     }
                 }
                 
@@ -64,20 +73,29 @@ struct ContentView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color(hex: "121419"))
             
-            // Bottom Container
+            // Bottom Container - Input Area
             VStack(spacing: 12) {
-                Text("Create a side-by-side comparison collage of the original image and the AI-transformed image.")
-                    .font(.body)
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.leading)
-                    .padding(.horizontal, 16)
+                // Text Input Field
+                HStack {
+                    TextField("Enter your prompt...", text: $chatViewModel.currentInput, axis: .vertical)
+                        .textFieldStyle(PlainTextFieldStyle())
+                        .foregroundColor(.white)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 12)
+                        .background(Color(hex: "121419"))
+                        .cornerRadius(20)
+                        .lineLimit(1...5)
+                }
+                .padding(.horizontal, 16)
                 
                 HStack {
-                    Button(action: {}) {
+                    Button(action: {
+                        showingChat = true
+                    }) {
                         HStack {
-                            Image(systemName: "paperclip")
+                            Image(systemName: "message")
                                 .foregroundColor(.white)
-                            Text("PRO Creation")
+                            Text("Open Chat")
                                 .foregroundColor(.white)
                                 .fontWeight(.medium)
                         }
@@ -89,13 +107,19 @@ struct ContentView: View {
                     
                     Spacer()
                     
-                    Button(action: {}) {
-                        Image(systemName: "arrow.up")
+                    Button(action: {
+                        if chatViewModel.canSend {
+                            chatViewModel.sendMessage()
+                            showingChat = true
+                        }
+                    }) {
+                        Image(systemName: chatViewModel.isLoading ? "stop.circle" : "arrow.up")
                             .foregroundColor(.black)
                             .font(.system(size: 16, weight: .bold))
                             .frame(width: 36, height: 36)
-                            .background(Circle().fill(.white))
+                            .background(Circle().fill(chatViewModel.canSend ? .white : Color(hex: "9e9d99")))
                     }
+                    .disabled(!chatViewModel.canSend)
                 }
                 .padding(.horizontal, 16)
             }
@@ -104,6 +128,9 @@ struct ContentView: View {
             .clipShape(RoundedCorner(radius: 20, corners: [.topLeft, .topRight]))
         }
         .ignoresSafeArea(.all, edges: .top)
+        .sheet(isPresented: $showingChat) {
+            ChatView(viewModel: chatViewModel)
+        }
     }
 }
 

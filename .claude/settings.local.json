@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(mkdir:*)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(xcodebuild:*)",
+      "Bash(swiftc:*)"
     ],
     "deny": [],
     "ask": [],
