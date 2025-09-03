@@ -3,10 +3,13 @@ import SwiftUI
 struct SplashView: View {
     @State private var isAnimating = false
     @State private var showMainApp = false
+    @State private var showOnboarding = false
     
     var body: some View {
         if showMainApp {
             ContentView()
+        } else if showOnboarding {
+            OnboardingView()
         } else {
             ZStack {
                 // Background Image
@@ -36,7 +39,7 @@ struct SplashView: View {
            
                  DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                      withAnimation(.easeInOut(duration: 0.5)) {
-                         showMainApp = true
+                         showOnboarding = true
                      }
                  }
             }
