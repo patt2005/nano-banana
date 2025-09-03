@@ -8,6 +8,7 @@ struct ContentView: View {
     @StateObject private var chatViewModel = ChatViewModel()
     @State private var showingSettings = false
     @State private var showingImagePicker = false
+<<<<<<< HEAD
     @State private var showingCamera = false
     
     var body: some View {
@@ -139,6 +140,49 @@ struct ContentView: View {
                 
                 Spacer()
             }
+=======
+    @State private var showingNotificationPermission = false
+    @State private var showingCameraPermission = false
+    @State private var showingPhotoPermission = false
+    @State private var showingHistory = false
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            // Custom App Bar
+            HStack {
+                Button(action: {
+                    showingHistory = true
+                }) {
+                    Image(systemName: "clock")
+                        .foregroundColor(Color.gray)
+                        .font(.title2)
+                }
+                
+                Spacer()
+                
+                HStack {
+                    Text("🍌")
+                        .font(.title2)
+                    Text("NanoBanana")
+                        .font(.title2)
+                        .fontWeight(.medium)
+                        .foregroundColor(Color.gray)
+                }
+                
+                Spacer()
+                
+                Button(action: {
+                    showingSettings = true
+                }) {
+                    Image(systemName: "gearshape")
+                        .foregroundColor(Color.gray)
+                        .font(.title2)
+                }
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .background(.black)
+>>>>>>> 38011852f5bfe9a0ab0e1059be9290371f44c08b
             
             VStack {
                 Spacer()
@@ -253,6 +297,57 @@ struct ContentView: View {
                 .padding(.horizontal, 20)
                 .padding(.bottom, 20)
             }
+<<<<<<< HEAD
+=======
+            .background(.black)
+            .sheet(isPresented: $showingChat) {
+                ChatView(viewModel: chatViewModel)
+            }
+            .sheet(isPresented: $showingSettings) {
+                SettingsView()
+            }
+            .alert("\"NanoBanana\" ar dori să vă trimită notificări", isPresented: $showingNotificationPermission) {
+                Button("Nu permiteți") {
+                    showingNotificationPermission = false
+                }
+                Button("Permiteți") {
+                    requestNotificationPermission()
+                }
+            } message: {
+                Text("Notificările pot include alerte, sunete și insigne pentru pictograme. Acestea pot fi configurate în Configurări.")
+            }
+            .alert("\"NanoBanana\" ar dori să acceseze camera", isPresented: $showingCameraPermission) {
+                Button("Nu permiteți") {
+                    showingCameraPermission = false
+                }
+                Button("Permiteți") {
+                    requestCameraPermission()
+                }
+            } message: {
+                Text("We need to access your camera to capture and transform images for you to get accurate results")
+            }
+            .alert("\"NanoBanana\" ar dori să acceseze galeria foto", isPresented: $showingPhotoPermission) {
+                Button("Nu permiteți") {
+                    showingPhotoPermission = false
+                }
+                Button("Permiteți") {
+                    requestPhotoPermission()
+                }
+            } message: {
+                Text("We need to access your photo library to select and transform images for you to get accurate results")
+            }
+            .onAppear {
+                checkNotificationPermission()
+                checkCameraPermission()
+                checkPhotoPermission()
+            }
+            .sheet(isPresented: $showingImagePicker) {
+                PhotoPickerView(selectedImages: $chatViewModel.selectedImages, isPresented: $showingImagePicker)
+            }
+            .sheet(isPresented: $showingHistory) {
+                HistoryView(chatViewModel: chatViewModel)
+            }
+>>>>>>> 38011852f5bfe9a0ab0e1059be9290371f44c08b
         }
         .sheet(isPresented: $showingSettings) {
             SettingsView()
