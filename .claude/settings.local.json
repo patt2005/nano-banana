@@ -4,7 +4,8 @@
       "Bash(mkdir:*)",
       "Bash(rm:*)",
       "Bash(xcodebuild:*)",
-      "Bash(swiftc:*)"
+      "Bash(swiftc:*)",
+      "Bash(touch:*)"
     ],
     "deny": [],
     "ask": [],
