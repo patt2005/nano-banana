@@ -88,39 +88,113 @@ class GeminiAPIService: ObservableObject {
         }
     }
     
-    // MARK: - Streaming API Call
+    // MARK: - Streaming API Call with AsyncThrowingStream
     func generateContentStream(
         model: String = "gemini-2.5-flash-image-preview",
         prompt: String,
-        images: [UIImage] = [],
-        onChunk: @escaping (StreamChunk) -> Void,
-        onComplete: @escaping (Error?) -> Void
-    ) {
+        images: [UIImage] = []
+    ) async throws -> AsyncThrowingStream<StreamChunk, Error> {
         guard let url = URL(string: "\(baseURL)/v1/generate") else {
-            onComplete(APIError.invalidURL)
-            return
+            throw APIError.invalidURL
         }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
+        // Prepare request body
+        let requestBody: [String: Any]
         if !images.isEmpty {
-            sendMultipartStreamRequest(
-                request: request,
-                model: model,
-                prompt: prompt,
-                images: images,
-                onChunk: onChunk,
-                onComplete: onComplete
-            )
+            // Convert images to base64
+            let base64Images = images.compactMap { image -> String? in
+                guard let data = image.jpegData(compressionQuality: 0.8) else { return nil }
+                return data.base64EncodedString()
+            }
+            
+            requestBody = [
+                "model": model,
+                "contents": prompt,
+                "images": base64Images,
+                "stream": true
+            ]
         } else {
-            sendJSONStreamRequest(
-                request: request,
-                model: model,
-                prompt: prompt,
-                onChunk: onChunk,
-                onComplete: onComplete
-            )
+            requestBody = [
+                "model": model,
+                "contents": prompt,
+                "stream": true
+            ]
+        }
+        
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: requestBody) else {
+            throw APIError.encodingError
+        }
+        
+        request.httpBody = jsonData
+        
+        let (result, response) = try await URLSession.shared.bytes(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw APIError.invalidResponse
+        }
+        
+        guard 200...299 ~= httpResponse.statusCode else {
+            throw APIError.networkError("HTTP \(httpResponse.statusCode)")
+        }
+        
+        return AsyncThrowingStream<StreamChunk, Error> { continuation in
+            Task(priority: .userInitiated) {
+                do {
+                    for try await line in result.lines {
+                        let trimmedLine = line.trimmingCharacters(in: .whitespacesAndNewlines)
+                        
+                        // Handle different line formats
+                        if trimmedLine.hasPrefix("data: ") {
+                            let jsonString = String(trimmedLine.dropFirst(6))
+                            
+                            // Check for completion signal
+                            if jsonString == "[DONE]" || jsonString.contains("\"done\":true") {
+                                continuation.finish()
+                                return
+                            }
+                            
+                            if let data = jsonString.data(using: .utf8) {
+                                do {
+                                    let chunk = try JSONDecoder().decode(StreamChunk.self, from: data)
+                                    continuation.yield(chunk)
+                                    
+                                    // Check if this chunk indicates completion
+                                    if chunk.done == true {
+                                        continuation.finish()
+                                        return
+                                    }
+                                } catch {
+                                    print("Failed to decode chunk: \(error)")
+                                    print("Raw JSON: \(jsonString)")
+                                }
+                            }
+                        } else if !trimmedLine.isEmpty && trimmedLine != "data: [DONE]" {
+                            // Try to parse as direct JSON (without "data: " prefix)
+                            if let data = trimmedLine.data(using: .utf8) {
+                                do {
+                                    let chunk = try JSONDecoder().decode(StreamChunk.self, from: data)
+                                    continuation.yield(chunk)
+                                    
+                                    if chunk.done == true {
+                                        continuation.finish()
+                                        return
+                                    }
+                                } catch {
+                                    print("Failed to decode direct JSON chunk: \(error)")
+                                    print("Raw line: \(trimmedLine)")
+                                }
+                            }
+                        }
+                    }
+                    continuation.finish()
+                } catch {
+                    continuation.finish(throwing: error)
+                }
+            }
         }
     }
     
@@ -345,49 +419,92 @@ class GeminiAPIService: ObservableObject {
         onChunk: @escaping (StreamChunk) -> Void,
         onComplete: @escaping (Error?) -> Void
     ) {
-        let task = session.dataTask(with: request) { data, response, error in
-            if let error = error {
-                DispatchQueue.main.async {
-                    onComplete(error)
+        let delegate = StreamingDelegate(onChunk: onChunk, onComplete: onComplete)
+        let config = URLSessionConfiguration.default
+        let customSession = URLSession(configuration: config, delegate: delegate, delegateQueue: nil)
+        
+        let task = customSession.dataTask(with: request)
+        task.resume()
+    }
+}
+
+// MARK: - Streaming Delegate
+class StreamingDelegate: NSObject, URLSessionDataDelegate {
+    private let onChunk: (StreamChunk) -> Void
+    private let onComplete: (Error?) -> Void
+    private var buffer = Data()
+    
+    init(onChunk: @escaping (StreamChunk) -> Void, onComplete: @escaping (Error?) -> Void) {
+        self.onChunk = onChunk
+        self.onComplete = onComplete
+        super.init()
+    }
+    
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+        buffer.append(data)
+        processBuffer()
+    }
+    
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        DispatchQueue.main.async {
+            self.onComplete(error)
+        }
+    }
+    
+    private func processBuffer() {
+        let dataString = String(data: buffer, encoding: .utf8) ?? ""
+        let lines = dataString.components(separatedBy: "\n")
+        
+        // Process complete lines, keep incomplete line in buffer
+        for (index, line) in lines.enumerated() {
+            if index == lines.count - 1 && !dataString.hasSuffix("\n") {
+                // Keep incomplete line in buffer
+                if let incompleteData = line.data(using: .utf8) {
+                    buffer = incompleteData
                 }
-                return
-            }
-            
-            guard let data = data else {
-                DispatchQueue.main.async {
-                    onComplete(APIError.noData)
-                }
-                return
-            }
-            
-            let dataString = String(data: data, encoding: .utf8) ?? ""
-            let lines = dataString.components(separatedBy: "\n")
-            
-            for line in lines {
-                if line.hasPrefix("data: ") {
-                    let jsonString = String(line.dropFirst(6))
-                    if let jsonData = jsonString.data(using: .utf8) {
-                        do {
-                            let chunk = try JSONDecoder().decode(StreamChunk.self, from: jsonData)
-                            DispatchQueue.main.async {
-                                onChunk(chunk)
-                            }
-                            
-                            if chunk.done == true {
-                                DispatchQueue.main.async {
-                                    onComplete(nil)
-                                }
-                                return
-                            }
-                        } catch {
-                            // Continue processing other chunks
-                        }
+                break
+            } else {
+                // Process complete line
+                processLine(line)
+                // Remove processed line from buffer
+                if let lineData = (line + "\n").data(using: .utf8) {
+                    if buffer.count >= lineData.count {
+                        buffer.removeFirst(lineData.count)
                     }
                 }
             }
         }
+    }
+    
+    private func processLine(_ line: String) {
+        let trimmedLine = line.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        task.resume()
+        if trimmedLine.hasPrefix("data: ") {
+            let jsonString = String(trimmedLine.dropFirst(6))
+            if jsonString == "[DONE]" {
+                DispatchQueue.main.async {
+                    self.onComplete(nil)
+                }
+                return
+            }
+            
+            if let jsonData = jsonString.data(using: .utf8) {
+                do {
+                    let chunk = try JSONDecoder().decode(StreamChunk.self, from: jsonData)
+                    DispatchQueue.main.async {
+                        self.onChunk(chunk)
+                    }
+                    
+                    if chunk.done == true {
+                        DispatchQueue.main.async {
+                            self.onComplete(nil)
+                        }
+                    }
+                } catch {
+                    print("Failed to decode chunk: \(error)")
+                }
+            }
+        }
     }
 }
 
@@ -396,6 +513,8 @@ enum APIError: Error, LocalizedError {
     case invalidURL
     case noData
     case decodingError
+    case encodingError
+    case invalidResponse
     case networkError(String)
     
     var errorDescription: String? {
@@ -406,6 +525,10 @@ enum APIError: Error, LocalizedError {
             return "No data received"
         case .decodingError:
             return "Failed to decode response"
+        case .encodingError:
+            return "Failed to encode request"
+        case .invalidResponse:
+            return "Invalid response from server"
         case .networkError(let message):
             return "Network error: \(message)"
         }

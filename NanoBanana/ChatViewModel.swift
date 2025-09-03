@@ -77,17 +77,27 @@ class ChatViewModel: ObservableObject {
         )
         messages.append(aiMessage)
         
-        apiService.generateContentStream(
-            model: "gemini-2.5-flash-image-preview",
-            prompt: prompt,
-            images: images
-        ) { [weak self] chunk in
-            DispatchQueue.main.async {
-                self?.handleStreamChunk(chunk)
-            }
-        } onComplete: { [weak self] error in
-            DispatchQueue.main.async {
-                self?.handleStreamComplete(error: error)
+        Task {
+            do {
+                let stream = try await apiService.generateContentStream(
+                    model: "gemini-2.5-flash-image-preview",
+                    prompt: prompt,
+                    images: images
+                )
+                
+                for try await chunk in stream {
+                    await MainActor.run {
+                        self.handleStreamChunk(chunk)
+                    }
+                }
+                
+                await MainActor.run {
+                    self.handleStreamComplete(error: nil)
+                }
+            } catch {
+                await MainActor.run {
+                    self.handleStreamComplete(error: error)
+                }
             }
         }
     }

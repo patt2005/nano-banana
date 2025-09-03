@@ -1,177 +1,381 @@
 import SwiftUI
+import Foundation
+import UserNotifications
+import AVFoundation
+import Photos
 
 struct ContentView: View {
     @StateObject private var chatViewModel = ChatViewModel()
-    @State private var showingChat = false
+    @State private var showingSettings = false
+    @State private var showingImagePicker = false
+    @State private var showingCamera = false
     
     var body: some View {
-        VStack(spacing: 0) {
-            // Custom App Bar
-            HStack {
-                Button(action: {}) {
-                    Image(systemName: "chevron.left")
-                        .foregroundColor(.white)
-                        .font(.title2)
-                }
-                
-                Spacer()
-                
-                HStack {
-                    Text("🍌")
-                        .font(.title2)
-                    Text("NanoBanana")
-                        .font(.title2)
-                        .fontWeight(.medium)
-                        .foregroundColor(.white)
-                }
-                
-                Spacer()
-                
-                Text("2 Free Edits Left")
-                    .font(.caption)
-                    .foregroundColor(Color(hex: "9e9d99"))
-            }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 12)
-            .background(Color(hex: "121419"))
+        ZStack {
+            Color.black
+                .ignoresSafeArea()
             
-            // Main Content
-            VStack {
-                Spacer()
-                
-                VStack(spacing: 16) {
-                    Text("Upload your photo")
-                        .font(.title2)
-                        .fontWeight(.medium)
-                        .foregroundColor(.white)
-                    
-                    Text("Share best memos to edit them!")
-                        .font(.body)
-                        .foregroundColor(Color(hex: "9e9d99"))
-                    
-                    // Upload Area with Image Selection
-                    VStack {
-                        ImageSelectionView(selectedImages: $chatViewModel.selectedImages)
-                        
-                        if chatViewModel.selectedImages.isEmpty {
-                            Button(action: {}) {
-                                RoundedRectangle(cornerRadius: 16)
-                                    .fill(Color(hex: "2e2e2e"))
-                                    .frame(width: 200, height: 120)
-                                    .overlay(
-                                        Image(systemName: "photo")
-                                            .font(.system(size: 40))
-                                            .foregroundColor(Color(hex: "9e9d99"))
-                                    )
-                            }
-                        }
+            VStack(spacing: 0) {
+                HStack {
+                    Button(action: {}) {
+                        Image(systemName: "clock")
+                            .foregroundColor(Color.gray)
+                            .font(.title2)
                     }
-                }
-                
-                Spacer()
-            }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(hex: "121419"))
-            
-            // Bottom Container - Input Area
-            VStack(spacing: 12) {
-                // Text Input Field
-                HStack {
-                    TextField("Enter your prompt...", text: $chatViewModel.currentInput, axis: .vertical)
-                        .textFieldStyle(PlainTextFieldStyle())
-                        .foregroundColor(.white)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 12)
-                        .background(Color(hex: "121419"))
-                        .cornerRadius(20)
-                        .lineLimit(1...5)
-                }
-                .padding(.horizontal, 16)
-                
-                HStack {
-                    Button(action: {
-                        showingChat = true
-                    }) {
-                        HStack {
-                            Image(systemName: "message")
-                                .foregroundColor(.white)
-                            Text("Open Chat")
-                                .foregroundColor(.white)
-                                .fontWeight(.medium)
-                        }
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 12)
-                        .background(Color(hex: "2e2e2e"))
-                        .cornerRadius(20)
+                    
+                    Spacer()
+                    
+                    HStack {
+                        Text("🍌")
+                            .font(.title2)
+                        Text("NanoBanana")
+                            .font(.title2)
+                            .fontWeight(.medium)
+                            .foregroundColor(Color.gray)
                     }
                     
                     Spacer()
                     
                     Button(action: {
-                        if chatViewModel.canSend {
-                            chatViewModel.sendMessage()
-                            showingChat = true
-                        }
+                        showingSettings = true
                     }) {
-                        Image(systemName: chatViewModel.isLoading ? "stop.circle" : "arrow.up")
-                            .foregroundColor(.black)
-                            .font(.system(size: 16, weight: .bold))
-                            .frame(width: 36, height: 36)
-                            .background(Circle().fill(chatViewModel.canSend ? .white : Color(hex: "9e9d99")))
+                        Image(systemName: "gearshape")
+                            .foregroundColor(Color.gray)
+                            .font(.title2)
                     }
-                    .disabled(!chatViewModel.canSend)
                 }
                 .padding(.horizontal, 16)
+                .padding(.vertical, 12)
+                .background(.black)
+                
+                ScrollViewReader { proxy in
+                    ScrollView {
+                        LazyVStack(alignment: .leading, spacing: 16) {
+                            if chatViewModel.messages.isEmpty {
+                                VStack {
+                                    Spacer()
+                                    
+                                    VStack(spacing: 24) {
+                                        ZStack {
+                                            Circle()
+                                                .fill(Color.white.opacity(0.1))
+                                                .frame(width: 120, height: 120)
+                                            
+                                            Text("🍌")
+                                                .font(.system(size: 60))
+                                        }
+                                        
+                                        VStack(spacing: 12) {
+                                            Text("Welcome to NanoBanana")
+                                                .font(.system(size: 28, weight: .bold))
+                                                .foregroundColor(.white)
+                                            
+                                            Text("Start a conversation by typing a message or uploading photos using the attachment button below.")
+                                                .font(.system(size: 16))
+                                                .foregroundColor(.gray)
+                                                .multilineTextAlignment(.center)
+                                                .lineLimit(nil)
+                                                .padding(.horizontal, 40)
+                                        }
+                                        
+                                    }
+                                    
+                                    Spacer()
+                                    Spacer()
+                                }
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            } else {
+                                ForEach(chatViewModel.messages) { message in
+                                    MessageBubble(message: message)
+                                        .id(message.id)
+                                        .padding(.horizontal)
+                                }
+                            }
+                            
+                            Color.clear
+                                .frame(height: 140)
+                        }
+                        .padding(.top)
+                    }
+                    .onChange(of: chatViewModel.messages.count) { _ in
+                        if let lastMessage = chatViewModel.messages.last {
+                            withAnimation(.easeOut(duration: 0.3)) {
+                                proxy.scrollTo(lastMessage.id, anchor: .bottom)
+                            }
+                        }
+                    }
+                    .onChange(of: chatViewModel.streamingText) { _ in
+                        if let lastMessage = chatViewModel.messages.last {
+                            withAnimation(.easeOut(duration: 0.3)) {
+                                proxy.scrollTo(lastMessage.id, anchor: .bottom)
+                            }
+                        }
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                
+                if let errorMessage = chatViewModel.errorMessage {
+                    HStack {
+                        Image(systemName: "exclamationmark.triangle")
+                            .foregroundColor(.red)
+                        Text(errorMessage)
+                            .foregroundColor(.red)
+                            .font(.caption)
+                        
+                        Spacer()
+                        
+                        Button("Retry") {
+                            chatViewModel.retryLastMessage()
+                        }
+                        .font(.caption)
+                        .foregroundColor(.blue)
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 8)
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(8)
+                    .padding(.horizontal, 20)
+                }
+                
+                Spacer()
             }
-            .padding(.vertical, 16)
-            .background(Color(hex: "2e2e2e"))
-            .clipShape(RoundedCorner(radius: 20, corners: [.topLeft, .topRight]))
+            
+            VStack {
+                Spacer()
+                
+                VStack(spacing: 16) {
+                    if !chatViewModel.selectedImages.isEmpty {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            LazyHStack(spacing: 10) {
+                                ForEach(chatViewModel.selectedImages.indices, id: \.self) { index in
+                                    ZStack(alignment: .topTrailing) {
+                                        Image(uiImage: chatViewModel.selectedImages[index])
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 60, height: 60)
+                                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                                        
+                                        Button(action: {
+                                            chatViewModel.removeImage(at: index)
+                                        }) {
+                                            Image(systemName: "xmark.circle.fill")
+                                                .foregroundColor(.red)
+                                                .background(Color.white)
+                                                .clipShape(Circle())
+                                                .font(.system(size: 16))
+                                        }
+                                        .offset(x: 4, y: -4)
+                                    }
+                                }
+                            }
+                        }
+                        .frame(height: 75)
+                    }
+                    
+                    TextField("", text: $chatViewModel.currentInput, prompt: Text("Type your prompt here...").foregroundColor(.white.opacity(0.5)), axis: .vertical)
+                        .lineLimit(1...5)
+                        .autocorrectionDisabled()
+                        .multilineTextAlignment(.leading)
+                        .disabled(chatViewModel.isLoading)
+                        .foregroundStyle(.white)
+                        .cornerRadius(12)
+                        .padding(.top, chatViewModel.selectedImages.isEmpty ? 15 : 0)
+                    
+                    HStack(spacing: 16) {
+                        HStack(spacing: 12) {
+                            Menu {
+                                Button(action: {
+                                    showingCamera = true
+                                }) {
+                                    Label("Camera", systemImage: "camera")
+                                }
+                                
+                                Button(action: {
+                                    requestPhotoLibraryAccess()
+                                }) {
+                                    Label("Gallery", systemImage: "photo.on.rectangle")
+                                }
+                            } label: {
+                                Image(systemName: "paperclip")
+                                    .foregroundColor(.white)
+                                    .font(.title2)
+                                    .padding(8)
+                                    .background(Color.gray.opacity(0.25))
+                                    .cornerRadius(20)
+                            }
+                            
+                            Button(action: {}) {
+                                HStack {
+                                    Image(systemName: "eye")
+                                        .foregroundColor(.white)
+                                    Text("PRO Creation")
+                                        .foregroundColor(.white)
+                                        .fontWeight(.medium)
+                                }
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 10)
+                            .background(Color.gray.opacity(0.25))
+                            .cornerRadius(20)
+                        }
+                        
+                        Spacer()
+                        
+                        if chatViewModel.isLoading {
+                            ProgressView()
+                                .scaleEffect(0.8)
+                                .tint(.white)
+                                .frame(width: 40, height: 40)
+                        } else {
+                            Button(action: {
+                                if chatViewModel.canSend {
+                                    chatViewModel.sendMessage()
+                                }
+                            }) {
+                                Image(systemName: "arrow.up")
+                                    .foregroundColor(chatViewModel.currentInput.isEmpty ? .white : .black)
+                                    .font(.system(size: 16, weight: .bold))
+                                    .frame(width: 40, height: 40)
+                                    .background(Circle().fill(.white.opacity(chatViewModel.currentInput.isEmpty ? 0.3 : 1.0)))
+                            }
+                            .disabled(!chatViewModel.canSend)
+                        }
+                    }
+                }
+                .padding(.horizontal, 15)
+                .padding(.bottom, 15)
+                .background(Color(hex: "373e46"))
+                .cornerRadius(20)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(.white.opacity(0.2), lineWidth: 1)
+                )
+                .padding(.horizontal, 20)
+                .padding(.bottom, 20)
+            }
         }
-        .ignoresSafeArea(.all, edges: .top)
-        .sheet(isPresented: $showingChat) {
-            ChatView(viewModel: chatViewModel)
+        .sheet(isPresented: $showingSettings) {
+            SettingsView()
+        }
+        .onAppear {
+            checkCameraPermission()
+            checkPhotoPermission()
+        }
+        .sheet(isPresented: $showingImagePicker) {
+            PhotoPickerView(selectedImages: $chatViewModel.selectedImages, isPresented: $showingImagePicker)
+        }
+        .sheet(isPresented: $showingCamera) {
+            CameraPickerView(selectedImages: $chatViewModel.selectedImages, isPresented: $showingCamera)
         }
     }
-}
-
-
-extension Color {
-    init(hex: String) {
-        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int: UInt64 = 0
-        Scanner(string: hex).scanHexInt64(&int)
-        let a, r, g, b: UInt64
-        switch hex.count {
-        case 3:
-            (a, r, g, b) = (255, (int >> 8) * 17, (int >> 4 & 0xF) * 17, (int & 0xF) * 17)
-        case 6:
-            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8:
-            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
-        default:
-            (a, r, g, b) = (1, 1, 1, 0)
+    
+    func checkCameraPermission() {
+        let cameraStatus = AVCaptureDevice.authorizationStatus(for: .video)
+        if cameraStatus == .notDetermined {
+            //            showingCameraPermission = true
         }
+    }
+    
+    func requestCameraPermission() {
+        AVCaptureDevice.requestAccess(for: .video) { granted in
+            DispatchQueue.main.async {
+                //                showingCameraPermission = false
+            }
+        }
+    }
+    
+    func checkPhotoPermission() {
+        let photoStatus = PHPhotoLibrary.authorizationStatus()
+        if photoStatus == .notDetermined {
+            //            showingPhotoPermission = true
+        }
+    }
+    
+    func requestPhotoPermission() {
+        PHPhotoLibrary.requestAuthorization { status in
+            DispatchQueue.main.async {
+                //                showingPhotoPermission = false
+            }
+        }
+    }
+    
+    func requestPhotoLibraryAccess() {
+        let status = PHPhotoLibrary.authorizationStatus()
         
-        self.init(
-            .sRGB,
-            red: Double(r) / 255,
-            green: Double(g) / 255,
-            blue:  Double(b) / 255,
-            opacity: Double(a) / 255
-        )
+        switch status {
+        case .authorized:
+            // Full access already granted
+            showingImagePicker = true
+            
+        case .limited:
+            // Limited access - request full access
+            PHPhotoLibrary.requestAuthorization(for: .readWrite) { newStatus in
+                DispatchQueue.main.async {
+                    if newStatus == .authorized || newStatus == .limited {
+                        showingImagePicker = true
+                    }
+                }
+            }
+            
+        case .notDetermined:
+            // Request full access
+            PHPhotoLibrary.requestAuthorization(for: .readWrite) { newStatus in
+                DispatchQueue.main.async {
+                    if newStatus == .authorized || newStatus == .limited {
+                        showingImagePicker = true
+                    }
+                }
+            }
+            
+        case .denied, .restricted:
+            // Show settings alert
+            let alert = UIAlertController(
+                title: "Photo Access Required",
+                message: "Please enable photo library access in Settings to select images.",
+                preferredStyle: .alert
+            )
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+            alert.addAction(UIAlertAction(title: "Settings", style: .default) { _ in
+                if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(settingsUrl)
+                }
+            })
+            
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let rootViewController = windowScene.windows.first?.rootViewController {
+                rootViewController.present(alert, animated: true)
+            }
+            
+        @unknown default:
+            break
+        }
     }
 }
 
-struct RoundedCorner: Shape {
-    var radius: CGFloat = .infinity
-    var corners: UIRectCorner = .allCorners
-
-    func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(
-            roundedRect: rect,
-            byRoundingCorners: corners,
-            cornerRadii: CGSize(width: radius, height: radius)
-        )
-        return Path(path.cgPath)
+struct FeatureItem: View {
+    let icon: String
+    let title: String
+    let description: String
+    
+    var body: some View {
+        HStack(spacing: 16) {
+            Image(systemName: icon)
+                .font(.system(size: 20, weight: .medium))
+                .foregroundColor(.blue)
+                .frame(width: 24, height: 24)
+            
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title)
+                    .font(.system(size: 16, weight: .medium))
+                    .foregroundColor(.white)
+                
+                Text(description)
+                    .font(.system(size: 14))
+                    .foregroundColor(.gray.opacity(0.8))
+            }
+            
+            Spacer()
+        }
+        .padding(.horizontal, 40)
     }
 }

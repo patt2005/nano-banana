@@ -112,40 +112,104 @@ struct MessageBubble: View {
 
 struct UserMessageBubble: View {
     let message: ChatMessage
+    @State private var fullScreenImage: UIImage?
     
     var body: some View {
         VStack(alignment: .trailing) {
-            // Images
+            // Images with ReversedScrollView
             if !message.images.isEmpty {
-                LazyVGrid(columns: [
-                    GridItem(.flexible()),
-                    GridItem(.flexible())
-                ], spacing: 8) {
-                    ForEach(message.images.indices, id: \.self) { index in
-                        Image(uiImage: message.images[index])
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(height: 100)
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                ReversedScrollView {
+                    ForEach(Array(message.images.enumerated()), id: \.offset) { index, image in
+                        Button(action: {
+                            fullScreenImage = image
+                        }) {
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 100, height: 100)
+                                .cornerRadius(8)
+                                .clipped()
+                        }
                     }
                 }
+                .frame(maxWidth: .infinity)
+                .frame(height: 100)
                 .padding(.bottom, 8)
             }
             
             // Text
             if !message.content.isEmpty {
                 Text(message.content)
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
                     .padding(.horizontal, 16)
                     .padding(.vertical, 12)
-                    .background(Color.blue)
+                    .background(Color.yellow)
                     .clipShape(RoundedRectangle(cornerRadius: 18))
             }
             
-            Text(formatTime(message.timestamp))
-                .font(.caption2)
-                .foregroundColor(Color(hex: "9e9d99"))
-                .padding(.trailing, 8)
+            // Copy button below message
+            if !message.content.isEmpty {
+                Button(action: {
+                    UIPasteboard.general.string = message.content
+                }) {
+                    HStack(spacing: 6) {
+                        Image(systemName: "doc.on.doc")
+                        Text("Copy")
+                    }
+                    .foregroundColor(.white.opacity(0.8))
+                    .font(.system(size: 14, weight: .medium))
+                    .padding(.horizontal, 12)
+                    .padding(.vertical, 8)
+                    .background(Color.gray.opacity(0.3))
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
+            }
+        }
+        .fullScreenCover(item: Binding<UIImageWrapper?>(
+            get: { fullScreenImage.map(UIImageWrapper.init) },
+            set: { _ in fullScreenImage = nil }
+        )) { wrapper in
+            FullScreenImageView(image: wrapper.image) {
+                fullScreenImage = nil
+            }
+        }
+    }
+}
+
+// Helper wrapper for UIImage to make it Identifiable
+struct UIImageWrapper: Identifiable {
+    let id = UUID()
+    let image: UIImage
+}
+
+// Full screen image view
+struct FullScreenImageView: View {
+    let image: UIImage
+    let onDismiss: () -> Void
+    
+    var body: some View {
+        ZStack {
+            Color.black.ignoresSafeArea()
+            
+            VStack {
+                HStack {
+                    Spacer()
+                    Button("Done") {
+                        onDismiss()
+                    }
+                    .foregroundColor(.white)
+                    .padding()
+                }
+                
+                Spacer()
+                
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFit()
+                    .padding()
+                
+                Spacer()
+            }
         }
     }
 }
@@ -156,9 +220,15 @@ struct AIMessageBubble: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .top) {
-                Text("🤖")
-                    .font(.title2)
-                    .padding(.top, 4)
+                ZStack {
+                    Circle()
+                        .fill(.white)
+                        .frame(width: 40, height: 40)
+                    
+                    Text("🍌")
+                        .font(.title2)
+                }
+                .padding(.top, 4)
                 
                 VStack(alignment: .leading) {
                     // Text with streaming indicator
@@ -170,7 +240,7 @@ struct AIMessageBubble: View {
                         
                         if message.isStreaming {
                             Text("●")
-                                .foregroundColor(.green)
+                                .foregroundColor(.white)
                                 .font(.caption)
                                 .animation(.easeInOut(duration: 0.8).repeatForever(), value: message.isStreaming)
                         }
@@ -179,6 +249,24 @@ struct AIMessageBubble: View {
                     .padding(.vertical, 12)
                     .background(Color(hex: "2e2e2e"))
                     .clipShape(RoundedRectangle(cornerRadius: 18))
+                    
+                    // Copy button below AI message
+                    if !message.content.isEmpty && !message.isStreaming {
+                        Button(action: {
+                            UIPasteboard.general.string = message.content
+                        }) {
+                            HStack(spacing: 6) {
+                                Image(systemName: "doc.on.doc")
+                                Text("Copy")
+                            }
+                            .foregroundColor(.white.opacity(0.8))
+                            .font(.system(size: 14, weight: .medium))
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 8)
+                            .background(Color.gray.opacity(0.3))
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                        }
+                    }
                     
                     if !message.images.isEmpty {
                         LazyVGrid(columns: [
@@ -195,11 +283,6 @@ struct AIMessageBubble: View {
                         }
                         .padding(.top, 8)
                     }
-                    
-                    Text(formatTime(message.timestamp))
-                        .font(.caption2)
-                        .foregroundColor(Color(hex: "9e9d99"))
-                        .padding(.leading, 16)
                 }
             }
         }
@@ -289,9 +372,23 @@ struct ChatInputView: View {
     }
 }
 
-// MARK: - Helper Functions
-private func formatTime(_ date: Date) -> String {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "HH:mm"
-    return formatter.string(from: date)
+// MARK: - ReversedScrollView
+struct ReversedScrollView<Content: View>: View {
+    var content: Content
+    
+    init(@ViewBuilder builder: ()->Content) {
+        self.content = builder()
+    }
+    
+    var body: some View {
+        GeometryReader { proxy in
+            ScrollView(.horizontal) {
+                HStack {
+                    Spacer()
+                    content
+                }
+                .frame(minWidth: proxy.size.width)
+            }
+        }
+    }
 }
