@@ -6,7 +6,7 @@ struct ChatMessage: Identifiable {
     let id: UUID
     let content: String
     let images: [UIImage]
-    let imageFileNames: [String] // Store file paths for persistence
+    let imageFileNames: [String]
     let isUser: Bool
     let timestamp: Date
     var isStreaming: Bool = false
@@ -19,11 +19,9 @@ struct ChatMessage: Identifiable {
         self.timestamp = timestamp
         self.isStreaming = isStreaming
         
-        // Save images to local storage and store file names
         self.imageFileNames = ImageStorageManager.shared.saveImages(images)
     }
     
-    // Initialize from stored data (when loading from chat history)
     init(id: UUID, content: String, imageFileNames: [String], isUser: Bool, timestamp: Date, isStreaming: Bool = false) {
         self.id = id
         self.content = content
@@ -32,19 +30,14 @@ struct ChatMessage: Identifiable {
         self.timestamp = timestamp
         self.isStreaming = isStreaming
         
-        // Load images from local storage
         self.images = ImageStorageManager.shared.loadImages(from: imageFileNames)
     }
     
-    // Create updated message for streaming (preserves ID and timestamp)
     func updatedMessage(content: String, images: [UIImage], isStreaming: Bool) -> ChatMessage {
-        // Only save new images if they're different from existing ones
         let newImageFileNames: [String]
         if images.count != self.images.count {
-            // Images changed, save new ones
             newImageFileNames = ImageStorageManager.shared.saveImages(images)
         } else {
-            // Same number of images, keep existing file names
             newImageFileNames = self.imageFileNames
         }
         
@@ -59,7 +52,6 @@ struct ChatMessage: Identifiable {
         )
     }
     
-    // Private initializer for internal updates
     private init(id: UUID, content: String, images: [UIImage], imageFileNames: [String], isUser: Bool, timestamp: Date, isStreaming: Bool) {
         self.id = id
         self.content = content
@@ -85,9 +77,15 @@ final class ChatViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     private let userDefaults = UserDefaults.standard
     private let chatHistoriesKey = "savedChatHistories"
+    private let freeMessagesCountKey = "freeMessagesCount"
+    private let lastResetDateKey = "lastResetDate"
+    
+    private let freeUserMessageLimit = 2
+    @Published private var totalFreeMessagesUsed: Int = 0
     
     init() {
         loadChatHistories()
+        loadFreeMessageCount()
         createNewChatIfNeeded()
         
         DispatchQueue.global(qos: .background).async {
@@ -98,6 +96,13 @@ final class ChatViewModel: ObservableObject {
     func sendMessage() {
         guard !currentInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !selectedImages.isEmpty else { return }
         
+        // Check if user has exceeded free message limit
+        if isMessageLimitExceeded {
+            // Show paywall for free users who have exceeded the limit
+            AppManager.shared.showPaywall = true
+            return
+        }
+        
         let userMessage = ChatMessage(
             content: currentInput,
             images: selectedImages,
@@ -106,6 +111,12 @@ final class ChatViewModel: ObservableObject {
         )
         
         messages.append(userMessage)
+        
+        // Increment free message count for non-subscribers
+        if !SubscriptionManager.shared.hasActiveSubscription {
+            totalFreeMessagesUsed += 1
+            saveFreeMessageCount()
+        }
         
         let inputText = currentInput
         let inputImages = selectedImages
@@ -180,6 +191,7 @@ final class ChatViewModel: ObservableObject {
         
         if let result = chunk.result, let text = result.text {
             streamingText += text
+            print("📝 Streaming text updated: '\(streamingText)'")
             
             // Update the last message (AI response) with streaming text
             if let lastIndex = messages.indices.last, !messages[lastIndex].isUser {
@@ -200,13 +212,17 @@ final class ChatViewModel: ObservableObject {
                 print("🖼️ Processing images in stream: \(result.images?.count ?? 0) ImageResults, converted to \(processedImages.count) UIImages")
                 
                 // Use updatedMessage to preserve ID and timestamp while adding new content/images
-                // Only add new images if we have processed any new ones
+                // Only add new images if we have processed any new ones  
                 let updatedImages = processedImages.isEmpty ? messages[lastIndex].images : processedImages
-                messages[lastIndex] = messages[lastIndex].updatedMessage(
-                    content: streamingText,
-                    images: updatedImages,
-                    isStreaming: true
-                )
+                
+                // Force UI update by updating the message with current streaming text
+                DispatchQueue.main.async {
+                    self.messages[lastIndex] = self.messages[lastIndex].updatedMessage(
+                        content: self.streamingText,
+                        images: updatedImages,
+                        isStreaming: true
+                    )
+                }
             }
         }
     }
@@ -222,13 +238,15 @@ final class ChatViewModel: ObservableObject {
                 messages.remove(at: lastIndex)
             }
         } else {
-            // Mark streaming as complete
+            // Mark streaming as complete with the final accumulated text
             if let lastIndex = messages.indices.last, !messages[lastIndex].isUser {
+                print("📝 Stream complete. Final text: '\(streamingText)'")
                 messages[lastIndex] = messages[lastIndex].updatedMessage(
-                    content: messages[lastIndex].content,
+                    content: streamingText, // Use the accumulated streaming text, not the current message content
                     images: messages[lastIndex].images,
                     isStreaming: false
                 )
+                print("📝 Final message content: '\(messages[lastIndex].content)'")
             }
         }
         
@@ -331,7 +349,54 @@ extension ChatViewModel {
     }
     
     var canSend: Bool {
-        return hasContent && !isLoading
+        return hasContent && !isLoading && !isMessageLimitExceeded
+    }
+    
+    var isMessageLimitExceeded: Bool {
+        // Check if user is subscribed
+        let isSubscribed = SubscriptionManager.shared.hasActiveSubscription
+        
+        // If subscribed, no limit
+        if isSubscribed {
+            return false
+        }
+        
+        // Check total messages used across all sessions
+        return totalFreeMessagesUsed >= freeUserMessageLimit
+    }
+    
+    var remainingFreeMessages: Int {
+        let isSubscribed = SubscriptionManager.shared.hasActiveSubscription
+        if isSubscribed {
+            return Int.max // No limit for subscribers
+        }
+        
+        return max(0, freeUserMessageLimit - totalFreeMessagesUsed)
+    }
+}
+
+// MARK: - Free Message Count Management
+extension ChatViewModel {
+    
+    private func loadFreeMessageCount() {
+        totalFreeMessagesUsed = userDefaults.integer(forKey: freeMessagesCountKey)
+        print("📊 Loaded free message count: \(totalFreeMessagesUsed)")
+    }
+    
+    private func saveFreeMessageCount() {
+        userDefaults.set(totalFreeMessagesUsed, forKey: freeMessagesCountKey)
+        print("📊 Saved free message count: \(totalFreeMessagesUsed)")
+    }
+    
+    func resetFreeMessageCount() {
+        totalFreeMessagesUsed = 0
+        saveFreeMessageCount()
+        print("📊 Reset free message count")
+    }
+    
+    // Call this when user subscribes to reset their count
+    func handleSubscriptionActivated() {
+        resetFreeMessageCount()
     }
 }
 

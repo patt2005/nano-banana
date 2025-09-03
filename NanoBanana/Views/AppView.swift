@@ -10,7 +10,7 @@ struct AppView: View {
                 SplashView()
                 
             case .onboarding:
-                OnboardingView()
+                VisualOnboardingView()
                 
             case .main:
                 ContentView()

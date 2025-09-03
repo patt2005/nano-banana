@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @ObservedObject var chatViewModel: ChatViewModel
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject private var appManager = AppManager.shared
     @ObservedObject private var subscriptionManager = SubscriptionManager.shared
@@ -39,6 +40,63 @@ struct SettingsView: View {
                         }
                         .padding(.horizontal, 20)
                         .padding(.top, 20)
+                        
+                        // Free Messages Counter (for non-subscribers only)
+                        if !subscriptionManager.hasActiveSubscription {
+                            VStack(spacing: 12) {
+                                HStack {
+                                    Image(systemName: "message")
+                                        .foregroundColor(.blue)
+                                        .font(.title2)
+                                        .frame(width: 24)
+                                    
+                                    Text("Free Messages")
+                                        .foregroundColor(.white)
+                                        .font(.body)
+                                        .fontWeight(.medium)
+                                    
+                                    Spacer()
+                                    
+                                    VStack(alignment: .trailing, spacing: 2) {
+                                        Text("\(chatViewModel.remainingFreeMessages)")
+                                            .foregroundColor(.blue)
+                                            .font(.title3)
+                                            .fontWeight(.bold)
+                                        
+                                        Text("remaining")
+                                            .foregroundColor(Color(hex: "9e9d99"))
+                                            .font(.caption)
+                                    }
+                                }
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 16)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .fill(Color(hex: "2e2e2e"))
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(Color.blue.opacity(0.3), lineWidth: 1)
+                                        )
+                                )
+                                
+                                if chatViewModel.remainingFreeMessages == 0 {
+                                    HStack {
+                                        Text("You've used all your free messages. Upgrade to Pro for unlimited messages.")
+                                            .foregroundColor(Color(hex: "9e9d99"))
+                                            .font(.caption)
+                                            .multilineTextAlignment(.center)
+                                    }
+                                } else {
+                                    HStack {
+                                        Text("Start a new chat for more free messages.")
+                                            .foregroundColor(Color(hex: "9e9d99"))
+                                            .font(.caption)
+                                            .multilineTextAlignment(.center)
+                                    }
+                                }
+                            }
+                            .padding(.horizontal, 20)
+                        }
                         
                         // Premium Upgrade Card
                         VStack(spacing: 0) {

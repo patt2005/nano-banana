@@ -7,18 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5FCC64E475810868B59BD7C9 /* Pods_NanoBanana.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA063FAA2CD76F0A7BF268CD /* Pods_NanoBanana.framework */; };
 		8182F38C2E6892EC00090945 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 8182F38B2E6892EC00090945 /* RevenueCat */; };
 		8182F38E2E6892EC00090945 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 8182F38D2E6892EC00090945 /* RevenueCatUI */; };
 		8182F57A2E689EB300090945 /* LaTeXSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 8182F5792E689EB300090945 /* LaTeXSwiftUI */; };
+		8182F76B2E68BC2700090945 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8182F76A2E68BC2700090945 /* StoreKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0EF9C544EF70F5D657BAF15D /* Pods-NanoBanana.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NanoBanana.release.xcconfig"; path = "Target Support Files/Pods-NanoBanana/Pods-NanoBanana.release.xcconfig"; sourceTree = "<group>"; };
 		81447AEA2E672B5B003557C9 /* NanoBanana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanoBanana.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8182F76A2E68BC2700090945 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		DA063FAA2CD76F0A7BF268CD /* Pods_NanoBanana.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NanoBanana.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F103BE3A9B60E67E3AAD049E /* Pods-NanoBanana.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NanoBanana.debug.xcconfig"; path = "Target Support Files/Pods-NanoBanana/Pods-NanoBanana.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		81447AEC2E672B5B003557C9 /* NanoBanana */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = NanoBanana;
 			sourceTree = "<group>";
 		};
@@ -32,17 +40,31 @@
 				8182F38E2E6892EC00090945 /* RevenueCatUI in Frameworks */,
 				8182F38C2E6892EC00090945 /* RevenueCat in Frameworks */,
 				8182F57A2E689EB300090945 /* LaTeXSwiftUI in Frameworks */,
+				8182F76B2E68BC2700090945 /* StoreKit.framework in Frameworks */,
+				5FCC64E475810868B59BD7C9 /* Pods_NanoBanana.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D50477FE672304542D0C540 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F103BE3A9B60E67E3AAD049E /* Pods-NanoBanana.debug.xcconfig */,
+				0EF9C544EF70F5D657BAF15D /* Pods-NanoBanana.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		81447AE12E672B5B003557C9 = {
 			isa = PBXGroup;
 			children = (
 				81447AEC2E672B5B003557C9 /* NanoBanana */,
+				8182F7692E68BC2700090945 /* Frameworks */,
 				81447AEB2E672B5B003557C9 /* Products */,
+				2D50477FE672304542D0C540 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +76,15 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		8182F7692E68BC2700090945 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8182F76A2E68BC2700090945 /* StoreKit.framework */,
+				DA063FAA2CD76F0A7BF268CD /* Pods_NanoBanana.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -61,6 +92,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 81447AF52E672B5C003557C9 /* Build configuration list for PBXNativeTarget "NanoBanana" */;
 			buildPhases = (
+				CF77047FA43254AA43191309 /* [CP] Check Pods Manifest.lock */,
 				81447AE62E672B5B003557C9 /* Sources */,
 				81447AE72E672B5B003557C9 /* Frameworks */,
 				81447AE82E672B5B003557C9 /* Resources */,
@@ -129,6 +161,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CF77047FA43254AA43191309 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NanoBanana-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		81447AE62E672B5B003557C9 /* Sources */ = {
@@ -262,6 +319,7 @@
 		};
 		81447AF62E672B5C003557C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F103BE3A9B60E67E3AAD049E /* Pods-NanoBanana.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -276,6 +334,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -294,6 +353,7 @@
 		};
 		81447AF72E672B5C003557C9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0EF9C544EF70F5D657BAF15D /* Pods-NanoBanana.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -308,6 +368,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;

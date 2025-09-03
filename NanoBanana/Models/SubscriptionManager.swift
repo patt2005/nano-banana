@@ -27,7 +27,7 @@ final class SubscriptionManager: ObservableObject {
     
     func updateSubscriptionStatus(_ customerInfo: CustomerInfo) {
         self.customerInfo = customerInfo
-        self.isSubscribed = customerInfo.entitlements.active["pro"]?.isActive == true
+        self.isSubscribed = customerInfo.entitlements.active["Pro"]?.isActive == true
     }
     
     // MARK: - Purchase Methods

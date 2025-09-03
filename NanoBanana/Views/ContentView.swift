@@ -227,6 +227,12 @@ struct ContentView: View {
                         } else {
                             Button(action: {
                                 if chatViewModel.canSend {
+                                    // Check if free user has exceeded limit before sending
+                                    if !subscriptionManager.hasActiveSubscription && chatViewModel.isMessageLimitExceeded {
+                                        appManager.showPaywall = true
+                                        return
+                                    }
+                                    
                                     chatViewModel.sendMessage()
                                     if let proxy = scrollProxy {
                                         scrollToBottom(proxy)
@@ -259,7 +265,7 @@ struct ContentView: View {
             HistoryView(chatViewModel: chatViewModel)
         }
         .sheet(isPresented: $showingSettings) {
-            SettingsView()
+            SettingsView(chatViewModel: chatViewModel)
         }
         .sheet(isPresented: $showingImagePicker) {
             PhotoPickerView(selectedImages: $chatViewModel.selectedImages, isPresented: $showingImagePicker)

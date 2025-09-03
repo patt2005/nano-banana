@@ -7,41 +7,31 @@ struct SplashView: View {
     var body: some View {
         ZStack {
             Color.black
-                .ignoresSafeArea()
+                .ignoresSafeArea(.all)
             
-            VStack(spacing: 30) {
-                ZStack {
-                    Circle()
-                        .fill(Color.white.opacity(0.1))
-                        .frame(width: 140, height: 140)
-                        .scaleEffect(isAnimating ? 1.1 : 1.0)
-                        .opacity(isAnimating ? 0.8 : 1.0)
-                    
-                    Text("🍌")
-                        .font(.system(size: 70))
-                        .scaleEffect(isAnimating ? 1.2 : 1.0)
-                }
-                .animation(
-                    .easeInOut(duration: 1.5)
-                    .repeatForever(autoreverses: true),
-                    value: isAnimating
-                )
+            Image("7")
+                .resizable()
+                .scaledToFill()
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                .clipped()
+                .ignoresSafeArea(.all)
+                .opacity(isAnimating ? 1.0 : 0.0)
+                .animation(.easeInOut(duration: 1.0), value: isAnimating)
+            
+            VStack(spacing: 4) {
+                Text("NANO")
+                    .font(.system(size: 48, weight: .bold))
+                    .foregroundColor(.white)
+                    .opacity(isAnimating ? 1.0 : 0.0)
+                    .animation(.easeInOut(duration: 0.8).delay(0.5), value: isAnimating)
                 
-                if showTitle {
-                    VStack(spacing: 8) {
-                        Text("NanoBanana")
-                            .font(.system(size: 36, weight: .bold))
-                            .foregroundColor(.white)
-                            .opacity(showTitle ? 1.0 : 0.0)
-                        
-                        Text("AI-Powered Photo Editor")
-                            .font(.system(size: 18, weight: .medium))
-                            .foregroundColor(.gray)
-                            .opacity(showTitle ? 1.0 : 0.0)
-                    }
-                    .animation(.easeInOut(duration: 0.8), value: showTitle)
-                }
+                Text("BANANA")
+                    .font(.system(size: 48, weight: .bold))
+                    .foregroundColor(.white)
+                    .opacity(isAnimating ? 1.0 : 0.0)
+                    .animation(.easeInOut(duration: 0.8).delay(0.8), value: isAnimating)
             }
+            .padding(.bottom, 65)
         }
         .onAppear {
             isAnimating = true
