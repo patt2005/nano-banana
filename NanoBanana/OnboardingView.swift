@@ -9,6 +9,17 @@ struct OnboardingView: View {
     
     let totalSteps = 5
     
+    var hasSelection: Bool {
+        switch currentStep {
+        case 0: return selectedOptions.contains(where: { $0 < 10 })
+        case 1: return selectedOptions.contains(where: { $0 >= 10 && $0 < 20 })
+        case 2: return selectedOptions.contains(where: { $0 >= 20 && $0 < 30 })
+        case 3: return selectedOptions.contains(where: { $0 >= 30 && $0 < 40 })
+        case 4: return selectedOptions.contains(where: { $0 >= 40 && $0 < 50 })
+        default: return false
+        }
+    }
+    
     var body: some View {
         if showMainApp {
             ContentView()
@@ -96,9 +107,10 @@ struct OnboardingView: View {
                                 .foregroundColor(.white)
                                 .padding(.horizontal, 30)
                                 .padding(.vertical, 12)
-                                .background(Color.blue)
+                                .background(hasSelection ? Color.blue : Color.gray)
                                 .cornerRadius(20)
                         }
+                        .disabled(!hasSelection)
                     }
                     .padding(.horizontal, 20)
                     .padding(.bottom, 40)
@@ -127,12 +139,12 @@ struct Step1View: View {
     @Binding var selectedOptions: Set<Int>
     
     let options = [
-        (text: "Quickly removing unwanted things or people ✂️", emoji: "🔥"),
-        (text: "Changing object colors effortlessly 🎨", emoji: ""),
-        (text: "Making my sketches come alive ✏️", emoji: ""),
-        (text: "Trying outfits virtually 👗", emoji: ""),
-        (text: "Exploring creative edits via chat 💬", emoji: ""),
-        (text: "Other (Tell us more!) 💡", emoji: "")
+        "Quickly removing unwanted things or people ✂️",
+        "Changing object colors effortlessly 🎨",
+        "Making my sketches come alive ✏️",
+        "Trying outfits virtually 👗",
+        "Exploring creative edits via chat 💬",
+        "Other (Tell us more!) 💡"
     ]
     
     var body: some View {
@@ -150,15 +162,12 @@ struct Step1View: View {
             VStack(spacing: 12) {
                 ForEach(Array(options.enumerated()), id: \.offset) { index, option in
                     OptionButton(
-                        text: option.text,
+                        text: option,
                         isSelected: selectedOptions.contains(index),
-                        hasCheckmark: index == 0,
+                        hasCheckmark: selectedOptions.contains(index),
                         action: {
-                            if selectedOptions.contains(index) {
-                                selectedOptions.remove(index)
-                            } else {
-                                selectedOptions.insert(index)
-                            }
+                            selectedOptions.removeAll()
+                            selectedOptions.insert(index)
                         }
                     )
                 }
@@ -196,7 +205,7 @@ struct Step2View: View {
                     OptionButton(
                         text: option,
                         isSelected: selectedOptions.contains(index + 10),
-                        hasCheckmark: index == 1
+                        hasCheckmark: selectedOptions.contains(index + 10)
                     , action: {
                         let filteredOptions = selectedOptions.filter { !($0 >= 10 && $0 < 20) }
                         selectedOptions = Set(filteredOptions)
@@ -237,7 +246,7 @@ struct Step3View: View {
                     OptionButton(
                         text: option,
                         isSelected: selectedOptions.contains(index + 20),
-                        hasCheckmark: index == 0
+                        hasCheckmark: selectedOptions.contains(index + 20)
                     , action: {
                         let filteredOptions = selectedOptions.filter { !($0 >= 20 && $0 < 30) }
                         selectedOptions = Set(filteredOptions)
@@ -279,7 +288,7 @@ struct Step4View: View {
                     OptionButton(
                         text: option,
                         isSelected: selectedOptions.contains(index + 30),
-                        hasCheckmark: index == 5,
+                        hasCheckmark: selectedOptions.contains(index + 30),
                         action: {
                             if selectedOptions.contains(index + 30) {
                                 selectedOptions.remove(index + 30)
@@ -300,14 +309,45 @@ struct Step4View: View {
 struct Step5View: View {
     @Binding var selectedOptions: Set<Int>
     
+    let options = [
+        "Start with free features 🎉",
+        "Upgrade to premium immediately 👑", 
+        "Learn more about pricing 💰",
+        "Just explore for now 🔍"
+    ]
+    
     var body: some View {
         VStack(spacing: 20) {
-            Text("Step 5 Content")
-                .font(.title2)
-                .fontWeight(.medium)
-                .foregroundColor(.white)
-                .padding(.horizontal, 20)
-                .padding(.top, 40)
+            VStack(spacing: 16) {
+                Text("Ready to transform your photos?")
+                    .font(.title2)
+                    .fontWeight(.medium)
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                
+                Text("Choose how you'd like to get started with NanoBanana")
+                    .font(.body)
+                    .foregroundColor(.gray)
+                    .multilineTextAlignment(.center)
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, 40)
+            
+            VStack(spacing: 12) {
+                ForEach(Array(options.enumerated()), id: \.offset) { index, option in
+                    OptionButton(
+                        text: option,
+                        isSelected: selectedOptions.contains(index + 40),
+                        hasCheckmark: selectedOptions.contains(index + 40),
+                        action: {
+                            let filteredOptions = selectedOptions.filter { !($0 >= 40 && $0 < 50) }
+                            selectedOptions = Set(filteredOptions)
+                            selectedOptions.insert(index + 40)
+                        }
+                    )
+                }
+            }
+            .padding(.horizontal, 20)
             
             Spacer()
         }
