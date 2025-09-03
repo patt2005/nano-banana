@@ -2,7 +2,6 @@ import SwiftUI
 import UIKit
 import PhotosUI
 
-// MARK: - UIKit Image Picker
 struct ImagePicker: UIViewControllerRepresentable {
     @Binding var selectedImages: [UIImage]
     @Environment(\.presentationMode) var presentationMode
@@ -12,16 +11,14 @@ struct ImagePicker: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> UIViewController {
         if allowsMultipleSelection && sourceType == .photoLibrary {
-            // Use PHPickerViewController for multiple selection
             var config = PHPickerConfiguration(photoLibrary: .shared())
             config.filter = .images
-            config.selectionLimit = 10 // Allow up to 10 images
+            config.selectionLimit = 10
             
             let picker = PHPickerViewController(configuration: config)
             picker.delegate = context.coordinator
             return picker
         } else {
-            // Use UIImagePickerController for single selection or camera
             let picker = UIImagePickerController()
             picker.sourceType = sourceType
             picker.delegate = context.coordinator

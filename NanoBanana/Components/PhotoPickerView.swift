@@ -2,7 +2,6 @@ import SwiftUI
 import Photos
 import PhotosUI
 
-// Wrapper view that handles permissions
 struct PhotoPickerView: View {
     @Binding var selectedImages: [UIImage]
     @Binding var isPresented: Bool
@@ -21,9 +20,7 @@ struct PhotoPickerView: View {
                         DispatchQueue.main.async {
                             authorizationStatus = status
                             if status == .authorized || status == .limited {
-                                // Permissions granted, the view will automatically update
                             } else {
-                                // Permissions denied, dismiss
                                 isPresented = false
                             }
                         }
@@ -38,7 +35,6 @@ struct PhotoPickerView: View {
             }
         }
         .onAppear {
-            // Refresh authorization status when view appears
             authorizationStatus = PHPhotoLibrary.authorizationStatus()
         }
         .alert("Open Settings", isPresented: $showingSettings) {

@@ -3,13 +3,17 @@ import Foundation
 import UserNotifications
 import AVFoundation
 import Photos
+import RevenueCatUI
 
 struct ContentView: View {
     @StateObject private var chatViewModel = ChatViewModel()
+    @ObservedObject private var appManager = AppManager.shared
+    @ObservedObject private var subscriptionManager = SubscriptionManager.shared
     @State private var showingSettings = false
     @State private var showingImagePicker = false
-<<<<<<< HEAD
     @State private var showingCamera = false
+    @State private var showingHistory = false
+    @State private var scrollProxy: ScrollViewProxy?
     
     var body: some View {
         ZStack {
@@ -18,7 +22,9 @@ struct ContentView: View {
             
             VStack(spacing: 0) {
                 HStack {
-                    Button(action: {}) {
+                    Button(action: {
+                        showingHistory = true
+                    }) {
                         Image(systemName: "clock")
                             .foregroundColor(Color.gray)
                             .font(.title2)
@@ -54,8 +60,6 @@ struct ContentView: View {
                         LazyVStack(alignment: .leading, spacing: 16) {
                             if chatViewModel.messages.isEmpty {
                                 VStack {
-                                    Spacer()
-                                    
                                     VStack(spacing: 24) {
                                         ZStack {
                                             Circle()
@@ -80,11 +84,9 @@ struct ContentView: View {
                                         }
                                         
                                     }
-                                    
-                                    Spacer()
-                                    Spacer()
                                 }
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .padding(.top, UIScreen.main.bounds.height * 0.16)
                             } else {
                                 ForEach(chatViewModel.messages) { message in
                                     MessageBubble(message: message)
@@ -94,26 +96,20 @@ struct ContentView: View {
                             }
                             
                             Color.clear
-                                .frame(height: 140)
+                                .frame(height: 200)
                         }
                         .padding(.top)
                     }
                     .onChange(of: chatViewModel.messages.count) { _ in
-                        if let lastMessage = chatViewModel.messages.last {
-                            withAnimation(.easeOut(duration: 0.3)) {
-                                proxy.scrollTo(lastMessage.id, anchor: .bottom)
-                            }
-                        }
+                        scrollToBottom(proxy)
                     }
-                    .onChange(of: chatViewModel.streamingText) { _ in
-                        if let lastMessage = chatViewModel.messages.last {
-                            withAnimation(.easeOut(duration: 0.3)) {
-                                proxy.scrollTo(lastMessage.id, anchor: .bottom)
-                            }
-                        }
+                    .onAppear {
+                        scrollProxy = proxy
+                        scrollToBottom(proxy)
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .padding(.bottom, 30)
                 
                 if let errorMessage = chatViewModel.errorMessage {
                     HStack {
@@ -140,49 +136,6 @@ struct ContentView: View {
                 
                 Spacer()
             }
-=======
-    @State private var showingNotificationPermission = false
-    @State private var showingCameraPermission = false
-    @State private var showingPhotoPermission = false
-    @State private var showingHistory = false
-    
-    var body: some View {
-        VStack(spacing: 0) {
-            // Custom App Bar
-            HStack {
-                Button(action: {
-                    showingHistory = true
-                }) {
-                    Image(systemName: "clock")
-                        .foregroundColor(Color.gray)
-                        .font(.title2)
-                }
-                
-                Spacer()
-                
-                HStack {
-                    Text("🍌")
-                        .font(.title2)
-                    Text("NanoBanana")
-                        .font(.title2)
-                        .fontWeight(.medium)
-                        .foregroundColor(Color.gray)
-                }
-                
-                Spacer()
-                
-                Button(action: {
-                    showingSettings = true
-                }) {
-                    Image(systemName: "gearshape")
-                        .foregroundColor(Color.gray)
-                        .font(.title2)
-                }
-            }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 12)
-            .background(.black)
->>>>>>> 38011852f5bfe9a0ab0e1059be9290371f44c08b
             
             VStack {
                 Spacer()
@@ -214,6 +167,7 @@ struct ContentView: View {
                             }
                         }
                         .frame(height: 75)
+                        .padding(.top, 5)
                     }
                     
                     TextField("", text: $chatViewModel.currentInput, prompt: Text("Type your prompt here...").foregroundColor(.white.opacity(0.5)), axis: .vertical)
@@ -223,7 +177,7 @@ struct ContentView: View {
                         .disabled(chatViewModel.isLoading)
                         .foregroundStyle(.white)
                         .cornerRadius(12)
-                        .padding(.top, chatViewModel.selectedImages.isEmpty ? 15 : 0)
+                        .padding(.top, chatViewModel.selectedImages.isEmpty ? 20 : 0)
                     
                     HStack(spacing: 16) {
                         HStack(spacing: 12) {
@@ -248,19 +202,19 @@ struct ContentView: View {
                                     .cornerRadius(20)
                             }
                             
-                            Button(action: {}) {
-                                HStack {
-                                    Image(systemName: "eye")
-                                        .foregroundColor(.white)
-                                    Text("PRO Creation")
-                                        .foregroundColor(.white)
-                                        .fontWeight(.medium)
-                                }
-                            }
-                            .padding(.horizontal, 16)
-                            .padding(.vertical, 10)
-                            .background(Color.gray.opacity(0.25))
-                            .cornerRadius(20)
+//                            Button(action: {}) {
+//                                HStack {
+//                                    Image(systemName: "eye")
+//                                        .foregroundColor(.white)
+//                                    Text("PRO Creation")
+//                                        .foregroundColor(.white)
+//                                        .fontWeight(.medium)
+//                                }
+//                            }
+//                            .padding(.horizontal, 16)
+//                            .padding(.vertical, 10)
+//                            .background(Color.gray.opacity(0.25))
+//                            .cornerRadius(20)
                         }
                         
                         Spacer()
@@ -274,6 +228,9 @@ struct ContentView: View {
                             Button(action: {
                                 if chatViewModel.canSend {
                                     chatViewModel.sendMessage()
+                                    if let proxy = scrollProxy {
+                                        scrollToBottom(proxy)
+                                    }
                                 }
                             }) {
                                 Image(systemName: "arrow.up")
@@ -297,70 +254,39 @@ struct ContentView: View {
                 .padding(.horizontal, 20)
                 .padding(.bottom, 20)
             }
-<<<<<<< HEAD
-=======
-            .background(.black)
-            .sheet(isPresented: $showingChat) {
-                ChatView(viewModel: chatViewModel)
-            }
-            .sheet(isPresented: $showingSettings) {
-                SettingsView()
-            }
-            .alert("\"NanoBanana\" ar dori să vă trimită notificări", isPresented: $showingNotificationPermission) {
-                Button("Nu permiteți") {
-                    showingNotificationPermission = false
-                }
-                Button("Permiteți") {
-                    requestNotificationPermission()
-                }
-            } message: {
-                Text("Notificările pot include alerte, sunete și insigne pentru pictograme. Acestea pot fi configurate în Configurări.")
-            }
-            .alert("\"NanoBanana\" ar dori să acceseze camera", isPresented: $showingCameraPermission) {
-                Button("Nu permiteți") {
-                    showingCameraPermission = false
-                }
-                Button("Permiteți") {
-                    requestCameraPermission()
-                }
-            } message: {
-                Text("We need to access your camera to capture and transform images for you to get accurate results")
-            }
-            .alert("\"NanoBanana\" ar dori să acceseze galeria foto", isPresented: $showingPhotoPermission) {
-                Button("Nu permiteți") {
-                    showingPhotoPermission = false
-                }
-                Button("Permiteți") {
-                    requestPhotoPermission()
-                }
-            } message: {
-                Text("We need to access your photo library to select and transform images for you to get accurate results")
-            }
-            .onAppear {
-                checkNotificationPermission()
-                checkCameraPermission()
-                checkPhotoPermission()
-            }
-            .sheet(isPresented: $showingImagePicker) {
-                PhotoPickerView(selectedImages: $chatViewModel.selectedImages, isPresented: $showingImagePicker)
-            }
-            .sheet(isPresented: $showingHistory) {
-                HistoryView(chatViewModel: chatViewModel)
-            }
->>>>>>> 38011852f5bfe9a0ab0e1059be9290371f44c08b
+        }
+        .sheet(isPresented: $showingHistory) {
+            HistoryView(chatViewModel: chatViewModel)
         }
         .sheet(isPresented: $showingSettings) {
             SettingsView()
         }
-        .onAppear {
-            checkCameraPermission()
-            checkPhotoPermission()
-        }
         .sheet(isPresented: $showingImagePicker) {
             PhotoPickerView(selectedImages: $chatViewModel.selectedImages, isPresented: $showingImagePicker)
         }
-        .sheet(isPresented: $showingCamera) {
+        .fullScreenCover(isPresented: $showingCamera) {
             CameraPickerView(selectedImages: $chatViewModel.selectedImages, isPresented: $showingCamera)
+        }
+        .fullScreenCover(isPresented: $appManager.showPaywall) {
+            PaywallView()
+                .onPurchaseCompleted { customerInfo in
+                    subscriptionManager.updateSubscriptionStatus(customerInfo)
+                    appManager.showPaywall = false
+                }
+                .onRestoreCompleted { customerInfo in
+                    subscriptionManager.updateSubscriptionStatus(customerInfo)
+                    appManager.showPaywall = false
+                }
+        }
+    }
+    
+    private func scrollToBottom(_ proxy: ScrollViewProxy) {
+        guard let id = chatViewModel.messages.last?.id else { return }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            withAnimation(.easeOut(duration: 0.3)) {
+                proxy.scrollTo(id, anchor: .bottom)
+            }
         }
     }
     
@@ -413,7 +339,6 @@ struct ContentView: View {
             }
             
         case .notDetermined:
-            // Request full access
             PHPhotoLibrary.requestAuthorization(for: .readWrite) { newStatus in
                 DispatchQueue.main.async {
                     if newStatus == .authorized || newStatus == .limited {
@@ -423,7 +348,6 @@ struct ContentView: View {
             }
             
         case .denied, .restricted:
-            // Show settings alert
             let alert = UIAlertController(
                 title: "Photo Access Required",
                 message: "Please enable photo library access in Settings to select images.",

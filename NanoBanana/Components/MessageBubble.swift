@@ -1,97 +1,15 @@
 import SwiftUI
+import LaTeXSwiftUI
 
-struct ChatView: View {
-    @ObservedObject var viewModel: ChatViewModel
-    @Environment(\.dismiss) var dismiss
+struct ShareView: UIViewControllerRepresentable {
+    var activityItems: [Any]
+    var applicationActivities: [UIActivity]? = nil
     
-    var body: some View {
-        NavigationView {
-            VStack(spacing: 0) {
-                // Header
-                HStack {
-                    Button("Close") {
-                        dismiss()
-                    }
-                    .foregroundColor(.white)
-                    
-                    Spacer()
-                    
-                    HStack {
-                        Text("🍌")
-                            .font(.title2)
-                        Text("NanoBanana Chat")
-                            .font(.title2)
-                            .fontWeight(.medium)
-                            .foregroundColor(.white)
-                    }
-                    
-                    Spacer()
-                    
-                    Button("Clear") {
-                        viewModel.clearChat()
-                    }
-                    .foregroundColor(.white)
-                }
-                .padding()
-                .background(Color(hex: "121419"))
-                
-                // Messages
-                ScrollViewReader { proxy in
-                    ScrollView {
-                        LazyVStack(alignment: .leading, spacing: 16) {
-                            ForEach(viewModel.messages) { message in
-                                MessageBubble(message: message)
-                                    .id(message.id)
-                            }
-                        }
-                        .padding()
-                    }
-                    .background(Color(hex: "121419"))
-                    .onChange(of: viewModel.messages.count) { _ in
-                        if let lastMessage = viewModel.messages.last {
-                            withAnimation(.easeOut(duration: 0.3)) {
-                                proxy.scrollTo(lastMessage.id, anchor: .bottom)
-                            }
-                        }
-                    }
-                    .onChange(of: viewModel.streamingText) { _ in
-                        if let lastMessage = viewModel.messages.last {
-                            withAnimation(.easeOut(duration: 0.3)) {
-                                proxy.scrollTo(lastMessage.id, anchor: .bottom)
-                            }
-                        }
-                    }
-                }
-                
-                // Error Message
-                if let errorMessage = viewModel.errorMessage {
-                    HStack {
-                        Image(systemName: "exclamationmark.triangle")
-                            .foregroundColor(.red)
-                        Text(errorMessage)
-                            .foregroundColor(.red)
-                            .font(.caption)
-                        
-                        Spacer()
-                        
-                        Button("Retry") {
-                            viewModel.retryLastMessage()
-                        }
-                        .font(.caption)
-                        .foregroundColor(.blue)
-                    }
-                    .padding(.horizontal)
-                    .padding(.vertical, 8)
-                    .background(Color(hex: "2e2e2e"))
-                }
-                
-                // Input Area
-                ChatInputView(viewModel: viewModel)
-            }
-            .navigationBarHidden(true)
-        }
-        .navigationViewStyle(StackNavigationViewStyle())
+    func makeUIViewController(context: Context) -> UIActivityViewController {
+        return UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
     }
+    
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {}
 }
 
 struct MessageBubble: View {
@@ -113,10 +31,10 @@ struct MessageBubble: View {
 struct UserMessageBubble: View {
     let message: ChatMessage
     @State private var fullScreenImage: UIImage?
+    @State private var showingCopyConfirmation = false
     
     var body: some View {
         VStack(alignment: .trailing) {
-            // Images with ReversedScrollView
             if !message.images.isEmpty {
                 ReversedScrollView {
                     ForEach(Array(message.images.enumerated()), id: \.offset) { index, image in
@@ -137,7 +55,6 @@ struct UserMessageBubble: View {
                 .padding(.bottom, 8)
             }
             
-            // Text
             if !message.content.isEmpty {
                 Text(message.content)
                     .foregroundColor(.black)
@@ -147,10 +64,10 @@ struct UserMessageBubble: View {
                     .clipShape(RoundedRectangle(cornerRadius: 18))
             }
             
-            // Copy button below message
             if !message.content.isEmpty {
                 Button(action: {
                     UIPasteboard.general.string = message.content
+                    showingCopyConfirmation = true
                 }) {
                     HStack(spacing: 6) {
                         Image(systemName: "doc.on.doc")
@@ -173,19 +90,23 @@ struct UserMessageBubble: View {
                 fullScreenImage = nil
             }
         }
+        .alert("Copied!", isPresented: $showingCopyConfirmation) {
+            Button("OK") { }
+        } message: {
+            Text("Text was copied to clipboard")
+        }
     }
 }
 
-// Helper wrapper for UIImage to make it Identifiable
 struct UIImageWrapper: Identifiable {
     let id = UUID()
     let image: UIImage
 }
 
-// Full screen image view
 struct FullScreenImageView: View {
     let image: UIImage
     let onDismiss: () -> Void
+    @State private var showingShareSheet = false
     
     var body: some View {
         ZStack {
@@ -193,7 +114,17 @@ struct FullScreenImageView: View {
             
             VStack {
                 HStack {
+                    Button(action: {
+                        showingShareSheet = true
+                    }) {
+                        Image(systemName: "square.and.arrow.up")
+                            .foregroundColor(.white)
+                            .font(.title2)
+                    }
+                    .padding()
+                    
                     Spacer()
+                    
                     Button("Done") {
                         onDismiss()
                     }
@@ -206,20 +137,25 @@ struct FullScreenImageView: View {
                 Image(uiImage: image)
                     .resizable()
                     .scaledToFit()
-                    .padding()
                 
                 Spacer()
             }
+        }
+        .sheet(isPresented: $showingShareSheet) {
+            ShareView(activityItems: [image])
         }
     }
 }
 
 struct AIMessageBubble: View {
     let message: ChatMessage
+    @State private var showingCopyConfirmation = false
+    @State private var fullScreenImage: UIImage?
+    @State private var showingShareSheet = false
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack(alignment: .top) {
+            HStack(alignment: .top, spacing: 10) {
                 ZStack {
                     Circle()
                         .fill(.white)
@@ -231,61 +167,119 @@ struct AIMessageBubble: View {
                 .padding(.top, 4)
                 
                 VStack(alignment: .leading) {
-                    // Text with streaming indicator
-                    HStack {
+                    if !message.images.isEmpty {
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(message.images.indices, id: \.self) { index in
+                                    Button(action: {
+                                        fullScreenImage = message.images[index]
+                                    }) {
+                                        Image(uiImage: message.images[index])
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 160, height: 160)
+                                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                                    }
+                                }
+                            }
+                        }
+                        .padding(.bottom, 8)
+                    }
+                    
+                    VStack(alignment: .leading, spacing: 8) {
                         if !message.content.isEmpty {
-                            Text(message.content)
-                                .foregroundColor(.white)
+                            LaTeX(message.content)
+                                .font(.system(size: 17, weight: .medium))
+                                .foregroundStyle(.white)
+                                .multilineTextAlignment(.leading)
+                                .textSelection(.enabled)
+                                .parsingMode(.onlyEquations)
+                                .blockMode(.blockViews)
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 12)
                         }
                         
                         if message.isStreaming {
-                            Text("●")
-                                .foregroundColor(.white)
-                                .font(.caption)
-                                .animation(.easeInOut(duration: 0.8).repeatForever(), value: message.isStreaming)
+                            HStack {
+                                StreamingDots()
+                            }
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 12)
                         }
                     }
-                    .padding(.horizontal, 16)
-                    .padding(.vertical, 12)
                     .background(Color(hex: "2e2e2e"))
                     .clipShape(RoundedRectangle(cornerRadius: 18))
                     
-                    // Copy button below AI message
-                    if !message.content.isEmpty && !message.isStreaming {
-                        Button(action: {
-                            UIPasteboard.general.string = message.content
-                        }) {
-                            HStack(spacing: 6) {
-                                Image(systemName: "doc.on.doc")
-                                Text("Copy")
-                            }
-                            .foregroundColor(.white.opacity(0.8))
-                            .font(.system(size: 14, weight: .medium))
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 8)
-                            .background(Color.gray.opacity(0.3))
-                            .clipShape(RoundedRectangle(cornerRadius: 12))
-                        }
-                    }
-                    
-                    if !message.images.isEmpty {
-                        LazyVGrid(columns: [
-                            GridItem(.flexible()),
-                            GridItem(.flexible())
-                        ], spacing: 8) {
-                            ForEach(message.images.indices, id: \.self) { index in
-                                Image(uiImage: message.images[index])
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(height: 100)
+                    if !message.isStreaming {
+                        HStack(spacing: 8) {
+                            if !message.content.isEmpty {
+                                Button(action: {
+                                    UIPasteboard.general.string = message.content
+                                    showingCopyConfirmation = true
+                                }) {
+                                    HStack(spacing: 6) {
+                                        Image(systemName: "doc.on.doc")
+                                        Text("Copy")
+                                    }
+                                    .foregroundColor(.white.opacity(0.8))
+                                    .font(.system(size: 14, weight: .medium))
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 8)
+                                    .background(Color.gray.opacity(0.3))
                                     .clipShape(RoundedRectangle(cornerRadius: 12))
+                                }
+                            }
+                            
+                            Button(action: {
+                                showingShareSheet = true
+                            }) {
+                                HStack(spacing: 6) {
+                                    Image(systemName: "square.and.arrow.up")
+                                    Text("Share")
+                                }
+                                .foregroundColor(.white.opacity(0.8))
+                                .font(.system(size: 14, weight: .medium))
+                                .padding(.horizontal, 12)
+                                .padding(.vertical, 8)
+                                .background(Color.gray.opacity(0.3))
+                                .clipShape(RoundedRectangle(cornerRadius: 12))
                             }
                         }
-                        .padding(.top, 8)
                     }
                 }
             }
         }
+        .fullScreenCover(item: Binding<UIImageWrapper?>(
+            get: { fullScreenImage.map(UIImageWrapper.init) },
+            set: { _ in fullScreenImage = nil }
+        )) { wrapper in
+            FullScreenImageView(image: wrapper.image) {
+                fullScreenImage = nil
+            }
+        }
+        .sheet(isPresented: $showingShareSheet) {
+            ShareView(activityItems: createShareItems())
+        }
+        .alert("Copied!", isPresented: $showingCopyConfirmation) {
+            Button("OK") { }
+        } message: {
+            Text("Text was copied to clipboard")
+        }
+    }
+    
+    // Create share items including text and images
+    private func createShareItems() -> [Any] {
+        var items: [Any] = []
+        
+        // Add text content if available
+        if !message.content.isEmpty {
+            items.append(message.content)
+        }
+        
+        // Add images if available
+        items.append(contentsOf: message.images)
+        
+        return items
     }
 }
 
@@ -389,6 +383,34 @@ struct ReversedScrollView<Content: View>: View {
                 }
                 .frame(minWidth: proxy.size.width)
             }
+        }
+    }
+}
+
+struct StreamingDots: View {
+    @State private var animating = false
+    
+    var body: some View {
+        HStack(spacing: 2) {
+            ForEach(0..<3) { index in
+                Circle()
+                    .fill(Color.white)
+                    .frame(width: 4, height: 4)
+                    .scaleEffect(animating ? 1.2 : 0.8)
+                    .opacity(animating ? 1.0 : 0.5)
+                    .animation(
+                        .easeInOut(duration: 0.6)
+                        .repeatForever(autoreverses: true)
+                        .delay(Double(index) * 0.2),
+                        value: animating
+                    )
+            }
+        }
+        .onAppear {
+            animating = true
+        }
+        .onDisappear {
+            animating = false
         }
     }
 }

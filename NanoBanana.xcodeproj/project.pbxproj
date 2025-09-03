@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8182F38C2E6892EC00090945 /* RevenueCat in Frameworks */ = {isa = PBXBuildFile; productRef = 8182F38B2E6892EC00090945 /* RevenueCat */; };
+		8182F38E2E6892EC00090945 /* RevenueCatUI in Frameworks */ = {isa = PBXBuildFile; productRef = 8182F38D2E6892EC00090945 /* RevenueCatUI */; };
+		8182F57A2E689EB300090945 /* LaTeXSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 8182F5792E689EB300090945 /* LaTeXSwiftUI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		81447AEA2E672B5B003557C9 /* NanoBanana.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanoBanana.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +29,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8182F38E2E6892EC00090945 /* RevenueCatUI in Frameworks */,
+				8182F38C2E6892EC00090945 /* RevenueCat in Frameworks */,
+				8182F57A2E689EB300090945 /* LaTeXSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +74,9 @@
 			);
 			name = NanoBanana;
 			packageProductDependencies = (
+				8182F38B2E6892EC00090945 /* RevenueCat */,
+				8182F38D2E6892EC00090945 /* RevenueCatUI */,
+				8182F5792E689EB300090945 /* LaTeXSwiftUI */,
 			);
 			productName = NanoBanana;
 			productReference = 81447AEA2E672B5B003557C9 /* NanoBanana.app */;
@@ -94,6 +106,10 @@
 			);
 			mainGroup = 81447AE12E672B5B003557C9;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				8182F38A2E6892EC00090945 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */,
+				8182F5782E689EB300090945 /* XCRemoteSwiftPackageReference "LaTeXSwiftUI" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 81447AEB2E672B5B003557C9 /* Products */;
 			projectDirPath = "";
@@ -330,6 +346,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8182F38A2E6892EC00090945 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RevenueCat/purchases-ios-spm";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.36.0;
+			};
+		};
+		8182F5782E689EB300090945 /* XCRemoteSwiftPackageReference "LaTeXSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/colinc86/LaTeXSwiftUI";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8182F38B2E6892EC00090945 /* RevenueCat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8182F38A2E6892EC00090945 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCat;
+		};
+		8182F38D2E6892EC00090945 /* RevenueCatUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8182F38A2E6892EC00090945 /* XCRemoteSwiftPackageReference "purchases-ios-spm" */;
+			productName = RevenueCatUI;
+		};
+		8182F5792E689EB300090945 /* LaTeXSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8182F5782E689EB300090945 /* XCRemoteSwiftPackageReference "LaTeXSwiftUI" */;
+			productName = LaTeXSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 81447AE22E672B5B003557C9 /* Project object */;
 }

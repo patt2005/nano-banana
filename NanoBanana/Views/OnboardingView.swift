@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct OnboardingView: View {
+    @ObservedObject private var appManager = AppManager.shared
     @State private var currentStep = 0
     @State private var selectedOptions: Set<Int> = []
     @State private var isLoading = false
     @State private var loadingProgress: Double = 0.0
-    @State private var showMainApp = false
     
     let totalSteps = 5
     
@@ -21,11 +21,9 @@ struct OnboardingView: View {
     }
     
     var body: some View {
-        if showMainApp {
-            ContentView()
-        } else if isLoading {
+        if isLoading {
             LoadingView(progress: $loadingProgress, onComplete: {
-                showMainApp = true
+                appManager.completeOnboarding()
             })
         } else {
             ZStack {
@@ -33,7 +31,6 @@ struct OnboardingView: View {
                     .ignoresSafeArea(.all)
                 
                 VStack(spacing: 0) {
-                    // Progress Bar
                     VStack(spacing: 0) {
                         GeometryReader { geometry in
                             ZStack(alignment: .leading) {
@@ -79,7 +76,6 @@ struct OnboardingView: View {
                     
                     Spacer()
                     
-                    // Navigation Buttons
                     HStack {
                         if currentStep > 0 {
                             Button {
@@ -121,13 +117,12 @@ struct OnboardingView: View {
     
     private func startLoading() {
         isLoading = true
-        // Simulate loading process
         _ = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
             loadingProgress += 0.02
             if loadingProgress >= 1.0 {
                 timer.invalidate()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    showMainApp = true
+                    appManager.completeOnboarding()
                 }
             }
         }
@@ -375,9 +370,8 @@ struct LoadingView: View {
                     .fontWeight(.medium)
                     .foregroundColor(.white)
                 
-                // Progress Bar
                 VStack(spacing: 20) {
-                    ProgressView(value: progress)
+                    ProgressView(value: progress, total: 1.0)
                         .progressViewStyle(LinearProgressViewStyle())
                         .accentColor(.blue)
                         .frame(width: 250)

@@ -2,6 +2,11 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
+    @ObservedObject private var appManager = AppManager.shared
+    @ObservedObject private var subscriptionManager = SubscriptionManager.shared
+    @State private var isRestoring = false
+    @State private var showingRestoreAlert = false
+    @State private var restoreMessage = ""
     
     var body: some View {
         NavigationView {
@@ -17,10 +22,6 @@ struct SettingsView: View {
                     }
                     
                     Spacer()
-                    
-                    Text("Done")
-                        .foregroundColor(.blue)
-                        .fontWeight(.medium)
                 }
                 .padding(.horizontal, 20)
                 .padding(.vertical, 16)
@@ -39,50 +40,66 @@ struct SettingsView: View {
                         .padding(.horizontal, 20)
                         .padding(.top, 20)
                         
-                        // Subscription Section
-                        VStack(spacing: 16) {
-                            HStack {
-                                Image(systemName: "crown")
-                                    .foregroundColor(.white)
-                                    .font(.title2)
-                                Text("Subscription")
-                                    .foregroundColor(.white)
-                                    .font(.title3)
-                                    .fontWeight(.medium)
-                                Spacer()
-                            }
-                            .padding(.horizontal, 20)
-                            
-                            // Upgrade to Premium
-                            Button(action: {}) {
-                                HStack {
-                                    Image(systemName: "crown.fill")
-                                        .foregroundColor(.yellow)
-                                        .font(.title2)
-                                    
-                                    VStack(alignment: .leading, spacing: 4) {
-                                        Text("Upgrade to Premium")
+                        // Premium Upgrade Card
+                        VStack(spacing: 0) {
+                            Button(action: {
+                                presentationMode.wrappedValue.dismiss()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                    appManager.showPaywall = true
+                                }
+                            }) {
+                                VStack(spacing: 20) {
+                                    // Header with star icon and title
+                                    HStack(spacing: 12) {
+                                        Image(systemName: "star.fill")
                                             .foregroundColor(.white)
-                                            .fontWeight(.medium)
-                                        Text("Unlock all features")
-                                            .foregroundColor(Color(hex: "9e9d99"))
-                                            .font(.caption)
+                                            .font(.system(size: 24, weight: .bold))
+                                        
+                                        Text("NanoBanana Pro")
+                                            .font(.system(size: 28, weight: .bold))
+                                            .foregroundColor(.white)
+                                        
+                                        Spacer()
                                     }
                                     
-                                    Spacer()
+                                    // Subtitle
+                                    HStack {
+                                        Text("Unlock premium editing features:")
+                                            .font(.system(size: 16, weight: .medium))
+                                            .foregroundColor(.white.opacity(0.9))
+                                        Spacer()
+                                    }
                                     
-                                    Image(systemName: "chevron.right")
-                                        .foregroundColor(Color(hex: "9e9d99"))
+                                    // Feature list
+                                    VStack(spacing: 12) {
+                                        FeatureRow(text: "Unlimited edits")
+                                        FeatureRow(text: "Fast processing")
+                                        FeatureRow(text: "No watermark")
+                                    }
+                                    
+                                    // Upgrade button
+                                    HStack {
+                                        Text("Upgrade to Pro")
+                                            .font(.system(size: 18, weight: .semibold))
+                                            .foregroundColor(.orange)
+                                        Spacer()
+                                    }
+                                    .padding(.horizontal, 20)
+                                    .padding(.vertical, 16)
+                                    .background(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .fill(.white)
+                                    )
                                 }
-                                .padding(20)
+                                .padding(24)
                                 .background(
                                     LinearGradient(
-                                        gradient: Gradient(colors: [Color.purple.opacity(0.8), Color.blue.opacity(0.6)]),
-                                        startPoint: .leading,
-                                        endPoint: .trailing
+                                        gradient: Gradient(colors: [Color.orange, Color.red.opacity(0.8)]),
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing
                                     )
                                 )
-                                .cornerRadius(16)
+                                .cornerRadius(20)
                             }
                             .padding(.horizontal, 20)
                         }
@@ -90,28 +107,42 @@ struct SettingsView: View {
                         // Other Settings
                         VStack(spacing: 20) {
                             // Restore Purchases
-                            SettingsRow(
-                                icon: "arrow.clockwise",
-                                iconColor: .blue,
-                                title: "Restore Purchases",
-                                showChevron: false
-                            )
-                            
-                            // About
-                            HStack {
-                                Image(systemName: "info.circle")
-                                    .foregroundColor(.white)
-                                    .font(.title)
-                                Text("About")
-                                    .foregroundColor(.white)
-                                    .font(.title2)
-                                    .fontWeight(.medium)
-                                Spacer()
+                            Button(action: {
+                                isRestoring = true
+                                subscriptionManager.restorePurchases { success, error in
+                                    isRestoring = false
+                                    if success {
+                                        restoreMessage = "Purchases restored successfully!"
+                                    } else {
+                                        restoreMessage = "No purchases found to restore."
+                                    }
+                                    showingRestoreAlert = true
+                                }
+                            }) {
+                                HStack {
+                                    if isRestoring {
+                                        ProgressView()
+                                            .scaleEffect(0.8)
+                                            .tint(.blue)
+                                            .frame(width: 24, height: 24)
+                                    } else {
+                                        Image(systemName: "arrow.clockwise")
+                                            .foregroundColor(.blue)
+                                            .font(.title2)
+                                            .frame(width: 24)
+                                    }
+                                    
+                                    Text("Restore Purchases")
+                                        .foregroundColor(.white)
+                                        .font(.body)
+                                    
+                                    Spacer()
+                                }
+                                .padding(.horizontal, 20)
+                                .padding(.vertical, 12)
                             }
-                            .padding(.horizontal, 20)
-                            .padding(.vertical, 12)
+                            .disabled(isRestoring)
                             
-                            // Version
                             HStack {
                                 Image(systemName: "doc.text")
                                     .foregroundColor(.blue)
@@ -130,7 +161,6 @@ struct SettingsView: View {
                             }
                             .padding(.horizontal, 20)
                             
-                            // Privacy Policy
                             Button(action: {
                                 if let url = URL(string: "https://www.termsfeed.com/live/dc1b9371-d8cd-4545-9f6f-823780afa2ee") {
                                     UIApplication.shared.open(url)
@@ -156,7 +186,7 @@ struct SettingsView: View {
                             
                             // Terms of Service
                             Button(action: {
-                                if let url = URL(string: "https://www.termsfeed.com/live/dc1b9371-d8cd-4545-9f6f-823780afa2ee") {
+                                if let url = URL(string: "https://www.termsfeed.com/live/efa197cb-d472-4b22-9d83-f7f9bf4e3d4b") {
                                     UIApplication.shared.open(url)
                                 }
                             }) {
@@ -180,7 +210,7 @@ struct SettingsView: View {
                             
                             // Contact Support
                             Button(action: {
-                                if let url = URL(string: "https://www.termsfeed.com/live/dc1b9371-d8cd-4545-9f6f-823780afa2ee") {
+                                if let url = URL(string: "mailto:esmondandersonhaldegallagher@gmail.com?subject=NanoBanana%20Support") {
                                     UIApplication.shared.open(url)
                                 }
                             }) {
@@ -226,6 +256,11 @@ struct SettingsView: View {
             .background(Color(hex: "121419"))
             .navigationBarHidden(true)
         }
+        .alert("Restore Purchases", isPresented: $showingRestoreAlert) {
+            Button("OK") { }
+        } message: {
+            Text(restoreMessage)
+        }
     }
 }
 
@@ -255,6 +290,24 @@ struct SettingsRow: View {
                 }
             }
             .padding(.horizontal, 20)
+        }
+    }
+}
+
+struct FeatureRow: View {
+    let text: String
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: "checkmark")
+                .foregroundColor(.white)
+                .font(.system(size: 16, weight: .bold))
+            
+            Text(text)
+                .font(.system(size: 16, weight: .medium))
+                .foregroundColor(.white)
+            
+            Spacer()
         }
     }
 }

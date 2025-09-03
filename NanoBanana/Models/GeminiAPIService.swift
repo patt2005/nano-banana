@@ -1,7 +1,6 @@
 import Foundation
 import UIKit
 
-// MARK: - Data Models
 struct GeminiRequest {
     let model: String
     let contents: String
@@ -11,7 +10,7 @@ struct GeminiRequest {
 
 struct GeminiResponse: Codable {
     let text: String?
-    let images: [String]?
+    let images: [ImageResult]?
     let model: String?
     let usage: Usage?
     let error: String?
@@ -38,11 +37,39 @@ struct StreamChunk: Codable {
 
 struct ChunkResult: Codable {
     let text: String?
-    let images: [String]?
+    let images: [ImageResult]?
 }
 
-// MARK: - API Service
-class GeminiAPIService: ObservableObject {
+struct ImageResult: Codable {
+    let url: String?
+    let base64: String?
+    let data: String?
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        if let stringValue = try? decoder.singleValueContainer().decode(String.self) {
+            self.base64 = stringValue
+            self.url = nil
+            self.data = nil
+            return
+        }
+        
+        self.url = try container.decodeIfPresent(String.self, forKey: .url)
+        self.base64 = try container.decodeIfPresent(String.self, forKey: .base64)
+        self.data = try container.decodeIfPresent(String.self, forKey: .data)
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case url, base64, data
+    }
+    
+    var imageData: String? {
+        return base64 ?? data ?? url
+    }
+}
+
+final class GeminiAPIService: ObservableObject {
     static let shared = GeminiAPIService()
     
     private let baseURL = "https://nano-banana-api-164860087792.us-central1.run.app"
@@ -50,7 +77,6 @@ class GeminiAPIService: ObservableObject {
     
     private init() {}
     
-    // MARK: - Main API Call Method
     func generateContent(
         model: String = "gemini-2.5-flash-image-preview",
         prompt: String,
@@ -67,7 +93,6 @@ class GeminiAPIService: ObservableObject {
         request.httpMethod = "POST"
         
         if !images.isEmpty {
-            // Use multipart form data for image uploads
             sendMultipartRequest(
                 request: request,
                 model: model,
@@ -77,7 +102,6 @@ class GeminiAPIService: ObservableObject {
                 completion: completion
             )
         } else {
-            // Use JSON for text-only requests
             sendJSONRequest(
                 request: request,
                 model: model,
@@ -88,7 +112,6 @@ class GeminiAPIService: ObservableObject {
         }
     }
     
-    // MARK: - Streaming API Call with AsyncThrowingStream
     func generateContentStream(
         model: String = "gemini-2.5-flash-image-preview",
         prompt: String,
@@ -147,11 +170,9 @@ class GeminiAPIService: ObservableObject {
                     for try await line in result.lines {
                         let trimmedLine = line.trimmingCharacters(in: .whitespacesAndNewlines)
                         
-                        // Handle different line formats
                         if trimmedLine.hasPrefix("data: ") {
                             let jsonString = String(trimmedLine.dropFirst(6))
                             
-                            // Check for completion signal
                             if jsonString == "[DONE]" || jsonString.contains("\"done\":true") {
                                 continuation.finish()
                                 return
@@ -162,7 +183,6 @@ class GeminiAPIService: ObservableObject {
                                     let chunk = try JSONDecoder().decode(StreamChunk.self, from: data)
                                     continuation.yield(chunk)
                                     
-                                    // Check if this chunk indicates completion
                                     if chunk.done == true {
                                         continuation.finish()
                                         return
@@ -173,7 +193,6 @@ class GeminiAPIService: ObservableObject {
                                 }
                             }
                         } else if !trimmedLine.isEmpty && trimmedLine != "data: [DONE]" {
-                            // Try to parse as direct JSON (without "data: " prefix)
                             if let data = trimmedLine.data(using: .utf8) {
                                 do {
                                     let chunk = try JSONDecoder().decode(StreamChunk.self, from: data)
@@ -429,7 +448,7 @@ class GeminiAPIService: ObservableObject {
 }
 
 // MARK: - Streaming Delegate
-class StreamingDelegate: NSObject, URLSessionDataDelegate {
+final class StreamingDelegate: NSObject, URLSessionDataDelegate {
     private let onChunk: (StreamChunk) -> Void
     private let onComplete: (Error?) -> Void
     private var buffer = Data()
@@ -537,10 +556,12 @@ enum APIError: Error, LocalizedError {
 
 // MARK: - Base64 Image Processing
 extension GeminiAPIService {
-    func processBase64Images(_ base64Images: [String]) -> [UIImage] {
-        return base64Images.compactMap { base64String in
+    func processBase64Images(_ imageResults: [ImageResult]) -> [UIImage] {
+        return imageResults.compactMap { imageResult in
+            guard let imageDataString = imageResult.imageData else { return nil }
+            
             // Remove data URL prefix if present
-            let cleanBase64 = base64String.replacingOccurrences(of: "data:image/jpeg;base64,", with: "")
+            let cleanBase64 = imageDataString.replacingOccurrences(of: "data:image/jpeg;base64,", with: "")
                 .replacingOccurrences(of: "data:image/png;base64,", with: "")
             
             if let data = Data(base64Encoded: cleanBase64) {
