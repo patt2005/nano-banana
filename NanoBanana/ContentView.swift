@@ -12,12 +12,15 @@ struct ContentView: View {
     @State private var showingNotificationPermission = false
     @State private var showingCameraPermission = false
     @State private var showingPhotoPermission = false
+    @State private var showingHistory = false
     
     var body: some View {
         VStack(spacing: 0) {
             // Custom App Bar
             HStack {
-                Button(action: {}) {
+                Button(action: {
+                    showingHistory = true
+                }) {
                     Image(systemName: "clock")
                         .foregroundColor(Color.gray)
                         .font(.title2)
@@ -200,6 +203,9 @@ struct ContentView: View {
             }
             .sheet(isPresented: $showingImagePicker) {
                 PhotoPickerView(selectedImages: $chatViewModel.selectedImages, isPresented: $showingImagePicker)
+            }
+            .sheet(isPresented: $showingHistory) {
+                HistoryView(chatViewModel: chatViewModel)
             }
         }
         
