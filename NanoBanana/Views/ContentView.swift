@@ -33,9 +33,8 @@ struct ContentView: View {
                     Spacer()
                     
                     HStack {
-                        Text("🍌")
-                            .font(.title2)
-                        Text("NanoBanana")
+                      
+                        Text("Nano AI")
                             .font(.title2)
                             .fontWeight(.medium)
                             .foregroundColor(Color.gray)
@@ -66,12 +65,14 @@ struct ContentView: View {
                                                 .fill(Color.white.opacity(0.1))
                                                 .frame(width: 120, height: 120)
                                             
-                                            Text("🍌")
-                                                .font(.system(size: 60))
+                                            Image("Cat")
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fit)
+                                                .frame(width: 80, height: 80)
                                         }
                                         
                                         VStack(spacing: 12) {
-                                            Text("Welcome to NanoBanana")
+                                            Text("Welcome to Nano AI")
                                                 .font(.system(size: 28, weight: .bold))
                                                 .foregroundColor(.white)
                                             

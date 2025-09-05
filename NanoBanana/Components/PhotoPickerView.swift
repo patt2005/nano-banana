@@ -70,7 +70,7 @@ struct PermissionRequestView: View {
                             .font(.system(size: 28, weight: .bold))
                             .foregroundColor(.white)
                         
-                        Text("NanoBanana needs access to your photo library to transform and edit your images.")
+                        Text("Nano AI needs access to your photo library to transform and edit your images.")
                             .font(.system(size: 16))
                             .multilineTextAlignment(.center)
                             .foregroundColor(.gray)

@@ -8,10 +8,11 @@ struct AppView: View {
             switch appManager.appState {
             case .loading:
                 SplashView()
-                
+               
             case .onboarding:
-                VisualOnboardingView()
-                
+//                VisualOnboardingView()
+                ContentView()
+
             case .main:
                 ContentView()
             }

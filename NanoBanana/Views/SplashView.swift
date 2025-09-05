@@ -25,7 +25,7 @@ struct SplashView: View {
                     .opacity(isAnimating ? 1.0 : 0.0)
                     .animation(.easeInOut(duration: 0.8).delay(0.5), value: isAnimating)
                 
-                Text("BANANA")
+                Text("AI")
                     .font(.system(size: 48, weight: .bold))
                     .foregroundColor(.white)
                     .opacity(isAnimating ? 1.0 : 0.0)
