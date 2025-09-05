@@ -161,8 +161,10 @@ struct AIMessageBubble: View {
                         .fill(.white)
                         .frame(width: 40, height: 40)
                     
-                    Text("🍌")
-                        .font(.title2)
+                    Image("Cat")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 28, height: 28)
                 }
                 .padding(.top, 4)
                 
