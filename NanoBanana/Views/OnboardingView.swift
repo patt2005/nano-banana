@@ -122,6 +122,8 @@ struct OnboardingView: View {
             if loadingProgress >= 1.0 {
                 timer.invalidate()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    // Show paywall after completing the quiz
+                    appManager.showPaywall = true
                     appManager.completeOnboarding()
                 }
             }
@@ -371,7 +373,7 @@ struct LoadingView: View {
                     .foregroundColor(.white)
                 
                 VStack(spacing: 20) {
-                    ProgressView(value: progress, total: 1.0)
+                    ProgressView(value: min(progress, 1.0), total: 1.0)
                         .progressViewStyle(LinearProgressViewStyle())
                         .accentColor(.blue)
                         .frame(width: 250)

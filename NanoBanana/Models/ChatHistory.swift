@@ -72,37 +72,4 @@ extension ChatMessage: Codable {
         case id, content, isUser, timestamp, isStreaming
         case imageFileNames
     }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        
-        let decodedId = try container.decode(UUID.self, forKey: .id)
-        let decodedContent = try container.decode(String.self, forKey: .content)
-        let decodedIsUser = try container.decode(Bool.self, forKey: .isUser)
-        let decodedTimestamp = try container.decode(Date.self, forKey: .timestamp)
-        let decodedIsStreaming = try container.decodeIfPresent(Bool.self, forKey: .isStreaming) ?? false
-        let decodedImageFileNames = try container.decodeIfPresent([String].self, forKey: .imageFileNames) ?? []
-        
-        // Use the designated initializer for loading from storage
-        self.init(
-            id: decodedId,
-            content: decodedContent,
-            imageFileNames: decodedImageFileNames,
-            isUser: decodedIsUser,
-            timestamp: decodedTimestamp,
-            isStreaming: decodedIsStreaming
-        )
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: .id)
-        try container.encode(content, forKey: .content)
-        try container.encode(isUser, forKey: .isUser)
-        try container.encode(timestamp, forKey: .timestamp)
-        try container.encode(isStreaming, forKey: .isStreaming)
-        
-        // Encode image file names instead of image data
-        try container.encode(imageFileNames, forKey: .imageFileNames)
-    }
 }

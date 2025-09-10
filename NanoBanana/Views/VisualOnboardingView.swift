@@ -17,7 +17,6 @@ struct VisualOnboardingView: View {
                 VStack {
                     Spacer()
                     
-                    // Content based on current page
                     switch currentPage {
                     case 0:
                         OnboardingPage1()

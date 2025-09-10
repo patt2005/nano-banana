@@ -13,7 +13,7 @@ struct ShareView: UIViewControllerRepresentable {
 }
 
 struct MessageBubble: View {
-    let message: ChatMessage
+    @ObservedObject var message: ChatMessage
     
     var body: some View {
         HStack {
@@ -29,7 +29,7 @@ struct MessageBubble: View {
 }
 
 struct UserMessageBubble: View {
-    let message: ChatMessage
+    @ObservedObject var message: ChatMessage
     @State private var fullScreenImage: UIImage?
     @State private var showingCopyConfirmation = false
     
@@ -148,7 +148,7 @@ struct FullScreenImageView: View {
 }
 
 struct AIMessageBubble: View {
-    let message: ChatMessage
+    @ObservedObject var message: ChatMessage
     @State private var showingCopyConfirmation = false
     @State private var fullScreenImage: UIImage?
     @State private var showingShareSheet = false
@@ -190,13 +190,11 @@ struct AIMessageBubble: View {
                     
                     VStack(alignment: .leading, spacing: 8) {
                         if !message.content.isEmpty {
-                            LaTeX(message.content)
+                            Text(message.content)
                                 .font(.system(size: 17, weight: .medium))
                                 .foregroundStyle(.white)
                                 .multilineTextAlignment(.leading)
                                 .textSelection(.enabled)
-                                .parsingMode(.onlyEquations)
-                                .blockMode(.blockViews)
                                 .padding(.horizontal, 16)
                                 .padding(.vertical, 12)
                         }
@@ -212,7 +210,7 @@ struct AIMessageBubble: View {
                     .background(Color(hex: "2e2e2e"))
                     .clipShape(RoundedRectangle(cornerRadius: 18))
                     
-                    if !message.isStreaming {
+                    if !message.content.isEmpty {
                         HStack(spacing: 8) {
                             if !message.content.isEmpty {
                                 Button(action: {

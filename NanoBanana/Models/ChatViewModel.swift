@@ -2,14 +2,45 @@ import Foundation
 import SwiftUI
 import Combine
 
-struct ChatMessage: Identifiable {
+final class ChatMessage: Identifiable, ObservableObject {
     let id: UUID
-    let content: String
+    @Published var content: String
     let images: [UIImage]
     let imageFileNames: [String]
     let isUser: Bool
     let timestamp: Date
-    var isStreaming: Bool = false
+    @Published var isStreaming: Bool = false
+    
+    convenience init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        let decodedId = try container.decode(UUID.self, forKey: .id)
+        let decodedContent = try container.decode(String.self, forKey: .content)
+        let decodedIsUser = try container.decode(Bool.self, forKey: .isUser)
+        let decodedTimestamp = try container.decode(Date.self, forKey: .timestamp)
+        let decodedIsStreaming = try container.decodeIfPresent(Bool.self, forKey: .isStreaming) ?? false
+        let decodedImageFileNames = try container.decodeIfPresent([String].self, forKey: .imageFileNames) ?? []
+        
+        self.init(
+            id: decodedId,
+            content: decodedContent,
+            imageFileNames: decodedImageFileNames,
+            isUser: decodedIsUser,
+            timestamp: decodedTimestamp,
+            isStreaming: decodedIsStreaming
+        )
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(content, forKey: .content)
+        try container.encode(isUser, forKey: .isUser)
+        try container.encode(timestamp, forKey: .timestamp)
+        try container.encode(isStreaming, forKey: .isStreaming)
+        
+        try container.encode(imageFileNames, forKey: .imageFileNames)
+    }
     
     init(content: String, images: [UIImage], isUser: Bool, timestamp: Date, isStreaming: Bool = true) {
         self.id = UUID()
@@ -68,7 +99,6 @@ final class ChatViewModel: ObservableObject {
     @Published var currentInput: String = ""
     @Published var selectedImages: [UIImage] = []
     @Published var isLoading: Bool = false
-    @Published var streamingText: String = ""
     @Published var errorMessage: String?
     @Published var chatHistories: [ChatHistory] = []
     @Published var currentChatHistory: ChatHistory?
@@ -96,9 +126,7 @@ final class ChatViewModel: ObservableObject {
     func sendMessage() {
         guard !currentInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !selectedImages.isEmpty else { return }
         
-        // Check if user has exceeded free message limit
         if isMessageLimitExceeded {
-            // Show paywall for free users who have exceeded the limit
             AppManager.shared.showPaywall = true
             return
         }
@@ -112,7 +140,6 @@ final class ChatViewModel: ObservableObject {
         
         messages.append(userMessage)
         
-        // Increment free message count for non-subscribers
         if !SubscriptionManager.shared.hasActiveSubscription {
             totalFreeMessagesUsed += 1
             saveFreeMessageCount()
@@ -140,13 +167,10 @@ final class ChatViewModel: ObservableObject {
         selectedImages.removeAll()
     }
     
-    // MARK: - Private Methods
     private func sendStreamingRequest(prompt: String, images: [UIImage]) {
         isLoading = true
-        streamingText = ""
         errorMessage = nil
         
-        // Create placeholder message for AI response
         let aiMessage = ChatMessage(
             content: "",
             images: [],
@@ -190,16 +214,10 @@ final class ChatViewModel: ObservableObject {
         }
         
         if let result = chunk.result, let text = result.text {
-            streamingText += text
-            print("📝 Streaming text updated: '\(streamingText)'")
-            
-            // Update the last message (AI response) with streaming text
             if let lastIndex = messages.indices.last, !messages[lastIndex].isUser {
                 let processedImages: [UIImage] = result.images?.compactMap { imageResult in
-                    // Get the image data from the result
                     guard let imageDataString = imageResult.imageData else { return nil }
                     
-                    // Convert base64 to UIImage if needed
                     let cleanBase64 = imageDataString.replacingOccurrences(of: "data:image/jpeg;base64,", with: "")
                         .replacingOccurrences(of: "data:image/png;base64,", with: "")
                     
@@ -209,19 +227,8 @@ final class ChatViewModel: ObservableObject {
                     return nil
                 } ?? []
                 
-                print("🖼️ Processing images in stream: \(result.images?.count ?? 0) ImageResults, converted to \(processedImages.count) UIImages")
-                
-                // Use updatedMessage to preserve ID and timestamp while adding new content/images
-                // Only add new images if we have processed any new ones  
-                let updatedImages = processedImages.isEmpty ? messages[lastIndex].images : processedImages
-                
-                // Force UI update by updating the message with current streaming text
                 DispatchQueue.main.async {
-                    self.messages[lastIndex] = self.messages[lastIndex].updatedMessage(
-                        content: self.streamingText,
-                        images: updatedImages,
-                        isStreaming: true
-                    )
+                    self.messages[lastIndex].content += text
                 }
             }
         }
@@ -233,95 +240,25 @@ final class ChatViewModel: ObservableObject {
         if let error = error {
             errorMessage = error.localizedDescription
             
-            // Remove the placeholder message if there was an error
             if let lastIndex = messages.indices.last, !messages[lastIndex].isUser && messages[lastIndex].content.isEmpty {
                 messages.remove(at: lastIndex)
             }
         } else {
-            // Mark streaming as complete with the final accumulated text
             if let lastIndex = messages.indices.last, !messages[lastIndex].isUser {
-                print("📝 Stream complete. Final text: '\(streamingText)'")
-                messages[lastIndex] = messages[lastIndex].updatedMessage(
-                    content: streamingText, // Use the accumulated streaming text, not the current message content
-                    images: messages[lastIndex].images,
-                    isStreaming: false
-                )
+                messages[lastIndex].isStreaming = false
                 print("📝 Final message content: '\(messages[lastIndex].content)'")
             }
         }
-        
-        streamingText = ""
     }
     
-    // MARK: - Non-Streaming Alternative
-    func sendNonStreamingMessage() {
-        guard !currentInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !selectedImages.isEmpty else { return }
-        
-        let userMessage = ChatMessage(
-            content: currentInput,
-            images: selectedImages,
-            isUser: true,
-            timestamp: Date()
-        )
-        
-        messages.append(userMessage)
-        
-        let inputText = currentInput
-        let inputImages = selectedImages
-        
-        currentInput = ""
-        selectedImages = []
-        isLoading = true
-        errorMessage = nil
-        
-        apiService.generateContent(
-            model: "gemini-2.5-flash-image-preview",
-            prompt: inputText,
-            images: inputImages,
-            stream: false
-        ) { [weak self] result in
-            DispatchQueue.main.async {
-                self?.isLoading = false
-                
-                switch result {
-                case .success(let response):
-                    let aiMessage = ChatMessage(
-                        content: response.text ?? "",
-                        images: response.images?.compactMap { imageResult in
-                            guard let imageDataString = imageResult.imageData else { return nil }
-                            
-                            let cleanBase64 = imageDataString.replacingOccurrences(of: "data:image/jpeg;base64,", with: "")
-                                .replacingOccurrences(of: "data:image/png;base64,", with: "")
-                            
-                            if let data = Data(base64Encoded: cleanBase64) {
-                                return UIImage(data: data)
-                            }
-                            return nil
-                        } ?? [],
-                        isUser: false,
-                        timestamp: Date()
-                    )
-                    self?.messages.append(aiMessage)
-                    
-                case .failure(let error):
-                    self?.errorMessage = error.localizedDescription
-                }
-            }
-        }
-    }
-    
-    // MARK: - Utility Methods
     func clearChat() {
-        // Save current chat to history before clearing if it has messages
         if let currentChat = currentChatHistory, !currentChat.isEmpty {
             saveChatToHistory(currentChat)
         }
         
-        // Clear current state
         messages.removeAll()
         currentInput = ""
         selectedImages.removeAll()
-        streamingText = ""
         errorMessage = nil
         isLoading = false
         
@@ -342,7 +279,6 @@ final class ChatViewModel: ObservableObject {
     }
 }
 
-// MARK: - Extensions
 extension ChatViewModel {
     var hasContent: Bool {
         return !currentInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !selectedImages.isEmpty
@@ -375,7 +311,6 @@ extension ChatViewModel {
     }
 }
 
-// MARK: - Free Message Count Management
 extension ChatViewModel {
     
     private func loadFreeMessageCount() {
@@ -436,7 +371,6 @@ extension ChatViewModel {
         messages.removeAll()
         currentInput = ""
         selectedImages.removeAll()
-        streamingText = ""
         errorMessage = nil
         isLoading = false
         
@@ -456,7 +390,6 @@ extension ChatViewModel {
         messages = chatHistory.messages
         currentInput = ""
         selectedImages.removeAll()
-        streamingText = ""
         errorMessage = nil
         isLoading = false
     }

@@ -59,29 +59,24 @@ struct ContentView: View {
                         LazyVStack(alignment: .leading, spacing: 16) {
                             if chatViewModel.messages.isEmpty {
                                 VStack {
-                                    VStack(spacing: 24) {
-                                        ZStack {
-                                            Circle()
-                                                .fill(Color.white.opacity(0.1))
-                                                .frame(width: 120, height: 120)
-                                            
-                                            Image("Cat")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fit)
-                                                .frame(width: 80, height: 80)
-                                        }
+                                    VStack(spacing: 32) {
+                                        Image("icon")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 120, height: 120)
                                         
-                                        VStack(spacing: 12) {
+                                        VStack(spacing: 16) {
                                             Text("Welcome to Nano AI")
-                                                .font(.system(size: 28, weight: .bold))
+                                                .font(.system(size: 32, weight: .bold, design: .rounded))
                                                 .foregroundColor(.white)
+                                                .multilineTextAlignment(.center)
                                             
                                             Text("Start a conversation by typing a message or uploading photos using the attachment button below.")
-                                                .font(.system(size: 16))
-                                                .foregroundColor(.gray)
+                                                .font(.system(size: 17, weight: .medium))
+                                                .foregroundColor(.gray.opacity(0.9))
                                                 .multilineTextAlignment(.center)
-                                                .lineLimit(nil)
-                                                .padding(.horizontal, 40)
+                                                .lineSpacing(2)
+                                                .padding(.horizontal, 32)
                                         }
                                         
                                     }
@@ -202,20 +197,6 @@ struct ContentView: View {
                                     .background(Color.gray.opacity(0.25))
                                     .cornerRadius(20)
                             }
-                            
-//                            Button(action: {}) {
-//                                HStack {
-//                                    Image(systemName: "eye")
-//                                        .foregroundColor(.white)
-//                                    Text("PRO Creation")
-//                                        .foregroundColor(.white)
-//                                        .fontWeight(.medium)
-//                                }
-//                            }
-//                            .padding(.horizontal, 16)
-//                            .padding(.vertical, 10)
-//                            .background(Color.gray.opacity(0.25))
-//                            .cornerRadius(20)
                         }
                         
                         Spacer()
@@ -227,17 +208,14 @@ struct ContentView: View {
                                 .frame(width: 40, height: 40)
                         } else {
                             Button(action: {
-                                if chatViewModel.canSend {
-                                    // Check if free user has exceeded limit before sending
-                                    if !subscriptionManager.hasActiveSubscription && chatViewModel.isMessageLimitExceeded {
-                                        appManager.showPaywall = true
-                                        return
-                                    }
-                                    
-                                    chatViewModel.sendMessage()
-                                    if let proxy = scrollProxy {
-                                        scrollToBottom(proxy)
-                                    }
+                                if !subscriptionManager.hasActiveSubscription && chatViewModel.isMessageLimitExceeded {
+                                    appManager.showPaywall = true
+                                    return
+                                }
+                                
+                                chatViewModel.sendMessage()
+                                if let proxy = scrollProxy {
+                                    scrollToBottom(proxy)
                                 }
                             }) {
                                 Image(systemName: "arrow.up")

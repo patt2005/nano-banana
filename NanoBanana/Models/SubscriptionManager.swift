@@ -14,7 +14,6 @@ final class SubscriptionManager: ObservableObject {
         checkSubscriptionStatus()
     }
     
-    // MARK: - Subscription Status
     func checkSubscriptionStatus() {
         Purchases.shared.getCustomerInfo { customerInfo, error in
             DispatchQueue.main.async {
@@ -30,7 +29,6 @@ final class SubscriptionManager: ObservableObject {
         self.isSubscribed = customerInfo.entitlements.active["Pro"]?.isActive == true
     }
     
-    // MARK: - Purchase Methods
     func purchase(_ package: Package, completion: @escaping (Bool, Error?) -> Void) {
         Purchases.shared.purchase(package: package) { transaction, customerInfo, error, userCancelled in
             DispatchQueue.main.async {
@@ -59,23 +57,7 @@ final class SubscriptionManager: ObservableObject {
         }
     }
     
-    // MARK: - Offerings
-    func loadOfferings() {
-        Purchases.shared.getOfferings { offerings, error in
-            DispatchQueue.main.async {
-                if let offerings = offerings {
-                    self.offerings = offerings
-                }
-            }
-        }
-    }
-    
-    // MARK: - Convenience Methods
     var hasActiveSubscription: Bool {
         return isSubscribed
-    }
-    
-    var proEntitlement: EntitlementInfo? {
-        return customerInfo?.entitlements.active["pro"]
     }
 }
