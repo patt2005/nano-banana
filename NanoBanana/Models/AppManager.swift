@@ -22,20 +22,19 @@ final class AppManager: ObservableObject {
     }
     
     func checkAppState() {
-        isFirstLaunch = !userDefaults.bool(forKey: onboardingKey)
+        // Always show onboarding for testing
+        isFirstLaunch = true
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            if self.isFirstLaunch {
-                self.appState = .onboarding
-            } else {
-                self.appState = .main
-            }
+            // Always go to onboarding for testing
+            self.appState = .onboarding
         }
     }
     
     func completeOnboarding() {
         userDefaults.set(true, forKey: onboardingKey)
         isFirstLaunch = false
+        showPaywall = true
         appState = .main
     }
     
