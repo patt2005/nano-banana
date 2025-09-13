@@ -1,4 +1,5 @@
 import SwiftUI
+import StoreKit
 
 struct VisualOnboardingView: View {
     @ObservedObject private var appManager = AppManager.shared
@@ -128,6 +129,8 @@ struct VisualOnboardingView: View {
     }
     
     struct OnboardingPage3: View {
+        @Environment(\.requestReview) var requestReview
+
         var body: some View {
             VStack(spacing: 40) {
                 Text("Create and Share Your Style")
@@ -135,12 +138,15 @@ struct VisualOnboardingView: View {
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 20)
-                
+
                 Image("3")
                     .resizable()
                     .scaledToFill()
                     .frame(width: 300, height: 300)
                     .clipShape(Circle())
+            }
+            .onAppear {
+                requestReview()
             }
         }
     }
