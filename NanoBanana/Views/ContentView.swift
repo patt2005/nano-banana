@@ -14,6 +14,7 @@ struct ContentView: View {
     @State private var showingCamera = false
     @State private var showingHistory = false
     @State private var scrollProxy: ScrollViewProxy?
+    @FocusState private var isTextFieldFocused: Bool
     
     var body: some View {
         ZStack {
@@ -55,11 +56,11 @@ struct ContentView: View {
                 .background(.black)
                 
                 ScrollViewReader { proxy in
-                    ScrollView {
+                    ScrollView(.vertical, showsIndicators: false) {
                         LazyVStack(alignment: .leading, spacing: 16) {
                             if chatViewModel.messages.isEmpty {
                                 VStack {
-                                    VStack(spacing: 32) {
+                                    VStack(spacing: 0) {
                                         Image("icon")
                                             .resizable()
                                             .aspectRatio(contentMode: .fit)
@@ -95,6 +96,9 @@ struct ContentView: View {
                                 .frame(height: 200)
                         }
                         .padding(.top)
+                    }
+                    .onTapGesture {
+                        isTextFieldFocused = false
                     }
                     .onChange(of: chatViewModel.messages.count) { _ in
                         scrollToBottom(proxy)
@@ -145,8 +149,8 @@ struct ContentView: View {
                                         Image(uiImage: chatViewModel.selectedImages[index])
                                             .resizable()
                                             .aspectRatio(contentMode: .fill)
-                                            .frame(width: 60, height: 60)
-                                            .clipShape(RoundedRectangle(cornerRadius: 8))
+                                            .frame(width: 80, height: 80)
+                                            .clipShape(RoundedRectangle(cornerRadius: 10))
                                         
                                         Button(action: {
                                             chatViewModel.removeImage(at: index)
@@ -162,17 +166,17 @@ struct ContentView: View {
                                 }
                             }
                         }
-                        .frame(height: 75)
+                        .frame(height: 90)
                         .padding(.top, 5)
                     }
                     
                     TextField("", text: $chatViewModel.currentInput, prompt: Text("Type your prompt here...").foregroundColor(.white.opacity(0.5)), axis: .vertical)
+                        .focused($isTextFieldFocused)
                         .lineLimit(1...5)
                         .autocorrectionDisabled()
                         .multilineTextAlignment(.leading)
                         .disabled(chatViewModel.isLoading)
                         .foregroundStyle(.white)
-                        .cornerRadius(12)
                         .padding(.top, chatViewModel.selectedImages.isEmpty ? 20 : 0)
                     
                     HStack(spacing: 16) {
@@ -214,6 +218,7 @@ struct ContentView: View {
                                 }
                                 
                                 chatViewModel.sendMessage()
+                                isTextFieldFocused = false
                                 if let proxy = scrollProxy {
                                     scrollToBottom(proxy)
                                 }
@@ -224,7 +229,6 @@ struct ContentView: View {
                                     .frame(width: 40, height: 40)
                                     .background(Circle().fill(.white.opacity(chatViewModel.currentInput.isEmpty ? 0.3 : 1.0)))
                             }
-                            .disabled(!chatViewModel.canSend)
                         }
                     }
                 }

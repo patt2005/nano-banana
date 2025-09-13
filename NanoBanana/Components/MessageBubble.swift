@@ -57,6 +57,7 @@ struct UserMessageBubble: View {
             
             if !message.content.isEmpty {
                 Text(message.content)
+                    .font(.system(size: 17, weight: .medium, design: .rounded))
                     .foregroundColor(.black)
                     .padding(.horizontal, 16)
                     .padding(.vertical, 12)
@@ -156,17 +157,12 @@ struct AIMessageBubble: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .top, spacing: 10) {
-                ZStack {
-                    Circle()
-                        .fill(.white)
-                        .frame(width: 40, height: 40)
-                    
-                    Image("Cat")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 28, height: 28)
-                }
-                .padding(.top, 4)
+                Image("banana")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 38, height: 38)
+                    .cornerRadius(19)
+                    .padding(.top, 4)
                 
                 VStack(alignment: .leading) {
                     if !message.images.isEmpty {
@@ -191,7 +187,7 @@ struct AIMessageBubble: View {
                     VStack(alignment: .leading, spacing: 8) {
                         if !message.content.isEmpty {
                             Text(message.content)
-                                .font(.system(size: 17, weight: .medium))
+                                .font(.system(size: 17, weight: .medium, design: .rounded))
                                 .foregroundStyle(.white)
                                 .multilineTextAlignment(.leading)
                                 .textSelection(.enabled)
@@ -319,12 +315,9 @@ struct ChatInputView: View {
                 .frame(height: 70)
             }
             
-            // Input Row
             HStack(spacing: 12) {
-                // Image Selection Button
                 ImageSelectionView(selectedImages: $viewModel.selectedImages)
                 
-                // Text Input
                 HStack {
                     TextField("Type your message...", text: $viewModel.currentInput, axis: .vertical)
                         .focused($isTextFieldFocused)

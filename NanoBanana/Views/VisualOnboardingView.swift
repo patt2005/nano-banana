@@ -33,7 +33,7 @@ struct VisualOnboardingView: View {
                 HStack(spacing: 8) {
                     ForEach(0..<totalPages, id: \.self) { index in
                         Circle()
-                            .fill(currentPage == index ? Color.blue : Color.gray.opacity(0.5))
+                            .fill(currentPage == index ? Color.yellow : Color.gray.opacity(0.5))
                             .frame(width: 10, height: 10)
                     }
                 }
@@ -64,10 +64,10 @@ struct VisualOnboardingView: View {
                     }) {
                         Text(currentPage == totalPages - 1 ? "Get Started" : "Next")
                             .font(.system(size: 18, weight: .semibold))
-                            .foregroundColor(.white)
+                            .foregroundColor(.black)
                             .padding(.horizontal, 30)
                             .padding(.vertical, 12)
-                            .background(Color.blue)
+                            .background(Color.yellow)
                             .cornerRadius(20)
                     }
                 }
@@ -112,7 +112,7 @@ struct VisualOnboardingView: View {
     struct OnboardingPage2: View {
         var body: some View {
             VStack(spacing: 40) {
-                Text("Reimagine Your Look")
+                Text("Reimagine Your Look Now")
                     .font(.system(size: 32, weight: .bold))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)

@@ -22,12 +22,15 @@ final class AppManager: ObservableObject {
     }
     
     func checkAppState() {
-        // Always show onboarding for testing
-        isFirstLaunch = true
-        
+        let hasCompletedOnboarding = userDefaults.bool(forKey: onboardingKey)
+        isFirstLaunch = !hasCompletedOnboarding
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            // Always go to onboarding for testing
-            self.appState = .onboarding
+            if hasCompletedOnboarding {
+                self.appState = .main
+            } else {
+                self.appState = .onboarding
+            }
         }
     }
     

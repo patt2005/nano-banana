@@ -126,11 +126,6 @@ final class ChatViewModel: ObservableObject {
     func sendMessage() {
         guard !currentInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !selectedImages.isEmpty else { return }
         
-        if isMessageLimitExceeded {
-            AppManager.shared.showPaywall = true
-            return
-        }
-        
         let userMessage = ChatMessage(
             content: currentInput,
             images: selectedImages,
@@ -212,23 +207,33 @@ final class ChatViewModel: ObservableObject {
             isLoading = false
             return
         }
-        
+
         if let result = chunk.result, let text = result.text {
             if let lastIndex = messages.indices.last, !messages[lastIndex].isUser {
                 let processedImages: [UIImage] = result.images?.compactMap { imageResult in
                     guard let imageDataString = imageResult.imageData else { return nil }
-                    
+
                     let cleanBase64 = imageDataString.replacingOccurrences(of: "data:image/jpeg;base64,", with: "")
                         .replacingOccurrences(of: "data:image/png;base64,", with: "")
-                    
+
                     if let data = Data(base64Encoded: cleanBase64) {
                         return UIImage(data: data)
                     }
                     return nil
                 } ?? []
-                
+
                 DispatchQueue.main.async {
                     self.messages[lastIndex].content += text
+
+                    // Add images to the message if we received any
+                    if !processedImages.isEmpty {
+                        let updatedMessage = self.messages[lastIndex].updatedMessage(
+                            content: self.messages[lastIndex].content,
+                            images: self.messages[lastIndex].images + processedImages,
+                            isStreaming: self.messages[lastIndex].isStreaming
+                        )
+                        self.messages[lastIndex] = updatedMessage
+                    }
                 }
             }
         }
@@ -289,15 +294,6 @@ extension ChatViewModel {
     }
     
     var isMessageLimitExceeded: Bool {
-        // Check if user is subscribed
-        let isSubscribed = SubscriptionManager.shared.hasActiveSubscription
-        
-        // If subscribed, no limit
-        if isSubscribed {
-            return false
-        }
-        
-        // Check total messages used across all sessions
         return totalFreeMessagesUsed >= freeUserMessageLimit
     }
     

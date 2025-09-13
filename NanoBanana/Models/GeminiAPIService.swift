@@ -77,41 +77,6 @@ final class GeminiAPIService: ObservableObject {
     
     private init() {}
     
-    func generateContent(
-        model: String = "gemini-2.5-flash-image-preview",
-        prompt: String,
-        images: [UIImage] = [],
-        stream: Bool = false,
-        completion: @escaping (Result<GeminiResponse, Error>) -> Void
-    ) {
-        guard let url = URL(string: "\(baseURL)/v1/generate") else {
-            completion(.failure(APIError.invalidURL))
-            return
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        
-        if !images.isEmpty {
-            sendMultipartRequest(
-                request: request,
-                model: model,
-                prompt: prompt,
-                images: images,
-                stream: stream,
-                completion: completion
-            )
-        } else {
-            sendJSONRequest(
-                request: request,
-                model: model,
-                prompt: prompt,
-                stream: stream,
-                completion: completion
-            )
-        }
-    }
-    
     func generateContentStream(
         model: String = "gemini-2.5-flash-image-preview",
         prompt: String,
@@ -125,10 +90,8 @@ final class GeminiAPIService: ObservableObject {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        // Prepare request body
         let requestBody: [String: Any]
         if !images.isEmpty {
-            // Convert images to base64
             let base64Images = images.compactMap { image -> String? in
                 guard let data = image.jpegData(compressionQuality: 0.8) else { return nil }
                 return data.base64EncodedString()

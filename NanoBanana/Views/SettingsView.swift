@@ -98,8 +98,9 @@ struct SettingsView: View {
                             .padding(.horizontal, 20)
                         }
                         
-                        // Premium Upgrade Card
-                        VStack(spacing: 0) {
+                        // Premium Upgrade Card (only for non-subscribers)
+                        if !subscriptionManager.hasActiveSubscription {
+                            VStack(spacing: 0) {
                             Button(action: {
                                 presentationMode.wrappedValue.dismiss()
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
@@ -161,10 +162,28 @@ struct SettingsView: View {
                             }
                             .padding(.horizontal, 20)
                         }
-                        
+                        }
+
                         // Other Settings
                         VStack(spacing: 20) {
-                            // Restore Purchases
+                            HStack {
+                                Image(systemName: "doc.text")
+                                    .foregroundColor(.blue)
+                                    .font(.title2)
+                                    .frame(width: 24)
+                                
+                                Text("Version")
+                                    .foregroundColor(.white)
+                                    .font(.body)
+                                
+                                Spacer()
+                                
+                                Text("1.0.0")
+                                    .foregroundColor(Color(hex: "9e9d99"))
+                                    .font(.body)
+                            }
+                            .padding(.horizontal, 20)
+                            
                             Button(action: {
                                 isRestoring = true
                                 subscriptionManager.restorePurchases { success, error in
@@ -189,35 +208,19 @@ struct SettingsView: View {
                                             .font(.title2)
                                             .frame(width: 24)
                                     }
-                                    
+
                                     Text("Restore Purchases")
                                         .foregroundColor(.white)
                                         .font(.body)
-                                    
+
                                     Spacer()
+
+                                    Image(systemName: "chevron.right")
+                                        .foregroundColor(Color(hex: "9e9d99"))
                                 }
                                 .padding(.horizontal, 20)
-                                .padding(.vertical, 12)
                             }
                             .disabled(isRestoring)
-                            
-                            HStack {
-                                Image(systemName: "doc.text")
-                                    .foregroundColor(.blue)
-                                    .font(.title2)
-                                    .frame(width: 24)
-                                
-                                Text("Version")
-                                    .foregroundColor(.white)
-                                    .font(.body)
-                                
-                                Spacer()
-                                
-                                Text("1.0.0")
-                                    .foregroundColor(Color(hex: "9e9d99"))
-                                    .font(.body)
-                            }
-                            .padding(.horizontal, 20)
                             
                             Button(action: {
                                 if let url = URL(string: "https://www.termsfeed.com/live/dc1b9371-d8cd-4545-9f6f-823780afa2ee") {
