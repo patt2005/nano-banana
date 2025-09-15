@@ -114,7 +114,7 @@ struct SettingsView: View {
                                             .foregroundColor(.white)
                                             .font(.system(size: 24, weight: .bold))
                                         
-                                        Text("Nano AI Pro")
+                                        Text("Navo AI Pro")
                                             .font(.system(size: 28, weight: .bold))
                                             .foregroundColor(.white)
                                         

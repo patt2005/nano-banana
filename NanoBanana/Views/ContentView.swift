@@ -35,7 +35,7 @@ struct ContentView: View {
                     
                     HStack {
                       
-                        Text("Nano AI")
+                        Text("Navo AI")
                             .font(.title2)
                             .fontWeight(.medium)
                             .foregroundColor(Color.gray)
@@ -67,7 +67,7 @@ struct ContentView: View {
                                             .frame(width: 120, height: 120)
                                         
                                         VStack(spacing: 16) {
-                                            Text("Welcome to Nano AI")
+                                            Text("Welcome to Navo AI")
                                                 .font(.system(size: 32, weight: .bold, design: .rounded))
                                                 .foregroundColor(.white)
                                                 .multilineTextAlignment(.center)
