@@ -71,11 +71,29 @@ struct ImageResult: Codable {
 
 final class GeminiAPIService: ObservableObject {
     static let shared = GeminiAPIService()
-    
+
     private let baseURL = "https://nano-banana-api-164860087792.us-central1.run.app"
-    private let session = URLSession.shared
-    
+
     private init() {}
+
+    private func safeSession() -> URLSession {
+        let config: URLSessionConfiguration
+        if #available(iOS 18.4, *) {
+            config = URLSessionConfiguration.ephemeral
+        } else {
+            config = URLSessionConfiguration.default
+        }
+
+        config.timeoutIntervalForRequest = 60
+        config.timeoutIntervalForResource = 300
+        config.waitsForConnectivity = true
+        config.allowsCellularAccess = true
+        config.httpShouldSetCookies = false
+        config.httpShouldUsePipelining = false
+        config.httpMaximumConnectionsPerHost = 1
+
+        return URLSession(configuration: config)
+    }
     
     func generateContentStream(
         model: String = "gemini-2.5-flash-image-preview",
@@ -116,8 +134,8 @@ final class GeminiAPIService: ObservableObject {
         }
         
         request.httpBody = jsonData
-        
-        let (result, response) = try await URLSession.shared.bytes(for: request)
+
+        let (result, response) = try await safeSession().bytes(for: request)
         
         guard let httpResponse = response as? HTTPURLResponse else {
             throw APIError.invalidResponse
@@ -245,7 +263,7 @@ final class GeminiAPIService: ObservableObject {
             }
         } else {
             // Handle regular response
-            session.dataTask(with: mutableRequest) { data, response, error in
+            safeSession().dataTask(with: mutableRequest) { data, response, error in
                 DispatchQueue.main.async {
                     self.handleResponse(data: data, response: response, error: error, completion: completion)
                 }
@@ -295,7 +313,7 @@ final class GeminiAPIService: ObservableObject {
                 }
             }
         } else {
-            session.dataTask(with: mutableRequest) { data, response, error in
+            safeSession().dataTask(with: mutableRequest) { data, response, error in
                 DispatchQueue.main.async {
                     self.handleResponse(data: data, response: response, error: error, completion: completion)
                 }
@@ -402,9 +420,23 @@ final class GeminiAPIService: ObservableObject {
         onComplete: @escaping (Error?) -> Void
     ) {
         let delegate = StreamingDelegate(onChunk: onChunk, onComplete: onComplete)
-        let config = URLSessionConfiguration.default
+        let config: URLSessionConfiguration
+        if #available(iOS 18.4, *) {
+            config = URLSessionConfiguration.ephemeral
+        } else {
+            config = URLSessionConfiguration.default
+        }
+
+        config.timeoutIntervalForRequest = 60
+        config.timeoutIntervalForResource = 300
+        config.waitsForConnectivity = true
+        config.allowsCellularAccess = true
+        config.httpShouldSetCookies = false
+        config.httpShouldUsePipelining = false
+        config.httpMaximumConnectionsPerHost = 1
+
         let customSession = URLSession(configuration: config, delegate: delegate, delegateQueue: nil)
-        
+
         let task = customSession.dataTask(with: request)
         task.resume()
     }
