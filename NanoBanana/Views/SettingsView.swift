@@ -114,7 +114,7 @@ struct SettingsView: View {
                                             .foregroundColor(.white)
                                             .font(.system(size: 24, weight: .bold))
                                         
-                                        Text("Navo AI Pro")
+                                        Text("AI Pro Plan")
                                             .font(.system(size: 28, weight: .bold))
                                             .foregroundColor(.white)
                                         
@@ -300,12 +300,12 @@ struct SettingsView: View {
                                 Text("Made with")
                                     .foregroundColor(Color(hex: "9e9d99"))
                                 Text("🍌")
-                                Text("by Nano Banana Team")
+                                Text("by Navo AI Team")
                                     .foregroundColor(Color(hex: "9e9d99"))
                             }
                             .font(.body)
                             
-                            Text("© 2025 Nano Banana. All rights reserved.")
+                            Text("© 2025 Navo AI. All rights reserved.")
                                 .foregroundColor(Color(hex: "9e9d99"))
                                 .font(.caption)
                         }
