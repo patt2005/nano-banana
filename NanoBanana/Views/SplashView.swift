@@ -19,7 +19,7 @@ struct SplashView: View {
                 .animation(.easeInOut(duration: 1.0), value: isAnimating)
             
             VStack(spacing: 4) {
-                Text("NANO")
+                Text("NAVO")
                     .font(.system(size: 48, weight: .bold))
                     .foregroundColor(.white)
                     .opacity(isAnimating ? 1.0 : 0.0)
