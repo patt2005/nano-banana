@@ -1,153 +1,143 @@
 import SwiftUI
 import StoreKit
 
+struct OnboardingInfo {
+    let imageAsset: String
+    let title: String
+    let subtitle: String
+}
+
 struct VisualOnboardingView: View {
     @ObservedObject private var appManager = AppManager.shared
     @State private var currentPage = 0
-    // Removed showSurveyOnboarding state - no longer needed
-    
-    let totalPages = 3
-    
+    @Environment(\.requestReview) var requestReview
+
+    let onboardingPages = [
+        OnboardingInfo(
+            imageAsset: "1",
+            title: "Express Your Style",
+            subtitle: "Transform your photos instantly with AI-powered fashion and style enhancements"
+        ),
+        OnboardingInfo(
+            imageAsset: "2",
+            title: "Background Remover",
+            subtitle: "Instantly remove and replace photo backgrounds with AI precision"
+        ),
+        OnboardingInfo(
+            imageAsset: "3",
+            title: "AI Figure Creator",
+            subtitle: "Turn yourself into viral collectible dolls and action figures with trending AI styles perfect for social media"
+        ),
+        OnboardingInfo(
+            imageAsset: "4",
+            title: "AI Cartoonify",
+            subtitle: "Transform your photos into stunning cartoon and anime-style artwork"
+        ),
+        OnboardingInfo(
+            imageAsset: "5",
+            title: "Restore Old Photos",
+            subtitle: "Bring memories back to life by restoring damaged and faded photographs"
+        )
+    ]
+
     var body: some View {
-        // Removed OnboardingView (5 question survey) - completing onboarding after visual screens
-        ZStack {
+        ZStack(alignment: .top) {
             Color.black
                 .ignoresSafeArea(.all)
-            
-            VStack {
-                Spacer()
-                
-                switch currentPage {
-                case 0:
-                    OnboardingPage1()
-                case 1:
-                    OnboardingPage2()
-                case 2:
-                    OnboardingPage3()
-                default:
-                    OnboardingPage1()
+
+            VStack(spacing: 0) {
+                TabView(selection: $currentPage) {
+                    ForEach(0..<onboardingPages.count, id: \.self) { index in
+                        let page = onboardingPages[index]
+
+                        VStack {
+                            ZStack(alignment: .bottom) {
+                                Image(page.imageAsset)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.6)
+                                    .clipped()
+
+                                LinearGradient(
+                                    colors: [
+                                        Color.black.opacity(0),
+                                        Color.black.opacity(0.3),
+                                        Color.black.opacity(0.7),
+                                        Color.black.opacity(0.9),
+                                        Color.black
+                                    ],
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                                .frame(height: 150)
+                            }
+                            .tag(index)
+                            .onAppear {
+                                // Request review on the last page
+                                if index == onboardingPages.count - 1 {
+                                    requestReview()
+                                }
+                            }
+                            .padding(.top, UIScreen.main.bounds.height * -0.13)
+                            
+                            Spacer()
+                            
+                            Text(page.title)
+                                .font(.system(size: 36, weight: .bold))
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal, 20)
+
+                            Text(page.subtitle)
+                                .font(.system(size: 18, weight: .regular))
+                                .foregroundColor(.white.opacity(0.8))
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal, 50)
+                                .padding(.bottom, 80)
+                        }
+                    }
                 }
-                
-                Spacer()
-                
-                // Page Indicators
-                HStack(spacing: 8) {
-                    ForEach(0..<totalPages, id: \.self) { index in
-                        Circle()
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+                .ignoresSafeArea(edges: .top)
+                .onAppear(perform: {
+                    UIScrollView.appearance().isScrollEnabled = false
+                })
+
+                HStack(spacing: 6) {
+                    ForEach(0..<onboardingPages.count, id: \.self) { index in
+                        RoundedRectangle(cornerRadius: 2)
                             .fill(currentPage == index ? Color.yellow : Color.gray.opacity(0.5))
-                            .frame(width: 10, height: 10)
+                            .frame(width: currentPage == index ? 24 : 8, height: 4)
+                            .animation(.easeInOut(duration: 0.3), value: currentPage)
                     }
                 }
-                .padding(.bottom, 20)
-                
-                // Navigation Buttons
-                HStack {
-                    Button(action: {
-                        // Skip button now completes onboarding directly
+                .padding(.bottom, 30)
+
+                Button(action: {
+                    // Add haptic feedback
+                    let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
+                    impactFeedback.impactOccurred()
+
+                    if currentPage < onboardingPages.count - 1 {
+                        withAnimation {
+                            currentPage += 1
+                        }
+                    } else {
                         appManager.completeOnboarding()
-                    }) {
-                        Text("Skip")
-                            .font(.system(size: 18, weight: .medium))
-                            .foregroundColor(.gray)
                     }
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        if currentPage < totalPages - 1 {
-                            withAnimation(.easeInOut(duration: 0.3)) {
-                                currentPage += 1
-                            }
-                        } else {
-                            // Complete onboarding after the 3rd visual screen
-                            appManager.completeOnboarding()
-                        }
-                    }) {
-                        Text(currentPage == totalPages - 1 ? "Get Started" : "Next")
-                            .font(.system(size: 18, weight: .semibold))
-                            .foregroundColor(.black)
-                            .padding(.horizontal, 30)
-                            .padding(.vertical, 12)
-                            .background(Color.yellow)
-                            .cornerRadius(20)
-                    }
+                }) {
+                    Text("Continue")
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(.black)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 16)
+                        .background(Color.yellow)
+                        .cornerRadius(25)
                 }
-                .padding(.horizontal, 20)
-                .padding(.bottom, 40)
-            }
-            .gesture(
-                DragGesture()
-                    .onEnded { value in
-                        if value.translation.width > 50 && currentPage > 0 {
-                            withAnimation(.easeInOut(duration: 0.3)) {
-                                currentPage -= 1
-                            }
-                        } else if value.translation.width < -50 && currentPage < totalPages - 1 {
-                            withAnimation(.easeInOut(duration: 0.3)) {
-                                currentPage += 1
-                            }
-                        }
-                    }
-            )
-        }
-    }
-    
-    struct OnboardingPage1: View {
-        var body: some View {
-            VStack(spacing: 40) {
-                Text("Express Your Style, Instantly")
-                    .font(.system(size: 32, weight: .bold))
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 20)
-                
-                Image("1")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 300, height: 300)
-                    .clipShape(Circle())
+                .padding(.horizontal, 30)
+                .padding(.bottom, 35)
             }
         }
-    }
-    
-    struct OnboardingPage2: View {
-        var body: some View {
-            VStack(spacing: 40) {
-                Text("Reimagine Your Look Now")
-                    .font(.system(size: 32, weight: .bold))
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 20)
-                
-                Image("2")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 300, height: 300)
-                    .clipShape(Circle())
-            }
-        }
-    }
-    
-    struct OnboardingPage3: View {
-        @Environment(\.requestReview) var requestReview
-
-        var body: some View {
-            VStack(spacing: 40) {
-                Text("Create and Share Your Style")
-                    .font(.system(size: 32, weight: .bold))
-                    .foregroundColor(.white)
-                    .multilineTextAlignment(.center)
-                    .padding(.horizontal, 20)
-
-                Image("3")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 300, height: 300)
-                    .clipShape(Circle())
-            }
-            .onAppear {
-                requestReview()
-            }
-        }
+        .ignoresSafeArea(edges: .top)
     }
 }

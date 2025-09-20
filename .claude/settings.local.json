@@ -19,7 +19,9 @@
       "Bash(find:*)",
       "Read(//var/folders/6y/06_z_50n3v3bx62mr0dkgjf40000gn/T/TemporaryItems/NSIRD_screencaptureui_EKkFWG/**)",
       "Read(//var/folders/6y/06_z_50n3v3bx62mr0dkgjf40000gn/T/TemporaryItems/NSIRD_screencaptureui_ZmVM02/**)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "WebSearch",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": [],
