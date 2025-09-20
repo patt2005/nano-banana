@@ -102,7 +102,7 @@ struct HomePage: View {
                         // Content based on selected tab
                         switch selectedTab {
                         case .forYou:
-                            // Lifestyle horizontal list
+                            // Lifestyle horizontal list - completely free
                             if let lifestyle = dataModel?.categories["lifestyle"] {
                                 VStack(alignment: .leading, spacing: 12) {
                                     HStack {
@@ -126,57 +126,6 @@ struct HomePage: View {
                                         }
                                         .padding(.horizontal, 16)
                                     }
-                                }
-                                .padding(.bottom, 30)
-                            }
-                            
-                            // Explore symmetric grid
-                            if let explore = dataModel?.categories["explore"] {
-                                VStack(alignment: .leading, spacing: 16) {
-                                    HStack {
-                                        Text("Explore")
-                                            .font(.circularStdHeadline)
-                                            .foregroundColor(.white)
-                                            .padding(.horizontal, 16)
-                                        
-                                        Spacer()
-                                    }
-                                    
-                                    // Symmetric grid with spacing between cards
-                                    HStack(alignment: .top, spacing: 8) {
-                                        // Left column - FIXED: tall, short, tall, short
-                                        VStack(spacing: 8) {
-                                            if explore.images.count > 0 {
-                                                LifestyleCard(imageData: explore.images[0], customHeight: 250) // Prima: LUNG
-                                            }
-                                            if explore.images.count > 2 {
-                                                LifestyleCard(imageData: explore.images[2], customHeight: 160) // A treia: SCURT
-                                            }
-                                            if explore.images.count > 4 {
-                                                LifestyleCard(imageData: explore.images[4], customHeight: 250) // A cincea: LUNG
-                                            }
-                                            if explore.images.count > 6 {
-                                                LifestyleCard(imageData: explore.images[6], customHeight: 160) // A șaptea: SCURT
-                                            }
-                                        }
-                                        
-                                        // Right column - FIXED: short, tall, short, tall
-                                        VStack(spacing: 8) {
-                                            if explore.images.count > 1 {
-                                                LifestyleCard(imageData: explore.images[1], customHeight: 160) // A doua: SCURT
-                                            }
-                                            if explore.images.count > 3 {
-                                                LifestyleCard(imageData: explore.images[3], customHeight: 250) // A patra: LUNG
-                                            }
-                                            if explore.images.count > 5 {
-                                                LifestyleCard(imageData: explore.images[5], customHeight: 160) // A șasea: SCURT
-                                            }
-                                            if explore.images.count > 7 {
-                                                LifestyleCard(imageData: explore.images[7], customHeight: 250) // A opta: LUNG
-                                            }
-                                        }
-                                    }
-                                    .padding(.horizontal, 16)
                                 }
                                 .padding(.bottom, 30)
                             }
@@ -227,6 +176,23 @@ struct HomePage: View {
                                     .padding(.horizontal, 16)
                                 }
                                 .padding(.bottom, 30)
+                            }
+                        }
+                        
+                        // Symmetric Pinterest-style grid - only show for "For You" tab with explore images
+                        if selectedTab == .forYou {
+                            if let explore = dataModel?.categories["explore"] {
+                                SymmetricPinterestGrid(images: explore.images)
+                                    .padding(.top, 20)
+                                    .onAppear {
+                                        print("🏠 [HomePage] Loading SymmetricPinterestGrid with \(explore.images.count) explore images")
+                                    }
+                            } else {
+                                SymmetricPinterestGrid()
+                                    .padding(.top, 20)
+                                    .onAppear {
+                                        print("⚠️ [HomePage] No explore data found, using empty grid")
+                                    }
                             }
                         }
                     }
@@ -427,25 +393,18 @@ struct HomePage: View {
         let imageData: ImageData
         let isPremium: Bool
         let isLocked: Bool
-        let customHeight: CGFloat?
         
-        init(imageData: ImageData, isPremium: Bool = false, isLocked: Bool = false, customHeight: CGFloat? = nil) {
+        init(imageData: ImageData, isPremium: Bool = false, isLocked: Bool = false) {
             self.imageData = imageData
             self.isPremium = isPremium
             self.isLocked = isLocked
-            self.customHeight = customHeight
         }
         
         var body: some View {
             VStack(spacing: 12) {
-                CachedAsyncImage(
-                    url: URL(string: imageData.imagePath),
-                    content: { uiImage in
-                        Image(uiImage: uiImage)
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                    },
-                    placeholder: {
+                AsyncImage(url: URL(string: imageData.imagePath)) { phase in
+                    switch phase {
+                    case .empty:
                         RoundedRectangle(cornerRadius: 16)
                             .fill(Color.white.opacity(0.1))
                             .overlay(
@@ -457,10 +416,40 @@ struct HomePage: View {
                                         .foregroundColor(.gray)
                                 }
                             )
+                            .onAppear {
+                                print("🔄 [LifestyleCard] Starting to load image for: \(imageData.id)")
+                                print("🔗 [LifestyleCard] Image URL: \(imageData.imagePath)")
+                            }
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .onAppear {
+                                print("✅ [LifestyleCard] Successfully loaded image for: \(imageData.id)")
+                            }
+                    case .failure(let error):
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color.red.opacity(0.2))
+                            .overlay(
+                                VStack {
+                                    Image(systemName: "exclamationmark.triangle")
+                                        .font(.system(size: 32))
+                                        .foregroundColor(.red)
+                                    Text("Failed")
+                                        .font(.caption)
+                                        .foregroundColor(.red)
+                                }
+                            )
+                            .onAppear {
+                                print("❌ [LifestyleCard] Failed to load image for: \(imageData.id)")
+                                print("🚫 [LifestyleCard] Error: \(error.localizedDescription)")
+                                print("🔗 [LifestyleCard] Failed URL: \(imageData.imagePath)")
+                            }
+                    @unknown default:
+                        EmptyView()
                     }
-                )
-                .frame(width: customHeight != nil ? UIScreen.main.bounds.width / 2 : 160, 
-                       height: customHeight ?? 160)
+                }
+                .frame(width: 180, height: 180)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 
                 Text(imageData.id)
@@ -468,7 +457,10 @@ struct HomePage: View {
                     .foregroundColor(isLocked ? .gray : .white)
                     .lineLimit(1)
             }
-            .frame(width: customHeight != nil ? UIScreen.main.bounds.width / 2 : 160)
+            .frame(width: 180)
+            .onAppear {
+                print("👀 [LifestyleCard] Card appeared for: \(imageData.id)")
+            }
         }
     }
     
@@ -481,7 +473,7 @@ struct HomePage: View {
                 Button(action: onTap) {
                     RoundedRectangle(cornerRadius: 16)
                         .fill(Color.white.opacity(0.05))
-                        .frame(width: 160, height: 160)
+                        .frame(width: 180, height: 180)
                         .overlay(
                             VStack(spacing: 12) {
                                 Image(systemName: "lock.fill")
@@ -523,7 +515,7 @@ struct HomePage: View {
                     .foregroundColor(.gray)
                     .lineLimit(1)
             }
-            .frame(width: 160)
+            .frame(width: 180)
         }
     }
     

@@ -3,10 +3,9 @@ import SwiftUI
 struct SymmetricPinterestGrid: View {
     let images: [ImageData]
     
-    // Fixed dimensions for better performance
-    private let tallHeight: CGFloat = 200
-    private let shortHeight: CGFloat = 150
-    private let fixedWidth: CGFloat = UIScreen.main.bounds.width / 2
+    // Perfect symmetric pattern
+    private let tallHeight: CGFloat = 300
+    private let shortHeight: CGFloat = 160
     
     init(images: [ImageData] = []) {
         self.images = images
@@ -52,13 +51,12 @@ struct SymmetricPinterestGrid: View {
         let pattern = [tallHeight, shortHeight, tallHeight, shortHeight, tallHeight, shortHeight]
         var items: [SymmetricItem] = []
         
-        for i in 0..<min(4, (images.count + 1) / 2) {
+        for i in 0..<min(6, (images.count + 1) / 2) {
             let imageIndex = i * 2
             if imageIndex < images.count {
                 items.append(SymmetricItem(
                     id: imageIndex,
                     height: pattern[i],
-                    fixedWidth: fixedWidth,
                     imageData: images[imageIndex]
                 ))
             }
@@ -71,13 +69,12 @@ struct SymmetricPinterestGrid: View {
         let pattern = [shortHeight, tallHeight, shortHeight, tallHeight, shortHeight, tallHeight]
         var items: [SymmetricItem] = []
         
-        for i in 0..<min(4, images.count / 2) {
+        for i in 0..<min(6, images.count / 2) {
             let imageIndex = i * 2 + 1
             if imageIndex < images.count {
                 items.append(SymmetricItem(
                     id: imageIndex,
                     height: pattern[i],
-                    fixedWidth: fixedWidth,
                     imageData: images[imageIndex]
                 ))
             }
@@ -89,7 +86,6 @@ struct SymmetricPinterestGrid: View {
 struct SymmetricItem: Identifiable {
     let id: Int
     let height: CGFloat
-    let fixedWidth: CGFloat
     let imageData: ImageData
 }
 
@@ -98,23 +94,59 @@ struct SymmetricCard: View {
     let isLeft: Bool
     
     var body: some View {
-        CachedAsyncImage(
-            url: URL(string: item.imageData.imagePath),
-            content: { uiImage in
-                Image(uiImage: uiImage)
+        AsyncImage(url: URL(string: item.imageData.imagePath)) { phase in
+            switch phase {
+            case .empty:
+                RoundedRectangle(cornerRadius: 0)
+                    .fill(Color.white.opacity(0.1))
+                    .frame(height: item.height)
+                    .overlay(
+                        VStack {
+                            ProgressView()
+                                .tint(.white)
+                            Text("Loading...")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                        }
+                    )
+                    .onAppear {
+                        print("🔄 [SymmetricCard] Loading image: \(item.imageData.id)")
+                        print("🔗 [SymmetricCard] URL: \(item.imageData.imagePath)")
+                        print("📏 [SymmetricCard] Expected height: \(item.height)")
+                    }
+            case .success(let image):
+                image
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-            },
-            placeholder: {
-                Rectangle()
-                    .fill(Color.gray.opacity(0.2))
+                    .frame(height: item.height)
+                    .clipped()
+                    .onAppear {
+                        print("✅ [SymmetricCard] Successfully loaded: \(item.imageData.id)")
+                        print("📐 [SymmetricCard] Final frame height: \(item.height)")
+                        print("🎯 [SymmetricCard] Position: \(isLeft ? "Left" : "Right") column")
+                    }
+            case .failure(let error):
+                RoundedRectangle(cornerRadius: 0)
+                    .fill(Color.red.opacity(0.2))
+                    .frame(height: item.height)
                     .overlay(
-                        ProgressView()
-                            .tint(.white)
+                        VStack {
+                            Image(systemName: "exclamationmark.triangle")
+                                .font(.system(size: 24))
+                                .foregroundColor(.red)
+                            Text("Failed")
+                                .font(.caption)
+                                .foregroundColor(.red)
+                        }
                     )
+                    .onAppear {
+                        print("❌ [SymmetricCard] Failed to load: \(item.imageData.id)")
+                        print("🚫 [SymmetricCard] Error: \(error.localizedDescription)")
+                        print("🔗 [SymmetricCard] Failed URL: \(item.imageData.imagePath)")
+                    }
+            @unknown default:
+                EmptyView()
             }
-        )
-        .frame(width: item.fixedWidth, height: item.height)
-        .clipped()
+        }
     }
 }
