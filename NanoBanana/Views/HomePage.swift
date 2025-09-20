@@ -4,6 +4,7 @@ struct ImageData: Codable {
     let id: String
     let imagePath: String
     let prompt: String
+    
     let tags: [String]
 }
 
