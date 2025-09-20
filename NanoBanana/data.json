@@ -104,54 +104,78 @@
     "functionality": {
       "name": "AI Functionality",
       "description": "AI tools and functional features",
-      "maxItems": 8,
+      "maxItems": 12,
       "images": [
         {
           "id": "functionality_1",
-          "imagePath": "",
-          "prompt": "AI text generation and writing assistant",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_1.png",
+          "prompt": "Family portrait before and after, father mother and child, adding stylish red sunglasses to faces, home interior background, warm lighting, AI editing demonstration",
           "tags": ["ai", "functionality", "text"]
         },
         {
           "id": "functionality_2",
-          "imagePath": "",
-          "prompt": "AI image enhancement and editing",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_2.png",
+          "prompt": "Young woman sitting on red car hood before and after, removing person from background, mountain desert road, clean editing result, object removal demo",
           "tags": ["ai", "functionality", "image"]
         },
         {
           "id": "functionality_3",
-          "imagePath": "",
-          "prompt": "AI voice and speech recognition",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_3.png",
+          "prompt": "Chic woman at upscale cafe, cinematic transition effect with flowing curve revealing exotic tropical paradise background, luxury travel transformation",
           "tags": ["ai", "functionality", "voice"]
         },
         {
           "id": "functionality_4",
-          "imagePath": "",
-          "prompt": "AI data analysis and insights",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_4.png",
+          "prompt": "Remove Background: Professional model in designer blazer, elegant spiral motion revealing pristine studio lighting, premium background isolation, high-fashion cutout, no text overlays",
           "tags": ["ai", "functionality", "analytics"]
         },
         {
           "id": "functionality_5",
-          "imagePath": "",
-          "prompt": "AI automated workflows",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_5.png",
+          "prompt": "Professional Photo: Handsome executive makeover with ascending golden stairs effect, casual to CEO transformation, luxury corporate styling, success journey visualization, clean image no text",
           "tags": ["ai", "functionality", "automation"]
         },
         {
           "id": "functionality_6",
-          "imagePath": "",
-          "prompt": "AI language translation",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_6.png",
+          "prompt": "Restore Image:Vintage couple photograph with magical time-reversal swirl, damaged antique to pristine restoration, heritage preservation artistry, timeless photo revival, with no before and after ",
           "tags": ["ai", "functionality", "translation"]
         },
         {
           "id": "functionality_7",
-          "imagePath": "",
-          "prompt": "AI content generation",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_7.png",
+          "prompt": "Change Hair Color: Gorgeous model with flowing color gradient transition, natural brunette to luxurious auburn transformation, salon-quality AI styling, premium beauty enhancement",
           "tags": ["ai", "functionality", "content"]
         },
         {
           "id": "functionality_8",
-          "imagePath": "",
-          "prompt": "AI smart recommendations",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_8.png",
+          "prompt": "Face Expression: Sophisticated businesswoman with emotional arc visualization, confident to radiant smile progression, mood transformation artistry, premium portrait editing, with no before and after ",
+          "tags": ["ai", "functionality", "recommendations"]
+        }
+        {
+          "id": "functionality_9",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_9.png",
+          "prompt": "Colorize Image: Distinguished gentleman with painterly brush strokes revealing vibrant colors, artistic black-white to full spectrum transformation, museum-quality colorization, with no before and after text",
+          "tags": ["ai", "functionality", "recommendations"]
+        }
+        {
+          "id": "functionality_10",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_10.png",
+          "prompt": "Cartoon Effect: Dynamic woman driver with comic book explosion transition, photorealistic to animated superhero style, premium illustration conversion, no before and after text ",
+          "tags": ["ai", "functionality", "recommendations"]
+        }
+        {
+          "id": "functionality_11",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_11.png",
+          "prompt": "Baby Me: Beautiful woman with time-spiral regression effect, elegant age reversal to adorable infant, magical youth transformation, premium age simulation, no before and after text ",
+          "tags": ["ai", "functionality", "recommendations"]
+        }
+        {
+          "id": "functionality_12",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_12.png",
+          "prompt": "Older Me: Handsome young man with wisdom pathway visualization, youth to distinguished maturity, graceful aging simulation, premium time progression, no before and after text",
           "tags": ["ai", "functionality", "recommendations"]
         }
       ]
