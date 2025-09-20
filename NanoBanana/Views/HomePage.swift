@@ -21,7 +21,6 @@ struct DataModel: Codable {
 
 enum HomeTab: String, CaseIterable {
     case forYou = "For You"
-    case inspiration = "Inspiration"
     case aiFilters = "AI Filters"
 }
 
@@ -37,86 +36,104 @@ struct HomePage: View {
         ZStack {
             Color.black
                 .ignoresSafeArea()
-            
+
             VStack(spacing: 0) {
                 // Fixed header with shop and settings
-                HStack {
-                    Button(action: {
-                        showingSettings = true
-                    }) {
-                        Image(systemName: "gearshape")
-                            .foregroundColor(Color.gray)
-                            .font(.title2)
-                    }
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        showingShop = true
-                    }) {
-                        HStack(spacing: 6) {
-                            Image(systemName: "bag")
-                                .foregroundColor(.white)
-                                .font(.system(size: 16, weight: .medium))
-                            
-                            Text("Shop")
-                                .font(.circularStdCaption)
-                                .foregroundColor(.white)
-                        }
-                        .padding(.horizontal, 12)
-                        .padding(.vertical, 6)
-                        .background(Color.white.opacity(0.15))
-                        .cornerRadius(16)
-                    }
-                }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 12)
-                .background(Color.black)
-                
-                // Hero section - fixed
-                VStack(spacing: 20) {
-                    Image("icon")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 80, height: 80)
-                    
-                    Text("Navo AI")
-                        .font(.circularStdTitle)
-                        .foregroundColor(.white)
-                    
-                    Text("Your AI Assistant")
-                        .font(.circularStdBody)
-                        .foregroundColor(.gray)
-                }
-                .padding(.vertical, 30)
-                .background(Color.black)
-                
-                // Fixed tabs section
-                TabsSection(selectedTab: $selectedTab)
-                    .padding(.bottom, 20)
+                headerView
+                    .padding(.horizontal, 16)
+                    .padding(.vertical, 12)
                     .background(Color.black)
-                
-                // Scrollable content
-                ScrollView {
-                    VStack(spacing: 0) {
-                        // Content based on selected tab
-                        switch selectedTab {
-                        case .forYou:
-                            // Lifestyle horizontal list
-                            if let lifestyle = dataModel?.categories["lifestyle"] {
-                                VStack(alignment: .leading, spacing: 12) {
-                                    HStack {
-                                        Text(lifestyle.name)
-                                            .font(.circularStdHeadline)
-                                            .foregroundColor(.white)
-                                            .padding(.horizontal, 16)
+                    
+                    
+                    // Fixed tabs section
+                    TabsSection(selectedTab: $selectedTab)
+                        .padding(.bottom, 20)
+                        .background(Color.black)
+                    
+                    ScrollView {
+                        VStack(spacing: 0) {
+                            // Content based on selected tab
+                            switch selectedTab {
+                            case .forYou:
+                                // Lifestyle horizontal list
+                                if let lifestyle = dataModel?.categories["lifestyle"] {
+                                    VStack(alignment: .leading, spacing: 12) {
+                                        HStack {
+                                            Text(lifestyle.name)
+                                                .font(.circularStdHeadline)
+                                                .foregroundColor(.white)
+                                                .padding(.horizontal, 16)
+                                            
+                                            Spacer()
+                                        }
                                         
-                                        Spacer()
+                                        ScrollView(.horizontal, showsIndicators: false) {
+                                            LazyHStack(spacing: 16) {
+                                                ForEach(lifestyle.images, id: \.id) { image in
+                                                    LifestyleCard(
+                                                        imageData: image,
+                                                        isPremium: false,
+                                                        isLocked: false
+                                                    )
+                                                }
+                                            }
+                                            .padding(.horizontal, 16)
+                                        }
                                     }
-                                    
-                                    ScrollView(.horizontal, showsIndicators: false) {
-                                        LazyHStack(spacing: 16) {
-                                            ForEach(lifestyle.images, id: \.id) { image in
+                                    .padding(.bottom, 30)
+                                }
+                                
+                                // Explore Pinterest-style grid
+                                if let explore = dataModel?.categories["explore"] {
+                                    VStack(alignment: .leading, spacing: 16) {
+                                        HStack {
+                                            Text("Explore")
+                                                .font(.circularStdHeadline)
+                                                .foregroundColor(.white)
+                                                .padding(.horizontal, 16)
+                                            
+                                            Spacer()
+                                        }
+                                        
+                                        // Pinterest-style masonry grid
+                                        HStack(alignment: .top, spacing: 8) {
+                                            // Create 2 columns
+                                            ForEach(0..<2) { columnIndex in
+                                                VStack(spacing: 8) {
+                                                    ForEach(Array(explore.images.enumerated()), id: \.element.id) { index, image in
+                                                        if index % 2 == columnIndex {
+                                                            // Generate random height between 160 and 280
+                                                            let randomHeight = CGFloat.random(in: 160...280)
+                                                            let columnWidth = (UIScreen.main.bounds.width - 32 - 8) / 2 // Account for padding and spacing
+                                                            LifestyleCard(imageData: image, customHeight: randomHeight, customWidth: columnWidth)
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        .padding(.horizontal, 16)
+                                    }
+                                    .padding(.bottom, 30)
+                                }
+                                
+                            case .aiFilters:
+                                // Functionality category - Grid layout, completely free
+                                if let functionality = dataModel?.categories["functionality"] {
+                                    VStack(alignment: .leading, spacing: 16) {
+                                        HStack {
+                                            Text("AI Filters")
+                                                .font(.circularStdHeadline)
+                                                .foregroundColor(.white)
+                                                .padding(.horizontal, 16)
+                                            
+                                            Spacer()
+                                        }
+                                        
+                                        LazyVGrid(columns: [
+                                            GridItem(.flexible(), spacing: 12),
+                                            GridItem(.flexible(), spacing: 12)
+                                        ], spacing: 16) {
+                                            ForEach(functionality.images, id: \.id) { image in
                                                 LifestyleCard(
                                                     imageData: image,
                                                     isPremium: false,
@@ -126,124 +143,42 @@ struct HomePage: View {
                                         }
                                         .padding(.horizontal, 16)
                                     }
+                                    .padding(.bottom, 30)
                                 }
-                                .padding(.bottom, 30)
-                            }
-                            
-                            // Explore symmetric grid
-                            if let explore = dataModel?.categories["explore"] {
-                                VStack(alignment: .leading, spacing: 16) {
-                                    HStack {
-                                        Text("Explore")
-                                            .font(.circularStdHeadline)
-                                            .foregroundColor(.white)
-                                            .padding(.horizontal, 16)
-                                        
-                                        Spacer()
-                                    }
-                                    
-                                    // Symmetric grid with spacing between cards
-                                    HStack(alignment: .top, spacing: 8) {
-                                        // Left column - FIXED: tall, short, tall, short
-                                        VStack(spacing: 8) {
-                                            if explore.images.count > 0 {
-                                                LifestyleCard(imageData: explore.images[0], customHeight: 250) // Prima: LUNG
-                                            }
-                                            if explore.images.count > 2 {
-                                                LifestyleCard(imageData: explore.images[2], customHeight: 160) // A treia: SCURT
-                                            }
-                                            if explore.images.count > 4 {
-                                                LifestyleCard(imageData: explore.images[4], customHeight: 250) // A cincea: LUNG
-                                            }
-                                            if explore.images.count > 6 {
-                                                LifestyleCard(imageData: explore.images[6], customHeight: 160) // A șaptea: SCURT
-                                            }
-                                        }
-                                        
-                                        // Right column - FIXED: short, tall, short, tall
-                                        VStack(spacing: 8) {
-                                            if explore.images.count > 1 {
-                                                LifestyleCard(imageData: explore.images[1], customHeight: 160) // A doua: SCURT
-                                            }
-                                            if explore.images.count > 3 {
-                                                LifestyleCard(imageData: explore.images[3], customHeight: 250) // A patra: LUNG
-                                            }
-                                            if explore.images.count > 5 {
-                                                LifestyleCard(imageData: explore.images[5], customHeight: 160) // A șasea: SCURT
-                                            }
-                                            if explore.images.count > 7 {
-                                                LifestyleCard(imageData: explore.images[7], customHeight: 250) // A opta: LUNG
-                                            }
-                                        }
-                                    }
-                                    .padding(.horizontal, 16)
-                                }
-                                .padding(.bottom, 30)
-                            }
-                            
-                        case .inspiration:
-                            // Inspiration category - Pinterest-style asymmetrical grid
-                            if let inspiration = dataModel?.categories["inspiration"] {
-                                VStack(alignment: .leading, spacing: 16) {
-                                    HStack {
-                                        Text("Inspiration")
-                                            .font(.circularStdHeadline)
-                                            .foregroundColor(.white)
-                                            .padding(.horizontal, 16)
-                                        
-                                        Spacer()
-                                    }
-                                    
-                                    SymmetricPinterestGrid(images: inspiration.images)
-                                }
-                                .padding(.bottom, 30)
-                            }
-                            
-                        case .aiFilters:
-                            // Functionality category - Grid layout, completely free
-                            if let functionality = dataModel?.categories["functionality"] {
-                                VStack(alignment: .leading, spacing: 16) {
-                                    HStack {
-                                        Text("AI Filters")
-                                            .font(.circularStdHeadline)
-                                            .foregroundColor(.white)
-                                            .padding(.horizontal, 16)
-                                        
-                                        Spacer()
-                                    }
-                                    
-                                    LazyVGrid(columns: [
-                                        GridItem(.flexible(), spacing: 12),
-                                        GridItem(.flexible(), spacing: 12)
-                                    ], spacing: 16) {
-                                        ForEach(functionality.images, id: \.id) { image in
-                                            LifestyleCard(
-                                                imageData: image,
-                                                isPremium: false,
-                                                isLocked: false
-                                            )
-                                        }
-                                    }
-                                    .padding(.horizontal, 16)
-                                }
-                                .padding(.bottom, 30)
                             }
                         }
-                    }
                 }
             }
-        }
-        .sheet(isPresented: $showingSettings) {
-            SettingsView(chatViewModel: ChatViewModel())
         }
         .fullScreenCover(isPresented: $showingShop) {
             ShopPage()
         }
         .onAppear {
             loadData()
-            print("📱 [HomePage] Screen bounds: \(UIScreen.main.bounds)")
-            print("📱 [HomePage] Screen scale: \(UIScreen.main.scale)")
-            print("📱 [HomePage] Safe area: \(UIApplication.shared.windows.first?.safeAreaInsets ?? .zero)")
+        }
+    }
+    
+    private var headerView: some View {
+        HStack {
+            Spacer()
+
+            Button(action: {
+                showingShop = true
+            }) {
+                HStack(spacing: 6) {
+                    Image(systemName: "bag")
+                        .foregroundColor(.white)
+                        .font(.system(size: 16, weight: .medium))
+
+                    Text("Shop")
+                        .font(.circularStdCaption)
+                        .foregroundColor(.white)
+                }
+                .padding(.horizontal, 12)
+                .padding(.vertical, 6)
+                .background(Color.white.opacity(0.15))
+                .cornerRadius(16)
+            }
         }
     }
     
@@ -280,7 +215,6 @@ struct HomePage: View {
             print("❌ [HomePage] Error loading data: \(error)")
         }
     }
-    
     
     struct CategorySection: View {
         let category: Category
@@ -428,12 +362,14 @@ struct HomePage: View {
         let isPremium: Bool
         let isLocked: Bool
         let customHeight: CGFloat?
+        let customWidth: CGFloat?
         
-        init(imageData: ImageData, isPremium: Bool = false, isLocked: Bool = false, customHeight: CGFloat? = nil) {
+        init(imageData: ImageData, isPremium: Bool = false, isLocked: Bool = false, customHeight: CGFloat? = nil, customWidth: CGFloat? = nil) {
             self.imageData = imageData
             self.isPremium = isPremium
             self.isLocked = isLocked
             self.customHeight = customHeight
+            self.customWidth = customWidth
         }
         
         var body: some View {
@@ -459,16 +395,11 @@ struct HomePage: View {
                             )
                     }
                 )
-                .frame(width: customHeight != nil ? UIScreen.main.bounds.width / 2 : 160, 
+                .frame(width: customWidth ?? (customHeight != nil ? UIScreen.main.bounds.width / 2 : 160),
                        height: customHeight ?? 160)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
-                
-                Text(imageData.id)
-                    .font(.circularStdCaption)
-                    .foregroundColor(isLocked ? .gray : .white)
-                    .lineLimit(1)
             }
-            .frame(width: customHeight != nil ? UIScreen.main.bounds.width / 2 : 160)
+            .frame(width: customWidth ?? (customHeight != nil ? UIScreen.main.bounds.width / 2 : 160))
         }
     }
     
@@ -558,3 +489,4 @@ struct HomePage: View {
         }
     }
 }
+
