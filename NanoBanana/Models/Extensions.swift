@@ -49,3 +49,27 @@ extension View {
         }
     }
 }
+
+// MARK: - Custom Font Extension
+extension Font {
+    static func circularStd(size: CGFloat, weight: Font.Weight = .medium) -> Font {
+        return Font.custom("CircularStd-Medium", size: size)
+    }
+    
+    // Predefined sizes for consistency
+    static var circularStdTitle: Font {
+        return Font.circularStd(size: 28, weight: .medium)
+    }
+    
+    static var circularStdHeadline: Font {
+        return Font.circularStd(size: 20, weight: .medium)
+    }
+    
+    static var circularStdBody: Font {
+        return Font.circularStd(size: 16, weight: .medium)
+    }
+    
+    static var circularStdCaption: Font {
+        return Font.circularStd(size: 14, weight: .medium)
+    }
+}

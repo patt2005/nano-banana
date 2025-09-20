@@ -22,22 +22,9 @@
 		F103BE3A9B60E67E3AAD049E /* Pods-NanoBanana.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NanoBanana.debug.xcconfig"; path = "Target Support Files/Pods-NanoBanana/Pods-NanoBanana.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		5C9315122E6AE1D000EE4924 /* Exceptions for "NanoBanana" folder in "NanoBanana" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = 81447AE92E672B5B003557C9 /* NanoBanana */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		81447AEC2E672B5B003557C9 /* NanoBanana */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				5C9315122E6AE1D000EE4924 /* Exceptions for "NanoBanana" folder in "NanoBanana" target */,
-			);
 			path = NanoBanana;
 			sourceTree = "<group>";
 		};
@@ -337,7 +324,6 @@
 				CURRENT_PROJECT_VERSION = 11;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NanoBanana/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Navo AI";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need to access your camera to capture photos that will be processed by our AI to generate creative content and artwork";
@@ -372,7 +358,6 @@
 				CURRENT_PROJECT_VERSION = 11;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NanoBanana/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Navo AI";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need to access your camera to capture photos that will be processed by our AI to generate creative content and artwork";

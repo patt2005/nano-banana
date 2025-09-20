@@ -16,7 +16,10 @@
       "Read(/var/folders/cq/d03fbsls3b32vth9s3d89fs80000gn/T/TemporaryItems/NSIRD_screencaptureui_Ku75Bx/**)",
       "Read(/var/folders/cq/d03fbsls3b32vth9s3d89fs80000gn/T/TemporaryItems/NSIRD_screencaptureui_49HlG1/**)",
       "Read(/var/folders/cq/d03fbsls3b32vth9s3d89fs80000gn/T/TemporaryItems/NSIRD_screencaptureui_reSbuP/**)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Read(//var/folders/6y/06_z_50n3v3bx62mr0dkgjf40000gn/T/TemporaryItems/NSIRD_screencaptureui_EKkFWG/**)",
+      "Read(//var/folders/6y/06_z_50n3v3bx62mr0dkgjf40000gn/T/TemporaryItems/NSIRD_screencaptureui_ZmVM02/**)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": [],
