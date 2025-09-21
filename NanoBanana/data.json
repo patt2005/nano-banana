@@ -38,7 +38,7 @@
                 }
             ]
         },
-        
+
         "functionality": {
             "name": "AI Functionality",
             "description": "AI tools and functional features",
@@ -48,76 +48,77 @@
                     "id": "functionality_1",
                     "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_1.png",
                     "prompt": "Family portrait before and after, father mother and child, adding stylish red sunglasses to faces, home interior background, warm lighting, AI editing demonstration",
-                "title": "Smart Add & Replace"        },
+                    "title": "Smart Add & Replace"
+                },
                 {
                     "id": "functionality_2",
                     "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_2.png",
                     "prompt": "Young woman sitting on red car hood before and after, removing person from background, mountain desert road, clean editing result, object removal demo",
-                    "title":"Erase Objects"        ]
+                    "title": "Erase Objects"
                 },
                 {
                     "id": "functionality_3",
                     "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_3.png",
                     "prompt": "Chic woman at upscale cafe, cinematic transition effect with flowing curve revealing exotic tropical paradise background, luxury travel transformation",
-                    "title":"Change Background"        ]
+                    "title": "Change Background"
                 },
                 {
                     "id": "functionality_4",
                     "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_4.png",
-                    "prompt": "Remove Background: Professional model in designer blazer, elegant spiral motion revealing pristine studio lighting, premium background isolation, high-fashion cutout, no text overlays",
-                "title":"Remove Background"        }
+                    "prompt": "Remove Background: Professional model in designer blazer, elegant spiral motion revealing pristine studio lighting, premium background isolation, high-fashion cutout, no text overlays",
+                    "title": "Remove Background"
                 },
                 {
                     "id": "functionality_5",
                     "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_5.png",
-                    "prompt": "Professional Photo: Handsome executive makeover with ascending golden stairs effect, casual to CEO transformation, luxury corporate styling, success journey visualization, clean image no text",
-                    "title":"Professional Photo"        ]
+                    "prompt": "Professional Photo: Handsome executive makeover with ascending golden stairs effect, casual to CEO transformation, luxury corporate styling, success journey visualization, clean image no text",
+                    "title": "Professional Photo"
                 },
                 {
                     "id": "functionality_6",
                     "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_6.png",
                     "prompt": "Restore Image:Vintage couple photograph with magical time-reversal swirl, damaged antique to pristine restoration, heritage preservation artistry, timeless photo revival, with no before and after ",
-                    "title":"Restore Image"        ]
+                    "title": "Restore Image"
                 },
                 {
                     "id": "functionality_7",
                     "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_7.png",
                     "prompt": "Change Hair Color: Gorgeous model with flowing color gradient transition, natural brunette to luxurious auburn transformation, salon-quality AI styling, premium beauty enhancement",
-                    "title":"Change Hair Color"        ]
+                    "title": "Change Hair Color"
                 },
                 {
                     "id": "functionality_8",
                     "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_8.png",
-                    "prompt": "Face Expression: Sophisticated businesswoman with emotional arc visualization, confident to radiant smile progression, mood transformation artistry, premium portrait editing, with no before and after ",
-                    "title":"Face Expression"        ]
-                }
+                    "prompt": "Face Expression: Sophisticated businesswoman with emotional arc visualization, confident to radiant smile progression, mood transformation artistry, premium portrait editing, with no before and after ",
+                    "title": "Face Expression"
+                },
                 {
                     "id": "functionality_9",
                     "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_9.png",
-                    "prompt": "Colorize Image: Distinguished gentleman with painterly brush strokes revealing vibrant colors, artistic black-white to full spectrum transformation, museum-quality colorization, with no before and after text",
-                    "title":"Colorize Image"        ]
-                }
+                    "prompt": "Colorize Image: Distinguished gentleman with painterly brush strokes revealing vibrant colors, artistic black-white to full spectrum transformation, museum-quality colorization, with no before and after text",
+                    "title": "Colorize Image"
+                },
                 {
                     "id": "functionality_10",
                     "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_10.png",
-                    "prompt": "Cartoon Effect: Dynamic woman driver with comic book explosion transition, photorealistic to animated superhero style, premium illustration conversion, no before and after text ",
-                    "title":"Cartoon Effect"        ]
-                }
+                    "prompt": "Cartoon Effect: Dynamic woman driver with comic book explosion transition, photorealistic to animated superhero style, premium illustration conversion, no before and after text ",
+                    "title": "Cartoon Effect"
+                },
                 {
                     "id": "functionality_11",
                     "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_11.png",
-                    "prompt": "Baby Me: Beautiful woman with time-spiral regression effect, elegant age reversal to adorable infant, magical youth transformation, premium age simulation, no before and after text ",
-                    "title":"Baby Me"        ]
-                }
+                    "prompt": "Baby Me: Beautiful woman with time-spiral regression effect, elegant age reversal to adorable infant, magical youth transformation, premium age simulation, no before and after text ",
+                    "title": "Baby Me"
+                },
                 {
                     "id": "functionality_12",
                     "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_12.png",
-                    "prompt": "Older Me: Handsome young man with wisdom pathway visualization, youth to distinguished maturity, graceful aging simulation, premium time progression, no before and after text",
-                "title":"Older Me"        }
+                    "prompt": "Older Me: Handsome young man with wisdom pathway visualization, youth to distinguished maturity, graceful aging simulation, premium time progression, no before and after text",
+                    "title": "Older Me"
                 }
             ]
         },
-        
+
         "explore": {
             "name": "Explore & Discover",
             "description": "Wide variety of creative content and inspiration",
@@ -182,9 +183,8 @@
                     "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_10.png",
                     "prompt": "Mystical forest path with morning mist, ancient trees, golden sunbeams, fairy-tale atmosphere, enchanted woodland",
                     "tags": ["explore", "vintage", "retro"]
-                },
-                
+                }
             ]
         }
     }
-
+}
