@@ -29,12 +29,12 @@ struct SettingsView: View {
                         if !subscriptionManager.hasActiveSubscription {
                             VStack(spacing: 12) {
                                 HStack {
-                                    Image(systemName: "message")
-                                        .foregroundColor(.blue)
-                                        .font(.title2)
-                                        .frame(width: 24)
+                                    Image("icon")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 40, height: 40)
                                     
-                                    Text("Free Messages")
+                                    Text("Free Generations")
                                         .foregroundColor(.white)
                                         .font(.body)
                                         .fontWeight(.medium)
@@ -43,7 +43,7 @@ struct SettingsView: View {
                                     
                                     VStack(alignment: .trailing, spacing: 2) {
                                         Text("\(chatViewModel.remainingFreeMessages)")
-                                            .foregroundColor(.blue)
+                                            .foregroundColor(Color(hex: "FFD700"))
                                             .font(.title3)
                                             .fontWeight(.bold)
                                         
@@ -59,20 +59,30 @@ struct SettingsView: View {
                                         .fill(Color(hex: "2e2e2e"))
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 12)
-                                                .stroke(Color.blue.opacity(0.3), lineWidth: 1)
+                                                .stroke(
+                                                    LinearGradient(
+                                                        colors: [
+                                                            Color(hex: "FFD700").opacity(0.4),
+                                                            Color(hex: "FFA500").opacity(0.3)
+                                                        ],
+                                                        startPoint: .leading,
+                                                        endPoint: .trailing
+                                                    ),
+                                                    lineWidth: 1
+                                                )
                                         )
                                 )
                                 
                                 if chatViewModel.remainingFreeMessages == 0 {
                                     HStack {
-                                        Text("You've used all your free messages. Upgrade to Pro for unlimited messages.")
+                                        Text("You've used all your free generations. Upgrade to Pro for unlimited generations.")
                                             .foregroundColor(Color(hex: "9e9d99"))
                                             .font(.caption)
                                             .multilineTextAlignment(.center)
                                     }
                                 } else {
                                     HStack {
-                                        Text("Start a new chat for more free messages.")
+                                        Text("Start a new chat for more free generations.")
                                             .foregroundColor(Color(hex: "9e9d99"))
                                             .font(.caption)
                                             .multilineTextAlignment(.center)
@@ -94,9 +104,10 @@ struct SettingsView: View {
                                 VStack(spacing: 20) {
                                     // Header with star icon and title
                                     HStack(spacing: 12) {
-                                        Image(systemName: "star.fill")
-                                            .foregroundColor(.white)
-                                            .font(.system(size: 24, weight: .bold))
+                                        Image("icon")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fit)
+                                            .frame(width: 40, height: 40)
                                         
                                         Text("AI Pro Plan")
                                             .font(.system(size: 28, weight: .bold))
@@ -121,28 +132,72 @@ struct SettingsView: View {
                                     }
                                     
                                     // Upgrade button
-                                    HStack {
+                                    HStack(spacing: 8) {
+                                        Image(systemName: "crown.fill")
+                                            .font(.system(size: 16, weight: .semibold))
+                                            .foregroundColor(.white)
+                                        
                                         Text("Upgrade to Pro")
                                             .font(.system(size: 18, weight: .semibold))
-                                            .foregroundColor(.orange)
+                                            .foregroundColor(.white)
+                                        
                                         Spacer()
+                                        
+                                       
                                     }
                                     .padding(.horizontal, 20)
                                     .padding(.vertical, 16)
                                     .background(
-                                        RoundedRectangle(cornerRadius: 12)
-                                            .fill(.white)
+                                        LinearGradient(
+                                            colors: [
+                                                Color(hex: "FFD700").opacity(0.4),  // Much softer Gold
+                                                Color(hex: "FFA500").opacity(0.3),  // Much softer Orange
+                                                Color(hex: "FF8C00").opacity(0.2)   // Much softer Dark orange
+                                            ],
+                                            startPoint: .leading,
+                                            endPoint: .trailing
+                                        )
                                     )
+                                    .cornerRadius(12)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .stroke(
+                                                LinearGradient(
+                                                    colors: [
+                                                        Color(hex: "FFD700").opacity(0.4),
+                                                        Color(hex: "FFA500").opacity(0.3)
+                                                    ],
+                                                    startPoint: .leading,
+                                                    endPoint: .trailing
+                                                ),
+                                                lineWidth: 1
+                                            )
+                                    )
+                                    .shadow(color: Color(hex: "FFD700").opacity(0.2), radius: 6, x: 0, y: 3)
                                 }
                                 .padding(24)
                                 .background(
-                                    LinearGradient(
-                                        gradient: Gradient(colors: [Color.orange, Color.red.opacity(0.8)]),
-                                        startPoint: .topLeading,
-                                        endPoint: .bottomTrailing
-                                    )
+                                    Image("pro plan")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fill)
+                                        .opacity(0.3)
+                                        .clipped()
                                 )
                                 .cornerRadius(20)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 20)
+                                        .stroke(
+                                            LinearGradient(
+                                                colors: [
+                                                    Color(hex: "FFD700").opacity(0.4),
+                                                    Color(hex: "FFA500").opacity(0.3)
+                                                ],
+                                                startPoint: .leading,
+                                                endPoint: .trailing
+                                            ),
+                                            lineWidth: 1
+                                        )
+                                )
                             }
                             .padding(.horizontal, 20)
                         }
@@ -283,7 +338,10 @@ struct SettingsView: View {
                             HStack {
                                 Text("Made with")
                                     .foregroundColor(Color(hex: "9e9d99"))
-                                Text("🍌")
+                                Image("icon")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 20, height: 20)
                                 Text("by Navo AI Team")
                                     .foregroundColor(Color(hex: "9e9d99"))
                             }
