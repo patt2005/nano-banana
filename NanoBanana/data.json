@@ -53,68 +53,59 @@
           "id": "functionality_2",
           "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_2.png",
           "prompt": "Young woman sitting on red car hood before and after, removing person from background, mountain desert road, clean editing result, object removal demo",
-          "title":"Erase Objects"        ]
-        },
+          "title":"Erase Objects"        },
         {
           "id": "functionality_3",
           "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_3.png",
           "prompt": "Chic woman at upscale cafe, cinematic transition effect with flowing curve revealing exotic tropical paradise background, luxury travel transformation",
-          "title":"Change Background"        ]
-        },
+          "title":"Change Background"        },
         {
           "id": "functionality_4",
           "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_4.png",
           "prompt": "Remove Background: Professional model in designer blazer, elegant spiral motion revealing pristine studio lighting, premium background isolation, high-fashion cutout, no text overlays",
-          "title":"Remove Background"        }
+          "title":"Remove Background"
         },
         {
           "id": "functionality_5",
           "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_5.png",
           "prompt": "Professional Photo: Handsome executive makeover with ascending golden stairs effect, casual to CEO transformation, luxury corporate styling, success journey visualization, clean image no text",
-          "title":"Professional Photo"        ]
-        },
+          "title":"Professional Photo"        },
         {
           "id": "functionality_6",
           "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_6.png",
           "prompt": "Restore Image:Vintage couple photograph with magical time-reversal swirl, damaged antique to pristine restoration, heritage preservation artistry, timeless photo revival, with no before and after ",
-          "title":"Restore Image"        ]
-        },
+          "title":"Restore Image"        },
         {
           "id": "functionality_7",
           "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_7.png",
           "prompt": "Change Hair Color: Gorgeous model with flowing color gradient transition, natural brunette to luxurious auburn transformation, salon-quality AI styling, premium beauty enhancement",
-          "title":"Change Hair Color"        ]
-        },
+          "title":"Change Hair Color"        },
         {
           "id": "functionality_8",
           "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_8.png",
           "prompt": "Face Expression: Sophisticated businesswoman with emotional arc visualization, confident to radiant smile progression, mood transformation artistry, premium portrait editing, with no before and after ",
-          "title":"Face Expression"        ]
-        }
+          "title":"Face Expression"        },
         {
           "id": "functionality_9",
           "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_9.png",
           "prompt": "Colorize Image: Distinguished gentleman with painterly brush strokes revealing vibrant colors, artistic black-white to full spectrum transformation, museum-quality colorization, with no before and after text",
-          "title":"Colorize Image"        ]
-        }
+          "title":"Colorize Image"        },
         {
           "id": "functionality_10",
           "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_10.png",
           "prompt": "Cartoon Effect: Dynamic woman driver with comic book explosion transition, photorealistic to animated superhero style, premium illustration conversion, no before and after text ",
-          "title":"Cartoon Effect"        ]
-        }
+          "title":"Cartoon Effect"        },
         {
           "id": "functionality_11",
           "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_11.png",
           "prompt": "Baby Me: Beautiful woman with time-spiral regression effect, elegant age reversal to adorable infant, magical youth transformation, premium age simulation, no before and after text ",
-          "title":"Baby Me"        ]
-        }
+          "title":"Baby Me"        },
         {
           "id": "functionality_12",
           "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_12.png",
           "prompt": "Older Me: Handsome young man with wisdom pathway visualization, youth to distinguished maturity, graceful aging simulation, premium time progression, no before and after text",
           "title":"Older Me"        }
-        }
+        
       ]
     },
     
@@ -133,7 +124,7 @@
           "id": "explore_2",
           "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_2.png",
           "prompt": "Beautiful woman floating in white void, elegant dress flowing, surreal artistic portrait, minimalist dream aesthetic",
-          
+          "tags": ["explore", "art"]
         },
         {
           "id": "explore_3",
@@ -273,8 +264,115 @@
          "id": "explore_25",
          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_25.png",
          "prompt": "Elegant woman in designer dress walking through Parisian boutique, shopping bags in hand, confident stride, sophisticated fashion lifestyle, chic urban elegance",
-         
-       },
+         "tags": ["explore", "fashion"]
+       }
       ]
     },
     
+    "housing": {
+      "name": "Real Estate & Housing",
+      "description": "Properties, homes, apartments, and interior design",
+      "maxItems": 15,
+      "images": [
+        {
+          "id": "housing_1",
+          "imagePath": "",
+          "prompt": "",
+          "tags": ["real-estate", "housing"]
+        }
+      ]
+    },
+    
+    "filter": {
+      "name": "AI Filters",
+      "description": "Advanced AI filters and effects",
+      "maxItems": 12,
+      "images": [
+        {
+          "id": "filter_1",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_2",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_3",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_4",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_5",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_6",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_7",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_8",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_9",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_10",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_11",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_12",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        }
+      ]
+    }
+  }
+}
