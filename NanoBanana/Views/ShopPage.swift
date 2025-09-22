@@ -12,10 +12,10 @@ struct ShopPage: View {
     @State private var purchasedCredits = 0
 
     let creditPackages: [(id: String, credits: Int, productId: String, discount: String?)] = [
-        ("10", 85, "com.nanobanana.credits10", nil),
-        ("20", 500, "com.nanobanana.credits20", "Popular"),
-        ("30", 650, "com.nanobanana.credits30", "Great Deal"),
-        ("60", 1500, "com.nanobanana.credits60", "Best Value")
+        ("85", 85, "com.nanobanana.credits10", nil),
+        ("500", 500, "com.nanobanana.credits20", "Popular"),
+        ("650", 650, "com.nanobanana.credits30", "Great Deal"),
+        ("1500", 1500, "com.nanobanana.credits60", "Best Value")
     ]
 
     var body: some View {

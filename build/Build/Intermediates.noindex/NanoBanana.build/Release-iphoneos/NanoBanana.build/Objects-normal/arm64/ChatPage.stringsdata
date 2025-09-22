@@ -1,0 +1,72 @@
+{
+  "source": "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/ChatPage.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Navo AI",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 41
+        }
+      },
+      {
+        "comment": "",
+        "key": "Welcome to Navo AI",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 72
+        }
+      },
+      {
+        "comment": "",
+        "key": "Start a conversation by typing a message or uploading photos using the attachment button below.",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 77
+        }
+      },
+      {
+        "comment": "",
+        "key": "Retry",
+        "location": {
+          "startingColumn": 32,
+          "startingLine": 126
+        }
+      },
+      {
+        "comment": "",
+        "key": "Type your prompt here...",
+        "location": {
+          "startingColumn": 83,
+          "startingLine": 175
+        }
+      },
+      {
+        "comment": "",
+        "key": "",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 175
+        }
+      },
+      {
+        "comment": "",
+        "key": "Camera",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 190
+        }
+      },
+      {
+        "comment": "",
+        "key": "Gallery",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 196
+        }
+      }
+    ]
+  },
+  "version": 1
+}

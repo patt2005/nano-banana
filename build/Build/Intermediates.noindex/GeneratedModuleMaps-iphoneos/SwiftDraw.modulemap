@@ -1,0 +1,4 @@
+module SwiftDraw {
+header "SwiftDraw-Swift.h"
+export *
+}

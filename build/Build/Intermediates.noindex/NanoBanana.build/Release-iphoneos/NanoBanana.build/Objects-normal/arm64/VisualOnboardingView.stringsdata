@@ -1,0 +1,16 @@
+{
+  "source": "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/VisualOnboardingView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Continue",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 133
+        }
+      }
+    ]
+  },
+  "version": 1
+}

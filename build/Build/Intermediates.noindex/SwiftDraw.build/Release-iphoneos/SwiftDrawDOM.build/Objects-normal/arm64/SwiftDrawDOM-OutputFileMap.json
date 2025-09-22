@@ -1,0 +1,196 @@
+{
+  "" : {
+    "const-values" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/SwiftDrawDOM-primary.swiftconstvalues",
+    "dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/SwiftDrawDOM-primary.d",
+    "diagnostics" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/SwiftDrawDOM-primary.dia",
+    "emit-module-dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/SwiftDrawDOM-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/SwiftDrawDOM-primary-emit-module.dia",
+    "pch" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/SwiftDrawDOM-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/SwiftDrawDOM-primary.swiftdeps"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/DOM+Extensions.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM+Extensions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM+Extensions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM+Extensions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/DOM.Color.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Color.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Color.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Color.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/DOM.Element.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Element.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Element.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Element.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/DOM.Filter.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Filter.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Filter.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Filter.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/DOM.Image.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Image.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Image.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Image.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/DOM.LinearGradient.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.LinearGradient.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.LinearGradient.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.LinearGradient.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/DOM.Path.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Path.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Path.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Path.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/DOM.Pattern.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Pattern.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Pattern.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Pattern.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/DOM.PresentationAttributes.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.PresentationAttributes.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.PresentationAttributes.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.PresentationAttributes.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/DOM.RadialGradient.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.RadialGradient.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.RadialGradient.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.RadialGradient.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/DOM.SVG+Parse.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.SVG+Parse.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.SVG+Parse.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.SVG+Parse.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/DOM.SVG.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.SVG.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.SVG.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.SVG.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/DOM.Switch.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Switch.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Switch.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Switch.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/DOM.Text.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Text.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Text.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Text.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/DOM.Use.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Use.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Use.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.Use.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/DOM.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/DOM.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/Parser.XML.Attributes.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Attributes.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Attributes.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Attributes.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/Parser.XML.Color.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Color.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Color.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Color.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/Parser.XML.Element.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Element.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Element.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Element.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/Parser.XML.Filter.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Filter.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Filter.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Filter.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/Parser.XML.Image.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Image.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Image.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Image.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/Parser.XML.LinearGradient.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.LinearGradient.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.LinearGradient.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.LinearGradient.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/Parser.XML.Path.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Path.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Path.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Path.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/Parser.XML.Pattern.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Pattern.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Pattern.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Pattern.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/Parser.XML.RadialGradient.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.RadialGradient.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.RadialGradient.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.RadialGradient.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/Parser.XML.SVG.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.SVG.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.SVG.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.SVG.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/Parser.XML.Scanner.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Scanner.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Scanner.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Scanner.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/Parser.XML.StyleSheet.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.StyleSheet.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.StyleSheet.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.StyleSheet.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/Parser.XML.Text.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Text.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Text.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Text.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/Parser.XML.Transform.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Transform.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Transform.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Transform.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/Parser.XML.Use.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Use.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Use.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.Use.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/Parser.XML.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/Parser.XML.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/TextOutputStream+StandardError.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/TextOutputStream+StandardError.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/TextOutputStream+StandardError.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/TextOutputStream+StandardError.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/URL+Data.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/URL+Data.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/URL+Data.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/URL+Data.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/URL+Fragment.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/URL+Fragment.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/URL+Fragment.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/URL+Fragment.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/XML.Element.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/XML.Element.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/XML.Element.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/XML.Element.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/DOM/Sources/XML.SAXParser.swift" : {
+    "index-unit-output-path" : "/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/XML.SAXParser.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/XML.SAXParser.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDrawDOM.build/Objects-normal/arm64/XML.SAXParser.o"
+  }
+}

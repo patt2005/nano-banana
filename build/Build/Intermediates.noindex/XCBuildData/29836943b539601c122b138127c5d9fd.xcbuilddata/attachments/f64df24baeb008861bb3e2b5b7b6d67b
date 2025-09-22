@@ -1,0 +1,201 @@
+{
+  "" : {
+    "const-values" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/NanoBanana-primary.swiftconstvalues",
+    "dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/NanoBanana-primary.d",
+    "diagnostics" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/NanoBanana-primary.dia",
+    "emit-module-dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/NanoBanana-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/NanoBanana-primary-emit-module.dia",
+    "pch" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/NanoBanana-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/NanoBanana-primary.swiftdeps"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Components/BottomNavigationBar.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/BottomNavigationBar.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/BottomNavigationBar.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/BottomNavigationBar.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Components/CachedAsyncImage.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/CachedAsyncImage.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/CachedAsyncImage.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/CachedAsyncImage.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Components/CameraPickerView.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/CameraPickerView.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/CameraPickerView.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/CameraPickerView.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Components/GalleryImagePicker.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/GalleryImagePicker.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/GalleryImagePicker.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/GalleryImagePicker.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Components/ImagePicker.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ImagePicker.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ImagePicker.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ImagePicker.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Components/MessageBubble.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/MessageBubble.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/MessageBubble.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/MessageBubble.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Components/PhotoPickerView.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/PhotoPickerView.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/PhotoPickerView.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/PhotoPickerView.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Components/PinterestGrid.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/PinterestGrid.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/PinterestGrid.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/PinterestGrid.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Components/ShareSheet.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ShareSheet.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ShareSheet.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ShareSheet.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Components/SymmetricPinterestGrid.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/SymmetricPinterestGrid.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/SymmetricPinterestGrid.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/SymmetricPinterestGrid.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Managers/ImageCacheManager.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ImageCacheManager.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ImageCacheManager.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ImageCacheManager.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Managers/ImagePromptManager.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ImagePromptManager.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ImagePromptManager.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ImagePromptManager.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Managers/ImageStorageManager.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ImageStorageManager.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ImageStorageManager.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ImageStorageManager.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Managers/SubscriptionManager.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/SubscriptionManager.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/SubscriptionManager.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/SubscriptionManager.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Models/AppManager.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/AppManager.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/AppManager.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/AppManager.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Models/ChatHistory.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ChatHistory.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ChatHistory.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ChatHistory.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Models/ChatViewModel.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ChatViewModel.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ChatViewModel.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ChatViewModel.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Models/Extensions.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/Extensions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/Extensions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/Extensions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Models/GalleryHistoryItem.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/GalleryHistoryItem.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/GalleryHistoryItem.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/GalleryHistoryItem.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Models/ImagePromptData.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ImagePromptData.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ImagePromptData.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ImagePromptData.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/NanoBananaApp.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/NanoBananaApp.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/NanoBananaApp.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/NanoBananaApp.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Services/APIService.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/APIService.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/APIService.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/APIService.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Services/GeminiAPIService.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/GeminiAPIService.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/GeminiAPIService.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/GeminiAPIService.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/ViewModels/GalleryViewModel.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/GalleryViewModel.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/GalleryViewModel.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/GalleryViewModel.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/ViewModels/HomeViewModel.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/HomeViewModel.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/HomeViewModel.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/HomeViewModel.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/AppView.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/AppView.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/AppView.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/AppView.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/ChatHistorySideMenu.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ChatHistorySideMenu.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ChatHistorySideMenu.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ChatHistorySideMenu.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/ChatPage.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ChatPage.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ChatPage.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ChatPage.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/ContentView.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ContentView.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/EditImageView.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/EditImageView.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/EditImageView.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/EditImageView.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/GalleryPage.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/GalleryPage.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/GalleryPage.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/GalleryPage.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/HistoryView.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/HistoryView.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/HistoryView.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/HistoryView.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/HomePage.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/HomePage.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/HomePage.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/HomePage.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/SettingsView.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/SettingsView.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/SettingsView.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/SettingsView.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/ShopPage.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ShopPage.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ShopPage.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/ShopPage.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/SplashView.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/SplashView.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/SplashView.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/SplashView.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/VisualOnboardingView.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/VisualOnboardingView.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/VisualOnboardingView.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/VisualOnboardingView.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "index-unit-output-path" : "/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/GeneratedAssetSymbols.o"
+  }
+}

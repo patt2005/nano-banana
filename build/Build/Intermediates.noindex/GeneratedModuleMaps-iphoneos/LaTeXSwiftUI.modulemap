@@ -1,0 +1,4 @@
+module LaTeXSwiftUI {
+header "LaTeXSwiftUI-Swift.h"
+export *
+}

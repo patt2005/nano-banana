@@ -1,0 +1,96 @@
+{
+  "source": "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Components/PhotoPickerView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Open Settings",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 40
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 41
+        }
+      },
+      {
+        "comment": "",
+        "key": "Settings",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 42
+        }
+      },
+      {
+        "comment": "",
+        "key": "Please enable photo library access in Settings to select images.",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 49
+        }
+      },
+      {
+        "comment": "",
+        "key": "Access Your Photos",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 69
+        }
+      },
+      {
+        "comment": "",
+        "key": "Navo AI needs access to your photo library to transform and edit your images.",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 73
+        }
+      },
+      {
+        "comment": "",
+        "key": "Continue",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 82
+        }
+      },
+      {
+        "comment": "",
+        "key": "Photo Access Required",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 118
+        }
+      },
+      {
+        "comment": "",
+        "key": "Please enable photo library access in Settings to select images for transformation.",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 122
+        }
+      },
+      {
+        "comment": "",
+        "key": "Open Settings",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 134
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 152
+        }
+      }
+    ]
+  },
+  "version": 1
+}

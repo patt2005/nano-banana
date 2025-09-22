@@ -1,0 +1,16 @@
+{
+  "source": "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Components/PinterestGrid.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Image %lld",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 55
+        }
+      }
+    ]
+  },
+  "version": 1
+}

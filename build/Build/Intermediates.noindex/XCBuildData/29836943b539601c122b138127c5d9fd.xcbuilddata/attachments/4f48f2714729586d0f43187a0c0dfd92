@@ -1,0 +1,176 @@
+{
+  "" : {
+    "const-values" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeXSwiftUI-primary.swiftconstvalues",
+    "dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeXSwiftUI-primary.d",
+    "diagnostics" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeXSwiftUI-primary.dia",
+    "emit-module-dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeXSwiftUI-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeXSwiftUI-primary-emit-module.dia",
+    "pch" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeXSwiftUI-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeXSwiftUI-primary.swiftdeps"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Extensions/EnvironmentValues+Extensions.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/EnvironmentValues+Extensions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/EnvironmentValues+Extensions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/EnvironmentValues+Extensions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Extensions/Font+Extensions.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Font+Extensions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Font+Extensions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Font+Extensions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Extensions/Image+Extensions.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Image+Extensions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Image+Extensions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Image+Extensions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Extensions/MathJax+Extensions.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/MathJax+Extensions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/MathJax+Extensions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/MathJax+Extensions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Extensions/NSImage+Extensions.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/NSImage+Extensions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/NSImage+Extensions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/NSImage+Extensions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Extensions/Range+Extensions.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Range+Extensions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Range+Extensions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Range+Extensions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Extensions/TeXInputProcessorOptions+Extensions.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/TeXInputProcessorOptions+Extensions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/TeXInputProcessorOptions+Extensions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/TeXInputProcessorOptions+Extensions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Extensions/View+Extensions.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/View+Extensions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/View+Extensions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/View+Extensions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/LaTeX.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Models/Aliases.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Aliases.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Aliases.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Aliases.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Models/Cache.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Cache.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Cache.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Cache.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Models/Component.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Component.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Component.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Component.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Models/ComponentBlock.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/ComponentBlock.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/ComponentBlock.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/ComponentBlock.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Models/HashableCGRect.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/HashableCGRect.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/HashableCGRect.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/HashableCGRect.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Models/HashableCGSize.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/HashableCGSize.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/HashableCGSize.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/HashableCGSize.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Models/ImageContainer.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/ImageContainer.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/ImageContainer.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/ImageContainer.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Models/Parser.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Parser.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Parser.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Parser.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Models/Renderer.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Renderer.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Renderer.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/Renderer.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Models/SVG.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/SVG.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/SVG.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/SVG.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Models/SVGGeometry.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/SVGGeometry.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/SVGGeometry.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/SVGGeometry.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Previews/LaTeX_Previews+Color.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX_Previews+Color.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX_Previews+Color.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX_Previews+Color.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Previews/LaTeX_Previews+Fonts.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX_Previews+Fonts.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX_Previews+Fonts.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX_Previews+Fonts.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Previews/LaTeX_Previews+Modes.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX_Previews+Modes.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX_Previews+Modes.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX_Previews+Modes.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Previews/LaTeX_Previews+Numbers.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX_Previews+Numbers.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX_Previews+Numbers.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX_Previews+Numbers.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Previews/LaTeX_Previews+Special.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX_Previews+Special.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX_Previews+Special.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX_Previews+Special.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Previews/LaTeX_Previews+Styles.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX_Previews+Styles.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX_Previews+Styles.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeX_Previews+Styles.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Styles/DefaultLaTeXStyle.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/DefaultLaTeXStyle.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/DefaultLaTeXStyle.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/DefaultLaTeXStyle.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Styles/LaTeXStyle.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeXStyle.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeXStyle.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeXStyle.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Styles/StandardLaTeXStyle.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/StandardLaTeXStyle.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/StandardLaTeXStyle.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/StandardLaTeXStyle.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Views/ComponentBlocksText.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/ComponentBlocksText.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/ComponentBlocksText.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/ComponentBlocksText.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Views/ComponentBlocksViews.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/ComponentBlocksViews.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/ComponentBlocksViews.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/ComponentBlocksViews.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Views/EquationNumber.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/EquationNumber.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/EquationNumber.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/EquationNumber.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Views/HorizontalImageScroller.swift" : {
+    "index-unit-output-path" : "/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/HorizontalImageScroller.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/HorizontalImageScroller.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/HorizontalImageScroller.o"
+  }
+}

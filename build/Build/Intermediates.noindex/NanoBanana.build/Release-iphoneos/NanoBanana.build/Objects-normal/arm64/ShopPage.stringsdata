@@ -1,0 +1,112 @@
+{
+  "source": "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/ShopPage.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Purchase Error",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 184
+        }
+      },
+      {
+        "comment": "",
+        "key": "Purchase Successful!",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 189
+        }
+      },
+      {
+        "comment": "",
+        "key": "Purchase Credits",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 41
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld Credits",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 61
+        }
+      },
+      {
+        "comment": "",
+        "key": "Available Balance",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 65
+        }
+      },
+      {
+        "comment": "",
+        "key": "Choose a Package",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 93
+        }
+      },
+      {
+        "comment": "",
+        "key": "%@ Credits",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 123
+        }
+      },
+      {
+        "comment": "",
+        "key": "Purchase",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 143
+        }
+      },
+      {
+        "comment": "",
+        "key": "Restore Purchases",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 171
+        }
+      },
+      {
+        "comment": "",
+        "key": "OK",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 185
+        }
+      },
+      {
+        "comment": "",
+        "key": "OK",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 190
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld credits have been added to your account.",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 194
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld Credits",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 300
+        }
+      }
+    ]
+  },
+  "version": 1
+}

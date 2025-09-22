@@ -1,0 +1,96 @@
+{
+  "source": "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/HistoryView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Are you sure?",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 92
+        }
+      },
+      {
+        "comment": "",
+        "key": "History",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 22
+        }
+      },
+      {
+        "comment": "",
+        "key": "Clear",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 32
+        }
+      },
+      {
+        "comment": "",
+        "key": "No History Yet",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 58
+        }
+      },
+      {
+        "comment": "",
+        "key": "Clear All",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 93
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 24,
+          "startingLine": 97
+        }
+      },
+      {
+        "comment": "",
+        "key": "This will permanently delete all chat history.",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 99
+        }
+      },
+      {
+        "comment": "",
+        "key": "Delete Chat",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 155
+        }
+      },
+      {
+        "comment": "",
+        "key": "Delete",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 156
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 159
+        }
+      },
+      {
+        "comment": "",
+        "key": "This will permanently delete this chat conversation.",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 161
+        }
+      }
+    ]
+  },
+  "version": 1
+}

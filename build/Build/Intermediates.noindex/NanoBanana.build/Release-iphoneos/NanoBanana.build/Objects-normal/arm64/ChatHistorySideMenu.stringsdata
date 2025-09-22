@@ -1,0 +1,72 @@
+{
+  "source": "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/ChatHistorySideMenu.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Delete All Chats",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 153
+        }
+      },
+      {
+        "comment": "",
+        "key": "Chat History",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 12
+        }
+      },
+      {
+        "comment": "",
+        "key": "No chat history",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 56
+        }
+      },
+      {
+        "comment": "",
+        "key": "•",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 107
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld messages",
+        "location": {
+          "startingColumn": 54,
+          "startingLine": 110
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 154
+        }
+      },
+      {
+        "comment": "",
+        "key": "Delete All",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 155
+        }
+      },
+      {
+        "comment": "",
+        "key": "Are you sure you want to delete all chat history? This action cannot be undone.",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 159
+        }
+      }
+    ]
+  },
+  "version": 1
+}

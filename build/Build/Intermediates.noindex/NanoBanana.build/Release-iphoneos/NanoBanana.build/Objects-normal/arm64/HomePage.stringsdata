@@ -1,0 +1,112 @@
+{
+  "source": "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/HomePage.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Loading content...",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 39
+        }
+      },
+      {
+        "comment": "",
+        "key": "Failed to load content",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 49
+        }
+      },
+      {
+        "comment": "",
+        "key": "Retry",
+        "location": {
+          "startingColumn": 36,
+          "startingLine": 59
+        }
+      },
+      {
+        "comment": "",
+        "key": "Explore",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 113
+        }
+      },
+      {
+        "comment": "",
+        "key": "AI Filters",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 152
+        }
+      },
+      {
+        "comment": "",
+        "key": "Shop",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 226
+        }
+      },
+      {
+        "comment": "",
+        "key": "PREMIUM",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 296
+        }
+      },
+      {
+        "comment": "",
+        "key": "Upgrade",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 319
+        }
+      },
+      {
+        "comment": "",
+        "key": "🔥",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 389
+        }
+      },
+      {
+        "comment": "",
+        "key": "Loading...",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 446
+        }
+      },
+      {
+        "comment": "",
+        "key": "Premium Content",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 533
+        }
+      },
+      {
+        "comment": "",
+        "key": "Unlock to access",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 537
+        }
+      },
+      {
+        "comment": "",
+        "key": "Upgrade Now",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 546
+        }
+      }
+    ]
+  },
+  "version": 1
+}

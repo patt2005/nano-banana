@@ -100,7 +100,7 @@ class HomeViewModel: ObservableObject {
                             self?.generatedImage = image
 
                             // Save to gallery
-                            ImagePromptManager.shared.saveImage(image, withPrompt: prompt)
+                            _ = ImagePromptManager.shared.saveImage(image, withPrompt: prompt)
 
                             // Deduct 5 credits for successful image generation
                             SubscriptionManager.shared.useCredits(5)

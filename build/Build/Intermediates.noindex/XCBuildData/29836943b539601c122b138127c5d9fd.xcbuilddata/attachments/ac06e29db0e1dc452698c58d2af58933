@@ -1,0 +1,4 @@
+module HTMLEntities {
+header "HTMLEntities-Swift.h"
+export *
+}

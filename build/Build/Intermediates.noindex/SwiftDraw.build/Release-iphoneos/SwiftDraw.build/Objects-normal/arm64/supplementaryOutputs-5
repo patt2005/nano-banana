@@ -1,0 +1,12 @@
+{
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/SwiftDraw/SwiftDraw/Sources/CommandLine/CommandLine+Process.swift" : {
+    "abi-baseline-json" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDraw.build/Objects-normal/arm64/SwiftDraw.abi.json",
+    "const-values" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDraw.build/Objects-normal/arm64/SwiftDraw-primary.swiftconstvalues",
+    "dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDraw.build/Objects-normal/arm64/SwiftDraw-primary.d",
+    "diagnostics" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDraw.build/Objects-normal/arm64/SwiftDraw-primary.dia",
+    "objc-header" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDraw.build/Objects-normal/arm64/SwiftDraw-Swift.h",
+    "swiftdoc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDraw.build/Objects-normal/arm64/SwiftDraw.swiftdoc",
+    "swiftmodule" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDraw.build/Objects-normal/arm64/SwiftDraw.swiftmodule",
+    "swiftsourceinfo" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/SwiftDraw.build/Release-iphoneos/SwiftDraw.build/Objects-normal/arm64/SwiftDraw.swiftsourceinfo"
+  }
+}

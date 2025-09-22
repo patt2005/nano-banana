@@ -1,0 +1,12 @@
+{
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/swift-html-entities/Sources/HTMLEntities/Constants.swift" : {
+    "abi-baseline-json" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/HTMLEntities.abi.json",
+    "const-values" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/HTMLEntities-primary.swiftconstvalues",
+    "dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/HTMLEntities-primary.d",
+    "diagnostics" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/HTMLEntities-primary.dia",
+    "objc-header" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/HTMLEntities-Swift.h",
+    "swiftdoc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/HTMLEntities.swiftdoc",
+    "swiftmodule" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/HTMLEntities.swiftmodule",
+    "swiftsourceinfo" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/HTMLEntities.swiftsourceinfo"
+  }
+}

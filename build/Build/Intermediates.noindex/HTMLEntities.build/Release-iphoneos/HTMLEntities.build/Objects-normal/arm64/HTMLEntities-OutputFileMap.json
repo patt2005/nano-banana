@@ -1,0 +1,31 @@
+{
+  "" : {
+    "const-values" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/HTMLEntities-primary.swiftconstvalues",
+    "dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/HTMLEntities-primary.d",
+    "diagnostics" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/HTMLEntities-primary.dia",
+    "emit-module-dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/HTMLEntities-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/HTMLEntities-primary-emit-module.dia",
+    "pch" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/HTMLEntities-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/HTMLEntities-primary.swiftdeps"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/swift-html-entities/Sources/HTMLEntities/Constants.swift" : {
+    "index-unit-output-path" : "/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/Constants.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/Constants.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/Constants.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/swift-html-entities/Sources/HTMLEntities/ParseError.swift" : {
+    "index-unit-output-path" : "/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/ParseError.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/ParseError.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/ParseError.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/swift-html-entities/Sources/HTMLEntities/String+HTMLEntities.swift" : {
+    "index-unit-output-path" : "/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/String+HTMLEntities.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/String+HTMLEntities.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/String+HTMLEntities.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/swift-html-entities/Sources/HTMLEntities/Utilities.swift" : {
+    "index-unit-output-path" : "/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/Utilities.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/Utilities.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/HTMLEntities.build/Release-iphoneos/HTMLEntities.build/Objects-normal/arm64/Utilities.o"
+  }
+}

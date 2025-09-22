@@ -1,0 +1,378 @@
+{
+  "version": "1.0",
+  "categories": {
+    "lifestyle": {
+      "name": "Lifestyle & People",
+      "description": "Photos of people, activities, and lifestyle moments",
+      "maxItems": 5,
+      "images": [
+        {
+          "id": "lifestyle_1",
+          "imagePath": "https://storage.googleapis.com/nano_ai/first_category%20/1_1.png",
+          "prompt": "Young woman smiling with coffee",
+          "tags": ["people", "lifestyle"]
+        },
+        {
+          "id": "lifestyle_2",
+          "imagePath": "https://storage.googleapis.com/nano_ai/first_category%20/1_2.png",
+          "prompt": "Man working on laptop outdoors",
+          "tags": ["people", "lifestyle"]
+        },
+        {
+          "id": "lifestyle_3",
+          "imagePath": "https://storage.googleapis.com/nano_ai/first_category%20/1_3.png",
+          "prompt": "Woman exercising in nature",
+          "tags": ["people", "lifestyle"]
+        },
+        {
+          "id": "lifestyle_4",
+          "imagePath": "https://storage.googleapis.com/nano_ai/first_category%20/1_4.png",
+          "prompt": "Friends having fun together",
+          "tags": ["people", "lifestyle"]
+        },
+        {
+          "id": "lifestyle_5",
+          "imagePath": "https://storage.googleapis.com/nano_ai/first_category%20/1_5.png",
+          "prompt": "Man smiling portrait",
+          "tags": ["people", "lifestyle"]
+        }
+      ]
+    },
+    
+    "functionality": {
+      "name": "AI Functionality",
+      "description": "AI tools and functional features",
+      "maxItems": 12,
+      "images": [
+        {
+          "id": "functionality_1",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_1.png",
+          "prompt": "Family portrait before and after, father mother and child, adding stylish red sunglasses to faces, home interior background, warm lighting, AI editing demonstration",
+          "title": "Smart Add & Replace"        },
+        {
+          "id": "functionality_2",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_2.png",
+          "prompt": "Young woman sitting on red car hood before and after, removing person from background, mountain desert road, clean editing result, object removal demo",
+          "title":"Erase Objects"        },
+        {
+          "id": "functionality_3",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_3.png",
+          "prompt": "Chic woman at upscale cafe, cinematic transition effect with flowing curve revealing exotic tropical paradise background, luxury travel transformation",
+          "title":"Change Background"        },
+        {
+          "id": "functionality_4",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_4.png",
+          "prompt": "Remove Background: Professional model in designer blazer, elegant spiral motion revealing pristine studio lighting, premium background isolation, high-fashion cutout, no text overlays",
+          "title":"Remove Background"
+        },
+        {
+          "id": "functionality_5",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_5.png",
+          "prompt": "Professional Photo: Handsome executive makeover with ascending golden stairs effect, casual to CEO transformation, luxury corporate styling, success journey visualization, clean image no text",
+          "title":"Professional Photo"        },
+        {
+          "id": "functionality_6",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_6.png",
+          "prompt": "Restore Image:Vintage couple photograph with magical time-reversal swirl, damaged antique to pristine restoration, heritage preservation artistry, timeless photo revival, with no before and after ",
+          "title":"Restore Image"        },
+        {
+          "id": "functionality_7",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_7.png",
+          "prompt": "Change Hair Color: Gorgeous model with flowing color gradient transition, natural brunette to luxurious auburn transformation, salon-quality AI styling, premium beauty enhancement",
+          "title":"Change Hair Color"        },
+        {
+          "id": "functionality_8",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_8.png",
+          "prompt": "Face Expression: Sophisticated businesswoman with emotional arc visualization, confident to radiant smile progression, mood transformation artistry, premium portrait editing, with no before and after ",
+          "title":"Face Expression"        },
+        {
+          "id": "functionality_9",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_9.png",
+          "prompt": "Colorize Image: Distinguished gentleman with painterly brush strokes revealing vibrant colors, artistic black-white to full spectrum transformation, museum-quality colorization, with no before and after text",
+          "title":"Colorize Image"        },
+        {
+          "id": "functionality_10",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_10.png",
+          "prompt": "Cartoon Effect: Dynamic woman driver with comic book explosion transition, photorealistic to animated superhero style, premium illustration conversion, no before and after text ",
+          "title":"Cartoon Effect"        },
+        {
+          "id": "functionality_11",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_11.png",
+          "prompt": "Baby Me: Beautiful woman with time-spiral regression effect, elegant age reversal to adorable infant, magical youth transformation, premium age simulation, no before and after text ",
+          "title":"Baby Me"        },
+        {
+          "id": "functionality_12",
+          "imagePath": "https://storage.googleapis.com/nano_ai/third_category(functionality)/3_12.png",
+          "prompt": "Older Me: Handsome young man with wisdom pathway visualization, youth to distinguished maturity, graceful aging simulation, premium time progression, no before and after text",
+          "title":"Older Me"        }
+        
+      ]
+    },
+    
+    "explore": {
+      "name": "Explore & Discover",
+      "description": "Wide variety of creative content and inspiration",
+      "maxItems": 20,
+      "images": [
+        {
+          "id": "explore_1",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_1.png",
+          "prompt": "Stunning redhead in emerald green dress, confident gaze, luxury hotel lobby, dramatic lighting, high fashion elegance",
+          
+        },
+        {
+          "id": "explore_2",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_2.png",
+          "prompt": "Beautiful woman floating in white void, elegant dress flowing, surreal artistic portrait, minimalist dream aesthetic",
+          "tags": ["explore", "art"]
+        },
+        {
+          "id": "explore_3",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_3.png",
+          "prompt": "Cute corgi puppy suspended in pure white space, playful pose, clean product photography style, adorable isolated subject",
+          
+        },
+        {
+          "id": "explore_4",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_4.png",
+          "prompt": "Ethereal fairy woman with glowing wings, enchanted forest, magical sparkles, fantasy portrait, otherworldly beauty",
+          
+        },
+        {
+          "id": "explore_5",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_5.png",
+          "prompt": "Dragon breathing rainbow fire, mystical mountain peak, epic fantasy scene, vibrant magical colors, legendary creature",
+          
+        },
+        {
+          "id": "explore_6",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_6.png",
+          "prompt": "Anime girl with pastel pink hair, sailor outfit, cherry blossom background, cute kawaii style, soft anime aesthetic",
+          
+        },
+        {
+          "id": "explore_7",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_7.png",
+          "prompt": "Cool anime warrior woman, flowing black hair, traditional Japanese setting, dramatic manga style, fierce expression",
+          
+        },
+        {
+          "id": "explore_8",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_8.png",
+          "prompt": "Pin-up style woman in polka dot dress, vintage kitchen setting, 1950s aesthetic, classic red lipstick, nostalgic charm",
+          
+        },
+        {
+          "id": "explore_9",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_9.png",
+          "prompt": "Elegant woman in 1920s flapper dress, art deco background, pearls and feathers, gatsby era glamour",
+          
+        },
+        {
+          "id": "explore_10",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_10.png",
+          "prompt": "Mystical forest path with morning mist, ancient trees, golden sunbeams, fairy-tale atmosphere, enchanted woodland",
+          
+        },
+        {
+          "id": "explore_11",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_11.png",
+          "prompt": "Beautiful family laughing together at beach sunset, children playing in waves, golden hour warmth, pure happiness, vacation memories",
+          
+        },
+        {
+          "id": "explore_12",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_12.png",
+          "prompt": "Grandmother teaching granddaughter to bake, flour-covered kitchen, warm family moment, generational love, heartwarming scene",
+          
+        },
+        {
+          "id": "explore_13",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_13.png",
+          "prompt": "Artistic photographer capturing sunset, creative passion, silhouette against golden sky, pursuit of beauty, artistic dedication",
+          
+        },
+        {
+          "id": "explore_14",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_14.png",
+          "prompt": "Dark sorceress with glowing purple eyes, flowing black hair, mystical runes floating around, gothic castle background, powerful magic energy",
+          
+        },
+        {
+          "id": "explore_15",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_15.png",
+          "prompt": "Pirate captain woman on ship deck, storm clouds, wind-blown hair, sword drawn, dangerous ocean adventure, rebellious sea goddess",
+          
+        },
+        {
+          "id": "explore_16",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_16.png",
+          "prompt": "Ancient dragon perched on crystal mountain peak, iridescent scales reflecting aurora lights, massive wings spread, breathtaking mystical landscape, legendary creature majesty",
+          
+        },
+        {
+          "id": "explore_17",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_17.png",
+          "prompt": "Aurora beast made of northern lights, ethereal creature dancing in sky, spectral wolf form, celestial phenomenon, light magic manifestation",
+          
+        },
+        {
+          "id": "explore_18",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_18.png",
+          "prompt": "Underwater temple with mer-creatures, coral throne room, bioluminescent sea life, sunken civilization, aquatic fantasy kingdom, oceanic mystery",
+          
+        },
+        {
+          "id": "explore_19",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_19.png",
+          "prompt": "Beautiful blonde relaxing in infinity pool, tropical villa setting, crystal clear water, designer swimwear, peaceful luxury vacation vibes",
+          
+        },
+        {
+          "id": "explore_20",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_20.png",
+          "prompt": "Chic woman in silk pajamas having breakfast in bed, silver tray with pastries, fresh flowers, floor-to-ceiling windows, morning luxury ritual",
+          
+        },
+        {
+          "id": "explore_21",
+          "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_21.png",
+          "prompt": "Beautiful blonde in shimmering gold sequin dress, red carpet event, paparazzi flashes, designer jewelry, Hollywood glamour, A-list celebrity style",
+          
+        },
+       
+       
+       {
+         "id": "explore_22",
+         "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_22.png",
+         "prompt": "Beautiful redhead in champagne colored ball gown, grand hotel ballroom, live orchestra background, timeless elegance, luxury wedding guest style",
+         
+       },
+       {
+         "id": "explore_23",
+         "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_23.png",
+         "prompt": "Stunning brunette in rose gold dress posing confidently, sea of photographers with long lenses, red carpet backdrop, designer heels, A-list glamour spectacle",
+         
+       },
+       {
+         "id": "explore_24",
+         "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_24.png",
+         "prompt": "Stunning blonde in shimmering gold sequin dress surrounded by crowd of photographers, camera flashes everywhere, red carpet premiere, Hollywood glamour chaos, A-list celebrity moment",
+       },
+       
+       {
+         "id": "explore_25",
+         "imagePath": "https://storage.googleapis.com/nano_ai/second_category(explore)/2_25.png",
+         "prompt": "Elegant woman in designer dress walking through Parisian boutique, shopping bags in hand, confident stride, sophisticated fashion lifestyle, chic urban elegance",
+         "tags": ["explore", "fashion"]
+       }
+      ]
+    },
+    
+    "housing": {
+      "name": "Real Estate & Housing",
+      "description": "Properties, homes, apartments, and interior design",
+      "maxItems": 15,
+      "images": [
+        {
+          "id": "housing_1",
+          "imagePath": "",
+          "prompt": "",
+          "tags": ["real-estate", "housing"]
+        }
+      ]
+    },
+    
+    "filter": {
+      "name": "AI Filters",
+      "description": "Advanced AI filters and effects",
+      "maxItems": 12,
+      "images": [
+        {
+          "id": "filter_1",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_2",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_3",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_4",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_5",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_6",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_7",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_8",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_9",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_10",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_11",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        },
+        {
+          "id": "filter_12",
+          "imagePath": "",
+          "prompt": "",
+          "title": "",
+          "tags": ["filter", "ai", "effects"]
+        }
+      ]
+    }
+  }
+}

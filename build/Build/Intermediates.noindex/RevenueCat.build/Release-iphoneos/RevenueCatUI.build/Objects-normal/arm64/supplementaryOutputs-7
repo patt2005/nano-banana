@@ -1,0 +1,12 @@
+{
+  "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/RevenueCat.build/Release-iphoneos/RevenueCatUI.build/DerivedSources/resource_bundle_accessor.swift" : {
+    "abi-baseline-json" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/RevenueCat.build/Release-iphoneos/RevenueCatUI.build/Objects-normal/arm64/RevenueCatUI.abi.json",
+    "const-values" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/RevenueCat.build/Release-iphoneos/RevenueCatUI.build/Objects-normal/arm64/RevenueCatUI-primary.swiftconstvalues",
+    "dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/RevenueCat.build/Release-iphoneos/RevenueCatUI.build/Objects-normal/arm64/RevenueCatUI-primary.d",
+    "diagnostics" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/RevenueCat.build/Release-iphoneos/RevenueCatUI.build/Objects-normal/arm64/RevenueCatUI-primary.dia",
+    "objc-header" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/RevenueCat.build/Release-iphoneos/RevenueCatUI.build/Objects-normal/arm64/RevenueCatUI-Swift.h",
+    "swiftdoc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/RevenueCat.build/Release-iphoneos/RevenueCatUI.build/Objects-normal/arm64/RevenueCatUI.swiftdoc",
+    "swiftmodule" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/RevenueCat.build/Release-iphoneos/RevenueCatUI.build/Objects-normal/arm64/RevenueCatUI.swiftmodule",
+    "swiftsourceinfo" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/RevenueCat.build/Release-iphoneos/RevenueCatUI.build/Objects-normal/arm64/RevenueCatUI.swiftsourceinfo"
+  }
+}

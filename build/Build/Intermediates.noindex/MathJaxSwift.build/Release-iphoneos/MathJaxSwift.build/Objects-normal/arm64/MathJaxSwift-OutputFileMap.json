@@ -1,0 +1,231 @@
+{
+  "" : {
+    "const-values" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MathJaxSwift-primary.swiftconstvalues",
+    "dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MathJaxSwift-primary.d",
+    "diagnostics" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MathJaxSwift-primary.dia",
+    "emit-module-dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MathJaxSwift-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MathJaxSwift-primary-emit-module.dia",
+    "pch" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MathJaxSwift-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MathJaxSwift-primary.swiftdeps"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/DerivedSources/resource_bundle_accessor.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/resource_bundle_accessor.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/resource_bundle_accessor.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/resource_bundle_accessor.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Conversions/AM/AM2CHTML.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AM2CHTML.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AM2CHTML.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AM2CHTML.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Conversions/AM/AM2MML.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AM2MML.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AM2MML.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AM2MML.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Conversions/MML/MML2CHTML.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MML2CHTML.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MML2CHTML.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MML2CHTML.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Conversions/MML/MML2SVG.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MML2SVG.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MML2SVG.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MML2SVG.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Conversions/TeX/TeX2CHTML.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/TeX2CHTML.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/TeX2CHTML.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/TeX2CHTML.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Conversions/TeX/TeX2MML.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/TeX2MML.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/TeX2MML.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/TeX2MML.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Conversions/TeX/TeX2SVG.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/TeX2SVG.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/TeX2SVG.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/TeX2SVG.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Internal/Constants.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/Constants.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/Constants.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/Constants.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Internal/Function.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/Function.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/Function.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/Function.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Internal/MathJaxError.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MathJaxError.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MathJaxError.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MathJaxError.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Internal/PackageLock.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/PackageLock.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/PackageLock.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/PackageLock.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Internal/Parsing/HTMLParser.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/HTMLParser.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/HTMLParser.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/HTMLParser.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Internal/Parsing/MMLParser.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MMLParser.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MMLParser.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MMLParser.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Internal/Parsing/Parser.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/Parser.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/Parser.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/Parser.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Internal/Parsing/SVGParser.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SVGParser.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SVGParser.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SVGParser.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/MathJax.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MathJax.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MathJax.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MathJax.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/ConversionOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/ConversionOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/ConversionOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/ConversionOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Document/A11YOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/A11YOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/A11YOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/A11YOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Document/DocumentOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/DocumentOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/DocumentOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/DocumentOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Document/Menu/MenuOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MenuOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MenuOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MenuOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Document/Menu/MenuOptionsSettings.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MenuOptionsSettings.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MenuOptionsSettings.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MenuOptionsSettings.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Document/SREOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SREOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SREOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SREOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Document/Safe/AllowOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AllowOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AllowOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AllowOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Document/Safe/SafeOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SafeOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SafeOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SafeOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Document/Safe/SafeProtocols.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SafeProtocols.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SafeProtocols.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SafeProtocols.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Document/Safe/SafeStyles.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SafeStyles.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SafeStyles.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SafeStyles.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Input/AMInputProcessorOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AMInputProcessorOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AMInputProcessorOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AMInputProcessorOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Input/InputProcessorOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/InputProcessorOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/InputProcessorOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/InputProcessorOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Input/MMLInputProcessorOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MMLInputProcessorOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MMLInputProcessorOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MMLInputProcessorOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Input/TeX Packages/AMSCDOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AMSCDOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AMSCDOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AMSCDOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Input/TeX Packages/AMSOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AMSOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AMSOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AMSOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Input/TeX Packages/AutoloadOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AutoloadOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AutoloadOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/AutoloadOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Input/TeX Packages/ColorOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/ColorOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/ColorOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/ColorOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Input/TeX Packages/MathtoolsOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MathtoolsOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MathtoolsOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/MathtoolsOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Input/TeX Packages/NoundefinedOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/NoundefinedOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/NoundefinedOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/NoundefinedOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Input/TeX Packages/PhysicsOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/PhysicsOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/PhysicsOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/PhysicsOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Input/TeX Packages/RequireOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/RequireOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/RequireOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/RequireOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Input/TeX Packages/SetOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SetOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SetOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SetOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Input/TeX Packages/TagFormatOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/TagFormatOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/TagFormatOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/TagFormatOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Input/TeXInputProcessorOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/TeXInputProcessorOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/TeXInputProcessorOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/TeXInputProcessorOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Output/CHTMLOutputProcessorOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/CHTMLOutputProcessorOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/CHTMLOutputProcessorOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/CHTMLOutputProcessorOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Output/OutputProcessorOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/OutputProcessorOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/OutputProcessorOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/OutputProcessorOptions.o"
+  },
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/MathJaxSwift/Sources/MathJaxSwift/Options/Output/SVGOutputProcessorOptions.swift" : {
+    "index-unit-output-path" : "/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SVGOutputProcessorOptions.o",
+    "llvm-bc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SVGOutputProcessorOptions.bc",
+    "object" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/MathJaxSwift.build/Release-iphoneos/MathJaxSwift.build/Objects-normal/arm64/SVGOutputProcessorOptions.o"
+  }
+}

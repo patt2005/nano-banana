@@ -1,0 +1,96 @@
+{
+  "source": "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Components/MessageBubble.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Copied!",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 94
+        }
+      },
+      {
+        "comment": "",
+        "key": "Copy",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 75
+        }
+      },
+      {
+        "comment": "",
+        "key": "OK",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 95
+        }
+      },
+      {
+        "comment": "",
+        "key": "Text was copied to clipboard",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 97
+        }
+      },
+      {
+        "comment": "",
+        "key": "Done",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 129
+        }
+      },
+      {
+        "comment": "",
+        "key": "Copied!",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 259
+        }
+      },
+      {
+        "comment": "",
+        "key": "Copy",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 218
+        }
+      },
+      {
+        "comment": "",
+        "key": "Share",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 234
+        }
+      },
+      {
+        "comment": "",
+        "key": "OK",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 260
+        }
+      },
+      {
+        "comment": "",
+        "key": "Text was copied to clipboard",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 262
+        }
+      },
+      {
+        "comment": "",
+        "key": "Type your message...",
+        "location": {
+          "startingColumn": 31,
+          "startingLine": 322
+        }
+      }
+    ]
+  },
+  "version": 1
+}

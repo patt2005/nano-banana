@@ -1,0 +1,12 @@
+{
+  "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/LaTeXSwiftUI/Sources/LaTeXSwiftUI/Extensions/EnvironmentValues+Extensions.swift" : {
+    "abi-baseline-json" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeXSwiftUI.abi.json",
+    "const-values" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeXSwiftUI-primary.swiftconstvalues",
+    "dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeXSwiftUI-primary.d",
+    "diagnostics" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeXSwiftUI-primary.dia",
+    "objc-header" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeXSwiftUI-Swift.h",
+    "swiftdoc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeXSwiftUI.swiftdoc",
+    "swiftmodule" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeXSwiftUI.swiftmodule",
+    "swiftsourceinfo" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/LaTeXSwiftUI.build/Release-iphoneos/LaTeXSwiftUI.build/Objects-normal/arm64/LaTeXSwiftUI.swiftsourceinfo"
+  }
+}

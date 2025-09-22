@@ -1,0 +1,88 @@
+{
+  "source": "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Components/GalleryImagePicker.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Add to Gallery",
+        "location": {
+          "startingColumn": 30,
+          "startingLine": 100
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 103
+        }
+      },
+      {
+        "comment": "",
+        "key": "Clear",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 110
+        }
+      },
+      {
+        "comment": "",
+        "key": "Select Photos",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 28
+        }
+      },
+      {
+        "comment": "",
+        "key": "Choose from Library",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 37
+        }
+      },
+      {
+        "comment": "",
+        "key": "Add Prompts to Images",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 49
+        }
+      },
+      {
+        "comment": "",
+        "key": "Cancel",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 77
+        }
+      },
+      {
+        "comment": "",
+        "key": "Save All",
+        "location": {
+          "startingColumn": 40,
+          "startingLine": 84
+        }
+      },
+      {
+        "comment": "",
+        "key": "Prompt pentru această imagine:",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 173
+        }
+      },
+      {
+        "comment": "",
+        "key": "Adaugă un prompt...",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 177
+        }
+      }
+    ]
+  },
+  "version": 1
+}

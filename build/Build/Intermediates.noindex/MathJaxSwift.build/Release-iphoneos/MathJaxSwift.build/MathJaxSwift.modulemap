@@ -1,0 +1,4 @@
+module MathJaxSwift {
+header "MathJaxSwift-Swift.h"
+export *
+}

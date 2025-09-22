@@ -1,0 +1,80 @@
+{
+  "source": "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/EditImageView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Save Image",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 297
+        }
+      },
+      {
+        "comment": "",
+        "key": "Save",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 82
+        }
+      },
+      {
+        "comment": "",
+        "key": "Share",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 101
+        }
+      },
+      {
+        "comment": "",
+        "key": "Upload Image",
+        "location": {
+          "startingColumn": 53,
+          "startingLine": 152
+        }
+      },
+      {
+        "comment": "",
+        "key": "Change Image",
+        "location": {
+          "startingColumn": 70,
+          "startingLine": 152
+        }
+      },
+      {
+        "comment": "",
+        "key": "Prompt",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 184
+        }
+      },
+      {
+        "comment": "",
+        "key": "Generating...",
+        "location": {
+          "startingColumn": 55,
+          "startingLine": 259
+        }
+      },
+      {
+        "comment": "",
+        "key": "Generate",
+        "location": {
+          "startingColumn": 73,
+          "startingLine": 259
+        }
+      },
+      {
+        "comment": "",
+        "key": "OK",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 298
+        }
+      }
+    ]
+  },
+  "version": 1
+}

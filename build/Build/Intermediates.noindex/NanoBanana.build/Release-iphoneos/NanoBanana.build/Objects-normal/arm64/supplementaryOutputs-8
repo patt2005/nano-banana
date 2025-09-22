@@ -1,0 +1,12 @@
+{
+  "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Components/BottomNavigationBar.swift" : {
+    "abi-baseline-json" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/NanoBanana.abi.json",
+    "const-values" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/NanoBanana-primary.swiftconstvalues",
+    "dependencies" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/NanoBanana-primary.d",
+    "diagnostics" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/NanoBanana-primary.dia",
+    "objc-header" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/NanoBanana-Swift.h",
+    "swiftdoc" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/NanoBanana.swiftdoc",
+    "swiftmodule" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/NanoBanana.swiftmodule",
+    "swiftsourceinfo" : "/Users/petrugrigor/Documents/nano-banana/build/Build/Intermediates.noindex/NanoBanana.build/Release-iphoneos/NanoBanana.build/Objects-normal/arm64/NanoBanana.swiftsourceinfo"
+  }
+}

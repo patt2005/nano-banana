@@ -215,8 +215,8 @@ final class SubscriptionManager: ObservableObject {
 
         // Add credits based on subscription type
         for (_, entitlement) in customerInfo.entitlements.active {
-            if let productIdentifier = entitlement.productIdentifier {
-                switch productIdentifier {
+            let productIdentifier = entitlement.productIdentifier
+            switch productIdentifier {
                 case "com.nano.ai.weekly":
                     // Add 130 credits for weekly subscription
                     addCredits(130)
@@ -239,7 +239,6 @@ final class SubscriptionManager: ObservableObject {
 
                 default:
                     break
-                }
             }
         }
     }

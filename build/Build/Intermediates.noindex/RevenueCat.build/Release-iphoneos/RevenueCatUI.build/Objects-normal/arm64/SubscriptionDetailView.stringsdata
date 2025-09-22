@@ -1,0 +1,32 @@
+{
+  "source": "/Users/petrugrigor/Documents/nano-banana/build/SourcePackages/checkouts/purchases-ios-spm/RevenueCatUI/CustomerCenter/Views/SubscriptionDetailView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Can't open URL",
+        "location": {
+          "startingColumn": 33,
+          "startingLine": 180
+        }
+      },
+      {
+        "comment": "",
+        "key": "There's no email app in the simulator",
+        "location": {
+          "startingColumn": 35,
+          "startingLine": 181
+        }
+      },
+      {
+        "comment": "",
+        "key": "Ok",
+        "location": {
+          "startingColumn": 50,
+          "startingLine": 182
+        }
+      }
+    ]
+  },
+  "version": 1
+}

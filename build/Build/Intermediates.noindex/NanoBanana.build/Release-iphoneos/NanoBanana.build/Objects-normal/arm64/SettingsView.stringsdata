@@ -1,0 +1,168 @@
+{
+  "source": "/Users/petrugrigor/Documents/nano-banana/NanoBanana/Views/SettingsView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Restore Purchases",
+        "location": {
+          "startingColumn": 16,
+          "startingLine": 345
+        }
+      },
+      {
+        "comment": "",
+        "key": "Settings",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 19
+        }
+      },
+      {
+        "comment": "",
+        "key": "Credits",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 36
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 44
+        }
+      },
+      {
+        "comment": "",
+        "key": "available",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 49
+        }
+      },
+      {
+        "comment": "",
+        "key": "You've used all your credits. Purchase more credits to continue.",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 67
+        }
+      },
+      {
+        "comment": "",
+        "key": "Each message uses 1 credit.",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 74
+        }
+      },
+      {
+        "comment": "",
+        "key": "AI Pro Plan",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 97
+        }
+      },
+      {
+        "comment": "",
+        "key": "Unlock premium editing features:",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 106
+        }
+      },
+      {
+        "comment": "",
+        "key": "Upgrade to Pro",
+        "location": {
+          "startingColumn": 46,
+          "startingLine": 125
+        }
+      },
+      {
+        "comment": "",
+        "key": "Version",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 197
+        }
+      },
+      {
+        "comment": "",
+        "key": "1.0.0",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 203
+        }
+      },
+      {
+        "comment": "",
+        "key": "Restore Purchases",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 234
+        }
+      },
+      {
+        "comment": "",
+        "key": "Privacy Policy",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 258
+        }
+      },
+      {
+        "comment": "",
+        "key": "Terms of Service",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 282
+        }
+      },
+      {
+        "comment": "",
+        "key": "Contact Support",
+        "location": {
+          "startingColumn": 42,
+          "startingLine": 306
+        }
+      },
+      {
+        "comment": "",
+        "key": "© 2025 Navo AI. All rights reserved.",
+        "location": {
+          "startingColumn": 34,
+          "startingLine": 333
+        }
+      },
+      {
+        "comment": "",
+        "key": "Made with",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 322
+        }
+      },
+      {
+        "comment": "",
+        "key": "by Navo AI Team",
+        "location": {
+          "startingColumn": 38,
+          "startingLine": 328
+        }
+      },
+      {
+        "comment": "",
+        "key": "OK",
+        "location": {
+          "startingColumn": 20,
+          "startingLine": 346
+        }
+      }
+    ]
+  },
+  "version": 1
+}
