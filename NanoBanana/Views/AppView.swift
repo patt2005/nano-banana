@@ -7,12 +7,10 @@ struct AppView: View {
         Group {
             switch appManager.appState {
             case .loading:
-//                SplashView()
-                ContentView()
+                SplashView()
 
             case .onboarding:
-//                VisualOnboardingView()
-                ContentView()
+                VisualOnboardingView()
 
             case .main:
                 ContentView()

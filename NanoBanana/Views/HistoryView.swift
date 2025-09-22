@@ -58,13 +58,6 @@ struct HistoryView: View {
                             Text("No History Yet")
                                 .font(.system(size: 24, weight: .bold))
                                 .foregroundColor(.white)
-                            
-                            Text("Your chat conversations will appear here when you start chatting with NanoBanana")
-                                .font(.system(size: 16))
-                                .foregroundColor(.gray)
-                                .multilineTextAlignment(.center)
-                                .lineLimit(nil)
-                                .padding(.horizontal, 40)
                         }
                         
                         Spacer()

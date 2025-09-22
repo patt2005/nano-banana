@@ -21,26 +21,8 @@ struct BottomNavigationBar: View {
                 isSelected: selectedTab == 1,
                 action: { selectedTab = 1 }
             )
-
-            Spacer()
-
-            NavigationItem(
-                icon: "message",
-                title: "Chat",
-                isSelected: selectedTab == 2,
-                action: { selectedTab = 2 }
-            )
-
-            Spacer()
-
-            NavigationItem(
-                icon: "gearshape",
-                title: "Settings",
-                isSelected: selectedTab == 3,
-                action: { selectedTab = 3 }
-            )
         }
-        .padding(.horizontal, 20)
+        .padding(.horizontal, 50)
         .frame(height: 80)
         .background(Color(hex: "00000"))
     }

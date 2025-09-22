@@ -1,45 +1,30 @@
 import SwiftUI
 
-struct ImageData: Codable {
-    let id: String
-    let imagePath: String
-    let prompt: String
-    let title: String?
-}
-
-struct Category: Codable {
-    let name: String
-    let description: String
-    let maxItems: Int
-    let images: [ImageData]
-}
-
-struct DataModel: Codable {
-    let version: String
-    let categories: [String: Category]
-}
-
 enum HomeTab: String, CaseIterable {
     case forYou = "For You"
     case aiFilters = "AI Filters"
 }
 
 struct HomePage: View {
+    @StateObject private var viewModel = HomeViewModel()
     @State private var showingSettings = false
     @State private var showingShop = false
     @State private var dataModel: DataModel?
     @State private var selectedTab: HomeTab = .forYou
+    @State private var isLoadingData = false
+    @State private var loadError: String?
     @ObservedObject private var subscriptionManager = SubscriptionManager.shared
     @ObservedObject private var appManager = AppManager.shared
     
     var body: some View {
-        ZStack {
-            Color.black
-                .ignoresSafeArea()
+        NavigationStack {
+            ZStack {
+                Color.black
+                    .ignoresSafeArea()
 
-            VStack(spacing: 0) {
-                // Fixed header with shop and settings
-                headerView
+                VStack(spacing: 0) {
+                    // Fixed header with shop and settings
+                    headerView
                     .padding(.horizontal, 16)
                     .padding(.vertical, 12)
                     .background(Color.black)
@@ -49,11 +34,44 @@ struct HomePage: View {
                     TabsSection(selectedTab: $selectedTab)
                         .padding(.bottom, 20)
                         .background(Color.black)
-                    
-                    ScrollView {
-                        VStack(spacing: 0) {
-                            // Content based on selected tab
-                            switch selectedTab {
+
+                    if isLoadingData {
+                        ProgressView("Loading content...")
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .background(Color.black)
+                    } else if let error = loadError {
+                        VStack(spacing: 20) {
+                            Image(systemName: "exclamationmark.triangle")
+                                .font(.largeTitle)
+                                .foregroundColor(.yellow)
+
+                            Text("Failed to load content")
+                                .font(.headline)
+                                .foregroundColor(.white)
+
+                            Text(error)
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal)
+
+                            Button("Retry") {
+                                loadData()
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 10)
+                            .background(Color.yellow)
+                            .foregroundColor(.black)
+                            .cornerRadius(10)
+                        }
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .background(Color.black)
+                    } else {
+                        ScrollView {
+                            VStack(spacing: 0) {
+                                // Content based on selected tab
+                                switch selectedTab {
                             case .forYou:
                                 // Lifestyle horizontal list
                                 if let lifestyle = dataModel?.categories["lifestyle"] {
@@ -70,11 +88,16 @@ struct HomePage: View {
                                         ScrollView(.horizontal, showsIndicators: false) {
                                             LazyHStack(spacing: 16) {
                                                 ForEach(lifestyle.images, id: \.id) { image in
-                                                    LifestyleCard(
-                                                        imageData: image,
-                                                        isPremium: false,
-                                                        isLocked: false
-                                                    )
+                                                    Button(action: {
+                                                        viewModel.selectImage(image)
+                                                    }) {
+                                                        LifestyleCard(
+                                                            imageData: image,
+                                                            isPremium: false,
+                                                            isLocked: false
+                                                        )
+                                                    }
+                                                    .buttonStyle(PlainButtonStyle())
                                                 }
                                             }
                                             .padding(.horizontal, 16)
@@ -102,10 +125,15 @@ struct HomePage: View {
                                                 VStack(spacing: 8) {
                                                     ForEach(Array(explore.images.enumerated()), id: \.element.id) { index, image in
                                                         if index % 2 == columnIndex {
-                                                            // Generate random height between 160 and 280
-                                                            let randomHeight = CGFloat.random(in: 160...280)
+                                                            // Use stored height from viewModel
+                                                            let height = viewModel.getExploreImageHeight(for: image.id)
                                                             let columnWidth = (UIScreen.main.bounds.width - 32 - 8) / 2 // Account for padding and spacing
-                                                            LifestyleCard(imageData: image, customHeight: randomHeight, customWidth: columnWidth)
+                                                            Button(action: {
+                                                                viewModel.selectImage(image)
+                                                            }) {
+                                                                LifestyleCard(imageData: image, customHeight: height, customWidth: columnWidth)
+                                                            }
+                                                            .buttonStyle(PlainButtonStyle())
                                                         }
                                                     }
                                                 }
@@ -119,49 +147,74 @@ struct HomePage: View {
                             case .aiFilters:
                                 // Functionality category - Grid layout, completely free
                                 if let functionality = dataModel?.categories["functionality"] {
-                                    VStack(alignment: .leading, spacing: 16) {
+                                    VStack(alignment: .leading, spacing: 12) {
                                         HStack {
                                             Text("AI Filters")
                                                 .font(.circularStdHeadline)
                                                 .foregroundColor(.white)
                                                 .padding(.horizontal, 16)
-                                            
+
                                             Spacer()
                                         }
-                                        
+
                                         LazyVGrid(columns: [
-                                            GridItem(.flexible(), spacing: 12),
-                                            GridItem(.flexible(), spacing: 12)
-                                        ], spacing: 16) {
+                                            GridItem(.flexible(), spacing: 8),
+                                            GridItem(.flexible(), spacing: 8)
+                                        ], spacing: 8) {
                                             ForEach(functionality.images, id: \.id) { image in
-                                                LifestyleCard(
-                                                    imageData: image,
-                                                    isPremium: false,
-                                                    isLocked: false
-                                                )
+                                                Button(action: {
+                                                    viewModel.selectImage(image)
+                                                }) {
+                                                    AIFilterCard(imageData: image)
+                                                }
+                                                .buttonStyle(PlainButtonStyle())
                                             }
                                         }
                                         .padding(.horizontal, 16)
                                     }
-                                    .padding(.bottom, 30)
+                                    .padding(.bottom, 20)
                                 }
                             }
                         }
+                    }
                 }
             }
+        }
+        .navigationDestination(isPresented: $showingSettings) {
+            SettingsView()
+                .navigationBarBackButtonHidden(false)
         }
         .fullScreenCover(isPresented: $showingShop) {
             ShopPage()
         }
+        .sheet(isPresented: $viewModel.showingEditSheet) {
+            if let selectedImage = viewModel.selectedImageData {
+                EditImageView(imageData: selectedImage, viewModel: viewModel)
+            }
+        }
         .onAppear {
             loadData()
+        }
         }
     }
     
     private var headerView: some View {
         HStack {
+            // Settings button on the left
+            Button(action: {
+                showingSettings = true
+            }) {
+                Image(systemName: "gearshape.fill")
+                    .foregroundColor(.white)
+                    .font(.system(size: 20, weight: .medium))
+                    .frame(width: 36, height: 36)
+                    .background(Color.white.opacity(0.15))
+                    .clipShape(Circle())
+            }
+
             Spacer()
 
+            // Shop button on the right
             Button(action: {
                 showingShop = true
             }) {
@@ -183,36 +236,38 @@ struct HomePage: View {
     }
     
     private func loadData() {
-        print("📂 [HomePage] Starting to load data.json...")
-        
-        guard let url = Bundle.main.url(forResource: "data", withExtension: "json") else {
-            print("❌ [HomePage] Could not find data.json in bundle")
-            return
-        }
-        
-        print("🔍 [HomePage] Found data.json at: \(url.path)")
-        
-        do {
-            let data = try Data(contentsOf: url)
-            print("📖 [HomePage] Successfully read data.json (\(data.count) bytes)")
-            
-            dataModel = try JSONDecoder().decode(DataModel.self, from: data)
-            
-            if let lifestyle = dataModel?.categories["lifestyle"] {
-                print("✅ [HomePage] Successfully loaded lifestyle category with \(lifestyle.images.count) images")
-                for (index, image) in lifestyle.images.enumerated() {
-                    print("🖼️ [HomePage] Lifestyle image \(index + 1): \(image.id) -> \(image.imagePath.isEmpty ? "EMPTY PATH" : image.imagePath)")
+        print("📂 [HomePage] Starting to load data from remote server...")
+
+        isLoadingData = true
+        loadError = nil
+
+        APIService.shared.loadData { result in
+            isLoadingData = false
+
+            switch result {
+            case .success(let model):
+                print("✅ [HomePage] Successfully loaded data from remote server")
+                dataModel = model
+                viewModel.dataModel = model
+
+                if let lifestyle = dataModel?.categories["lifestyle"] {
+                    print("✅ [HomePage] Lifestyle category: \(lifestyle.images.count) images")
                 }
-            } else {
-                print("⚠️ [HomePage] No lifestyle category found in data")
+
+                if let explore = dataModel?.categories["explore"] {
+                    print("✅ [HomePage] Explore category: \(explore.images.count) images")
+                    // Pre-generate heights for explore images
+                    viewModel.generateExploreHeights(for: explore.images)
+                }
+
+                if let functionality = dataModel?.categories["functionality"] {
+                    print("✅ [HomePage] Functionality category: \(functionality.images.count) images")
+                }
+
+            case .failure(let error):
+                print("❌ [HomePage] Failed to load data: \(error.localizedDescription)")
+                loadError = error.localizedDescription
             }
-            
-            if let housing = dataModel?.categories["housing"] {
-                print("🏠 [HomePage] Also loaded housing category with \(housing.images.count) images")
-            }
-            
-        } catch {
-            print("❌ [HomePage] Error loading data: \(error)")
         }
     }
     
@@ -274,10 +329,10 @@ struct HomePage: View {
                 }
                 
                 ScrollView(.horizontal, showsIndicators: false) {
-                    LazyHStack(spacing: 16) {
+                    LazyHStack(spacing: 10) {
                         let visibleImages = isPremium && !subscriptionManager.isSubscribed ?
                         Array(category.images.prefix(2)) : category.images
-                        
+
                         ForEach(visibleImages, id: \.id) { image in
                             LifestyleCard(
                                 imageData: image,
@@ -285,7 +340,7 @@ struct HomePage: View {
                                 isLocked: isPremium && !subscriptionManager.isSubscribed
                             )
                         }
-                        
+
                         // Show locked cards for premium categories with non-subscribers
                         if isPremium && !subscriptionManager.isSubscribed && category.images.count > 2 {
                             ForEach(category.images.dropFirst(2).prefix(3), id: \.id) { image in
@@ -403,6 +458,61 @@ struct HomePage: View {
         }
     }
     
+    struct AIFilterCard: View {
+        let imageData: ImageData
+
+        var body: some View {
+            ZStack(alignment: .bottom) {
+                // Image
+                CachedAsyncImage(
+                    url: URL(string: imageData.imagePath),
+                    content: { uiImage in
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    },
+                    placeholder: {
+                        RoundedRectangle(cornerRadius: 12)
+                            .fill(Color.white.opacity(0.1))
+                            .overlay(
+                                ProgressView()
+                                    .tint(.white)
+                            )
+                    }
+                )
+                .frame(width: (UIScreen.main.bounds.width - 40) / 2,
+                       height: (UIScreen.main.bounds.width - 40) / 2)
+                .clipped()
+
+                // Text overlay at bottom
+                VStack(spacing: 0) {
+                    Spacer()
+
+                    Text(imageData.title ?? "AI Filter")
+                        .font(.system(size: 15, weight: .semibold))
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                        .background(
+                            LinearGradient(
+                                colors: [
+                                    Color.black.opacity(0.8),
+                                    Color.black.opacity(0.6)
+                                ],
+                                startPoint: .bottom,
+                                endPoint: .top
+                            )
+                        )
+                }
+            }
+            .cornerRadius(12)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(Color.white.opacity(0.1), lineWidth: 0.5)
+            )
+        }
+    }
+
     struct LockedLifestyleCard: View {
         let imageData: ImageData
         let onTap: () -> Void

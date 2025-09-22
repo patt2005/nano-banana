@@ -12,36 +12,46 @@ struct ChatPage: View {
     @ObservedObject private var imagePromptManager = ImagePromptManager.shared
     @State private var showingImagePicker = false
     @State private var showingCamera = false
-    @State private var showingHistory = false
+    @State private var showMenu = false
     @State private var scrollProxy: ScrollViewProxy?
     @FocusState private var isTextFieldFocused: Bool
-    
+    @Environment(\.dismiss) private var dismiss
+
     var body: some View {
         ZStack {
-            Color.black
-                .ignoresSafeArea()
-            
+            // Main content with offset
+            ZStack {
+                Color.black
+                    .ignoresSafeArea()
+
             VStack(spacing: 0) {
                 HStack {
                     Button(action: {
-                        showingHistory = true
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                            showMenu.toggle()
+                        }
                     }) {
                         Image(systemName: "clock")
                             .foregroundColor(Color.gray)
                             .font(.title2)
                     }
-                    
+
                     Spacer()
-                    
-                    HStack {
-                      
-                        Text("Navo AI")
-                            .font(.title2)
-                            .fontWeight(.medium)
+
+                    Text("Navo AI")
+                        .font(.title2)
+                        .fontWeight(.medium)
+                        .foregroundColor(Color.gray)
+
+                    Spacer()
+
+                    Button(action: {
+                        dismiss()
+                    }) {
+                        Image(systemName: "xmark.circle.fill")
                             .foregroundColor(Color.gray)
+                            .font(.title2)
                     }
-                    
-                    Spacer()
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical, 12)
@@ -204,16 +214,16 @@ struct ChatPage: View {
                                 .frame(width: 40, height: 40)
                         } else {
                             Button(action: {
-                                if !subscriptionManager.hasActiveSubscription && chatViewModel.isMessageLimitExceeded {
+                                if !subscriptionManager.hasActiveSubscription && subscriptionManager.credits <= 0 {
                                     appManager.showPaywall = true
                                     return
                                 }
-                                
+
                                 // Save images with prompts to JSON before sending
                                 for image in chatViewModel.selectedImages {
                                     imagePromptManager.saveImage(image, withPrompt: chatViewModel.currentInput)
                                 }
-                                
+
                                 chatViewModel.sendMessage()
                                 isTextFieldFocused = false
                                 if let proxy = scrollProxy {
@@ -238,11 +248,35 @@ struct ChatPage: View {
                         .stroke(.white.opacity(0.2), lineWidth: 1)
                 )
                 .padding(.horizontal, 20)
-                .padding(.bottom, 100)
+                .padding(.bottom, 25)
             }
+            }
+            .disabled(showMenu)
+            .offset(x: showMenu ? 300 : 0)
+            .animation(.spring(response: 0.3, dampingFraction: 0.8, blendDuration: 0), value: showMenu)
+
+        // Overlay when menu is shown
+        if showMenu {
+            Color.black.opacity(0.3)
+                .ignoresSafeArea()
+                .onTapGesture {
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.8)) {
+                        showMenu = false
+                    }
+                }
+                .transition(.opacity)
         }
-        .sheet(isPresented: $showingHistory) {
-            HistoryView(chatViewModel: chatViewModel)
+
+        // Side menu
+        HStack(spacing: 0) {
+            ChatHistorySideMenu(chatViewModel: chatViewModel, showMenu: $showMenu)
+                .frame(width: 300)
+                .background(Color.black)
+
+            Spacer()
+        }
+        .offset(x: showMenu ? 0 : -300)
+        .animation(.spring(response: 0.3, dampingFraction: 0.8, blendDuration: 0), value: showMenu)
         }
         .sheet(isPresented: $showingImagePicker) {
             PhotoPickerView(selectedImages: $chatViewModel.selectedImages, isPresented: $showingImagePicker)

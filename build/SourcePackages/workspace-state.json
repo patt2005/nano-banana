@@ -1,0 +1,98 @@
+{
+  "object" : {
+    "artifacts" : [
+
+    ],
+    "dependencies" : [
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "latexswiftui",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/colinc86/LaTeXSwiftUI",
+          "name" : "LaTeXSwiftUI"
+        },
+        "state" : {
+          "checkoutState" : {
+            "branch" : "main",
+            "revision" : "c45e0fd45f64923c49c5904a9f9626bc8939f05f"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "LaTeXSwiftUI"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "mathjaxswift",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/colinc86/MathJaxSwift",
+          "name" : "MathJaxSwift"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "e23d6eab941da699ac4a60fb0e60f3ba5c937459",
+            "version" : "3.4.0"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "MathJaxSwift"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "purchases-ios-spm",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/RevenueCat/purchases-ios-spm",
+          "name" : "RevenueCat"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "901d956d179ca04a89a19b644c439a345f971630",
+            "version" : "5.36.0"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "purchases-ios-spm"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "swift-html-entities",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/Kitura/swift-html-entities",
+          "name" : "HTMLEntities"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "d8ca73197f59ce260c71bd6d7f6eb8bbdccf508b",
+            "version" : "4.0.1"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "swift-html-entities"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "swiftdraw",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/swhitty/SwiftDraw",
+          "name" : "SwiftDraw"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "dbb4ef98824053ead8c83fa866c2c6054fb41809",
+            "version" : "0.24.0"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "SwiftDraw"
+      }
+    ],
+    "prebuilts" : [
+
+    ]
+  },
+  "version" : 7
+}

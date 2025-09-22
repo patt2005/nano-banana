@@ -1,7 +1,7 @@
 import SwiftUI
+import RevenueCatUI
 
 struct SettingsView: View {
-    @ObservedObject var chatViewModel: ChatViewModel
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject private var appManager = AppManager.shared
     @ObservedObject private var subscriptionManager = SubscriptionManager.shared
@@ -25,81 +25,66 @@ struct SettingsView: View {
                         .padding(.horizontal, 20)
                         .padding(.top, 20)
                         
-                        // Free Messages Counter (for non-subscribers only)
-                        if !subscriptionManager.hasActiveSubscription {
-                            VStack(spacing: 12) {
-                                HStack {
-                                    Image("icon")
-                                        .resizable()
-                                        .aspectRatio(contentMode: .fit)
-                                        .frame(width: 40, height: 40)
-                                    
-                                    Text("Free Generations")
-                                        .foregroundColor(.white)
-                                        .font(.body)
-                                        .fontWeight(.medium)
-                                    
-                                    Spacer()
-                                    
-                                    VStack(alignment: .trailing, spacing: 2) {
-                                        Text("\(chatViewModel.remainingFreeMessages)")
-                                            .foregroundColor(Color(hex: "FFD700"))
-                                            .font(.title3)
-                                            .fontWeight(.bold)
-                                        
-                                        Text("remaining")
-                                            .foregroundColor(Color(hex: "9e9d99"))
-                                            .font(.caption)
-                                    }
-                                }
-                                .padding(.horizontal, 20)
-                                .padding(.vertical, 16)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .fill(Color(hex: "2e2e2e"))
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .stroke(
-                                                    LinearGradient(
-                                                        colors: [
-                                                            Color(hex: "FFD700").opacity(0.4),
-                                                            Color(hex: "FFA500").opacity(0.3)
-                                                        ],
-                                                        startPoint: .leading,
-                                                        endPoint: .trailing
-                                                    ),
-                                                    lineWidth: 1
-                                                )
-                                        )
-                                )
-                                
-                                if chatViewModel.remainingFreeMessages == 0 {
-                                    HStack {
-                                        Text("You've used all your free generations. Upgrade to Pro for unlimited generations.")
-                                            .foregroundColor(Color(hex: "9e9d99"))
-                                            .font(.caption)
-                                            .multilineTextAlignment(.center)
-                                    }
-                                } else {
-                                    HStack {
-                                        Text("Start a new chat for more free generations.")
-                                            .foregroundColor(Color(hex: "9e9d99"))
-                                            .font(.caption)
-                                            .multilineTextAlignment(.center)
-                                    }
+                        // Credits Counter
+                        VStack(spacing: 12) {
+                            HStack {
+                                Image(systemName: "bitcoinsign.circle.fill")
+                                    .foregroundColor(.blue)
+                                    .font(.title2)
+                                    .frame(width: 24)
+
+                                Text("Credits")
+                                    .foregroundColor(.white)
+                                    .font(.body)
+                                    .fontWeight(.medium)
+
+                                Spacer()
+
+                                VStack(alignment: .trailing, spacing: 2) {
+                                    Text("\(subscriptionManager.credits)")
+                                        .foregroundColor(.blue)
+                                        .font(.title3)
+                                        .fontWeight(.bold)
+
+                                    Text("available")
+                                        .foregroundColor(Color(hex: "9e9d99"))
+                                        .font(.caption)
                                 }
                             }
                             .padding(.horizontal, 20)
+                            .padding(.vertical, 16)
+                            .background(
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color(hex: "2e2e2e"))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .stroke(Color.blue.opacity(0.3), lineWidth: 1)
+                                    )
+                            )
+
+                            if subscriptionManager.credits == 0 {
+                                HStack {
+                                    Text("You've used all your credits. Purchase more credits to continue.")
+                                        .foregroundColor(Color(hex: "9e9d99"))
+                                        .font(.caption)
+                                        .multilineTextAlignment(.center)
+                                }
+                            } else {
+                                HStack {
+                                    Text("Each message uses 1 credit.")
+                                        .foregroundColor(Color(hex: "9e9d99"))
+                                        .font(.caption)
+                                        .multilineTextAlignment(.center)
+                                }
+                            }
                         }
+                        .padding(.horizontal, 20)
                         
                         // Premium Upgrade Card (only for non-subscribers)
                         if !subscriptionManager.hasActiveSubscription {
                             VStack(spacing: 0) {
                             Button(action: {
-                                presentationMode.wrappedValue.dismiss()
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                    appManager.showPaywall = true
-                                }
+                                appManager.showPaywall = true
                             }) {
                                 VStack(spacing: 20) {
                                     // Header with star icon and title
@@ -142,8 +127,6 @@ struct SettingsView: View {
                                             .foregroundColor(.white)
                                         
                                         Spacer()
-                                        
-                                       
                                     }
                                     .padding(.horizontal, 20)
                                     .padding(.vertical, 16)
@@ -363,6 +346,17 @@ struct SettingsView: View {
             Button("OK") { }
         } message: {
             Text(restoreMessage)
+        }
+        .fullScreenCover(isPresented: $appManager.showPaywall) {
+            PaywallView()
+                .onPurchaseCompleted { customerInfo in
+                    subscriptionManager.updateSubscriptionStatus(customerInfo)
+                    appManager.showPaywall = false
+                }
+                .onRestoreCompleted { customerInfo in
+                    subscriptionManager.updateSubscriptionStatus(customerInfo)
+                    appManager.showPaywall = false
+                }
         }
     }
 }

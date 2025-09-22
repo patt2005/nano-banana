@@ -117,7 +117,10 @@ final class ChatViewModel: ObservableObject {
         loadChatHistories()
         loadFreeMessageCount()
         createNewChatIfNeeded()
-        
+
+        // Credits are already synced in SubscriptionManager.init()
+        // No need to sync again here
+
         DispatchQueue.global(qos: .background).async {
             ImageStorageManager.shared.removeDuplicateImages()
         }
@@ -125,27 +128,32 @@ final class ChatViewModel: ObservableObject {
     
     func sendMessage() {
         guard !currentInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || !selectedImages.isEmpty else { return }
-        
+
+        // Check if user has credits (unless they have active subscription)
+        if !SubscriptionManager.shared.hasActiveSubscription && SubscriptionManager.shared.credits <= 0 {
+            errorMessage = "No credits available. Please purchase more credits to continue."
+            return
+        }
+
         let userMessage = ChatMessage(
             content: currentInput,
             images: selectedImages,
             isUser: true,
             timestamp: Date()
         )
-        
+
         messages.append(userMessage)
-        
+
         if !SubscriptionManager.shared.hasActiveSubscription {
-            totalFreeMessagesUsed += 1
-            saveFreeMessageCount()
+            SubscriptionManager.shared.useCredits(3)
         }
-        
+
         let inputText = currentInput
         let inputImages = selectedImages
-        
+
         currentInput = ""
         selectedImages = []
-        
+
         sendStreamingRequest(prompt: inputText, images: inputImages)
     }
     
@@ -211,7 +219,7 @@ final class ChatViewModel: ObservableObject {
         if let result = chunk.result, let text = result.text {
             if let lastIndex = messages.indices.last, !messages[lastIndex].isUser {
                 let processedImages: [UIImage] = result.images?.compactMap { imageResult in
-                    guard let imageDataString = imageResult.imageData else { return nil }
+                    guard let imageDataString = imageResult.data else { return nil }
 
                     let cleanBase64 = imageDataString.replacingOccurrences(of: "data:image/jpeg;base64,", with: "")
                         .replacingOccurrences(of: "data:image/png;base64,", with: "")
@@ -380,7 +388,7 @@ extension ChatViewModel {
         if let currentChat = currentChatHistory, !currentChat.isEmpty {
             saveChatToHistory(currentChat)
         }
-        
+
         // Load the selected chat
         currentChatHistory = chatHistory
         messages = chatHistory.messages
@@ -388,6 +396,18 @@ extension ChatViewModel {
         selectedImages.removeAll()
         errorMessage = nil
         isLoading = false
+    }
+
+    // Clear all chat history
+    func clearAllHistory() {
+        chatHistories.removeAll()
+        messages.removeAll()
+        currentChatHistory = ChatHistory()
+        currentInput = ""
+        selectedImages.removeAll()
+        errorMessage = nil
+        isLoading = false
+        saveChatHistories()
     }
     
     // Save current chat to history

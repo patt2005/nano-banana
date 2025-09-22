@@ -23,7 +23,9 @@
       "WebSearch",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(git stash:*)"
+      "Bash(git stash:*)",
+      "Read(//var/folders/cq/d03fbsls3b32vth9s3d89fs80000gn/T/TemporaryItems/NSIRD_screencaptureui_eREoIP/**)",
+      "Bash(swift build:*)"
     ],
     "deny": [],
     "ask": [],
