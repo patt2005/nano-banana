@@ -1,6 +1,5 @@
 import SwiftUI
 import StoreKit
-import RevenueCatUI
 
 struct OnboardingInfo {
     let imageAsset: String
@@ -12,7 +11,6 @@ struct VisualOnboardingView: View {
     @ObservedObject private var appManager = AppManager.shared
     @ObservedObject private var apiService = GeminiAPIService.shared
     @State private var currentPage = 0
-    @State private var showingPaywall = false
     @Environment(\.requestReview) var requestReview
 
     let onboardingPages = [
@@ -126,8 +124,8 @@ struct VisualOnboardingView: View {
                             currentPage += 1
                         }
                     } else {
-                        // Show paywall on last page
-                        showingPaywall = true
+                        // Complete onboarding which will show paywall from ContentView
+                        appManager.completeOnboarding()
                     }
                 }) {
                     Text("Continue")
@@ -143,21 +141,6 @@ struct VisualOnboardingView: View {
             }
         }
         .ignoresSafeArea(edges: .top)
-        .sheet(isPresented: $showingPaywall, onDismiss: {
-            // Complete onboarding after paywall is dismissed
-            appManager.completeOnboarding()
-        }) {
-            PaywallView()
-                .onPurchaseCompleted { customerInfo in
-                    // Handle subscription purchase and add credits
-                    SubscriptionManager.shared.handleSubscriptionPurchase(customerInfo: customerInfo)
-
-                    // Dismiss paywall after successful purchase
-                    showingPaywall = false
-                }
-                .presentationDetents([.large])
-                .presentationDragIndicator(.visible)
-        }
         .onAppear {
             // Register user when onboarding appears
             if let userId = apiService.userId {
@@ -166,7 +149,7 @@ struct VisualOnboardingView: View {
                     case .success(let response):
                         print("✅ [VisualOnboarding] User registered successfully: \(response.message ?? "")")
                         if let user = response.user {
-                            print("📊 [VisualOnboarding] User has \(user.credits) credits")
+                            SubscriptionManager.shared.credits = user.credits
                         }
                     case .failure(let error):
                         print("❌ [VisualOnboarding] Failed to register user: \(error.localizedDescription)")

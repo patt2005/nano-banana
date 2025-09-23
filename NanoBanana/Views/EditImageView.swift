@@ -1,7 +1,6 @@
 import SwiftUI
 import PhotosUI
 import Photos
-import RevenueCatUI
 
 struct EditImageView: View {
     let imageData: ImageData
@@ -18,7 +17,6 @@ struct EditImageView: View {
     @State private var showingSaveAlert = false
     @State private var saveAlertMessage = ""
     @State private var isSavingToPhotos = false
-    @State private var showingPaywall = false
     @State private var showingShopPage = false
     @ObservedObject private var subscriptionManager = SubscriptionManager.shared
 
@@ -299,23 +297,6 @@ struct EditImageView: View {
         } message: {
             Text(saveAlertMessage)
         }
-        .sheet(isPresented: $showingPaywall) {
-            PaywallView()
-                .onPurchaseCompleted { customerInfo in
-                    // Handle subscription purchase and add credits
-                    SubscriptionManager.shared.handleSubscriptionPurchase(customerInfo: customerInfo)
-
-                    // Dismiss paywall after successful purchase
-                    showingPaywall = false
-
-                    // Try to generate image again if user now has enough credits
-                    if subscriptionManager.credits >= 5 {
-                        generateImage()
-                    }
-                }
-                .presentationDetents([.large])
-                .presentationDragIndicator(.visible)
-        }
         .sheet(isPresented: $showingShopPage) {
             ShopPage()
                 .presentationDetents([.large])
@@ -393,7 +374,7 @@ struct EditImageView: View {
 
         switch result {
         case .needsPaywall:
-            showingPaywall = true
+            AppManager.shared.presentPaywall()
         case .needsShop:
             showingShopPage = true
         case .success:

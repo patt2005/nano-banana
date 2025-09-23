@@ -194,7 +194,8 @@ struct ShopPage: View {
             Text("\(purchasedCredits) credits have been added to your account.")
         }
         .onAppear {
-            // Refresh offerings when view appears
+            // Refresh credit packages when view appears
+            subscriptionManager.fetchAvailablePackages()
             subscriptionManager.fetchOfferings()
         }
     }

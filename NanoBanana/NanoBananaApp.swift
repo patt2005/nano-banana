@@ -14,7 +14,6 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
             }
         }
 
-        // Fetch offerings for credit packages
         SubscriptionManager.shared.fetchOfferings()
 
         return true

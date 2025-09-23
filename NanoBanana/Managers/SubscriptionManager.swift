@@ -10,6 +10,7 @@ final class SubscriptionManager: ObservableObject {
     @Published var customerInfo: CustomerInfo?
     @Published var offerings: Offerings?
     @Published var credits: Int = 0
+    @Published var availablePackages: [Package] = []
 
     private let creditsKey = "userCredits"
     private var isSyncing = false
@@ -18,6 +19,7 @@ final class SubscriptionManager: ObservableObject {
     private init() {
         checkSubscriptionStatus()
         syncCreditsWithServer()
+        fetchAvailablePackages()
     }
 
     private func saveCredits() {
@@ -102,9 +104,6 @@ final class SubscriptionManager: ObservableObject {
                 }
             }
         }
-
-        // Also fetch offerings for credit packages
-        fetchOfferings()
     }
 
     func fetchOfferings() {
@@ -113,6 +112,24 @@ final class SubscriptionManager: ObservableObject {
                 if let offerings = offerings {
                     self?.offerings = offerings
                 }
+            }
+        }
+    }
+
+    func fetchAvailablePackages() {
+        Purchases.shared.getOfferings { [weak self] offerings, error in
+            if let error = error {
+                print("❌ Error fetching offerings: \(error)")
+                return
+            }
+
+            if let packages = offerings?.offering(identifier: "credits-shop")?.availablePackages {
+                DispatchQueue.main.async {
+                    self?.availablePackages = packages
+                    print("✅ Fetched \(packages.count) credit packages for shop")
+                }
+            } else {
+                print("⚠️ No packages found for 'credits-shop' offering")
             }
         }
     }
@@ -140,21 +157,42 @@ final class SubscriptionManager: ObservableObject {
     }
 
     func purchaseCreditsPackage(packageId: String, completion: @escaping (Bool, Int, Error?) -> Void) {
-        guard let offerings = offerings,
-              let currentOffering = offerings.current else {
-            completion(false, 0, NSError(domain: "SubscriptionManager", code: 1, userInfo: [NSLocalizedDescriptionKey: "No packages available"]))
-            return
+        // First try to find the package in the availablePackages array
+        var package: Package?
+
+        // Check in the cached availablePackages first
+        if let foundPackage = availablePackages.first(where: { pkg in
+            pkg.storeProduct.productIdentifier == packageId
+        }) {
+            package = foundPackage
+        } else {
+            // Fallback to checking offerings directly
+            guard let offerings = offerings else {
+                completion(false, 0, NSError(domain: "SubscriptionManager", code: 1, userInfo: [NSLocalizedDescriptionKey: "No packages available. Please refresh and try again."]))
+                return
+            }
+
+            // Check in credits-shop offering first
+            if let creditsOffering = offerings.offering(identifier: "credits-shop") {
+                package = creditsOffering.availablePackages.first(where: { pkg in
+                    pkg.storeProduct.productIdentifier == packageId
+                })
+            }
+
+            // If not found, check in current offering
+            if package == nil, let currentOffering = offerings.current {
+                package = currentOffering.availablePackages.first(where: { pkg in
+                    pkg.storeProduct.productIdentifier == packageId
+                })
+            }
         }
 
-        // Find the package by identifier
-        guard let package = currentOffering.availablePackages.first(where: { pkg in
-            pkg.storeProduct.productIdentifier == packageId
-        }) else {
+        guard let finalPackage = package else {
             completion(false, 0, NSError(domain: "SubscriptionManager", code: 2, userInfo: [NSLocalizedDescriptionKey: "Package not found"]))
             return
         }
 
-        Purchases.shared.purchase(package: package) { [weak self] transaction, customerInfo, error, userCancelled in
+        Purchases.shared.purchase(package: finalPackage) { [weak self] transaction, customerInfo, error, userCancelled in
             DispatchQueue.main.async {
                 if let error = error {
                     completion(false, 0, error)
@@ -195,6 +233,13 @@ final class SubscriptionManager: ObservableObject {
     }
 
     func getPackagePrice(for productId: String) -> String? {
+        if let package = availablePackages.first(where: { pkg in
+            pkg.storeProduct.productIdentifier == productId
+        }) {
+            return package.localizedPriceString
+        }
+
+        // Fallback to checking the offerings directly if not found in availablePackages
         guard let offerings = offerings,
               let currentOffering = offerings.current else {
             return nil

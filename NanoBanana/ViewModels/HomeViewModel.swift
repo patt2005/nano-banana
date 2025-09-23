@@ -16,7 +16,7 @@ class HomeViewModel: ObservableObject {
     @Published var exploreImageHeights: [String: CGFloat] = [:]
 
     init() {
-        loadData()
+        // Remove loadData() call since data is now loaded in SplashView
     }
 
     func selectImage(_ imageData: ImageData) {
@@ -25,14 +25,9 @@ class HomeViewModel: ObservableObject {
     }
 
     func getExploreImageHeight(for imageId: String) -> CGFloat {
-        // Generate and store height if not already exists
-        if let height = exploreImageHeights[imageId] {
-            return height
-        } else {
-            let randomHeight = CGFloat.random(in: 160...280)
-            exploreImageHeights[imageId] = randomHeight
-            return randomHeight
-        }
+        // Return existing height or a default value
+        // Heights should be pre-generated in generateExploreHeights
+        return exploreImageHeights[imageId] ?? 220
     }
 
     func generateExploreHeights(for images: [ImageData]) {
@@ -153,9 +148,4 @@ class HomeViewModel: ObservableObject {
         return UIImage(data: data)
     }
 
-    private func loadData() {
-        // This is now handled by HomePage's loadData which calls APIService
-        // The HomePage will update this viewModel's dataModel and call generateExploreHeights
-        print("📂 [HomeViewModel] Data loading initiated from HomePage")
-    }
 }

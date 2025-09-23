@@ -1,5 +1,4 @@
 import SwiftUI
-import RevenueCatUI
 
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
@@ -42,11 +41,11 @@ struct SettingsView: View {
 
                                 VStack(alignment: .trailing, spacing: 2) {
                                     Text("\(subscriptionManager.credits)")
-                                        .foregroundColor(.blue)
+                                        .foregroundColor(subscriptionManager.credits > 0 ? .blue : .gray)
                                         .font(.title3)
                                         .fontWeight(.bold)
 
-                                    Text("available")
+                                    Text(subscriptionManager.credits > 0 ? "available" : "no credits")
                                         .foregroundColor(Color(hex: "9e9d99"))
                                         .font(.caption)
                                 }
@@ -69,13 +68,6 @@ struct SettingsView: View {
                                         .font(.caption)
                                         .multilineTextAlignment(.center)
                                 }
-                            } else {
-                                HStack {
-                                    Text("Each message uses 1 credit.")
-                                        .foregroundColor(Color(hex: "9e9d99"))
-                                        .font(.caption)
-                                        .multilineTextAlignment(.center)
-                                }
                             }
                         }
                         .padding(.horizontal, 20)
@@ -84,7 +76,7 @@ struct SettingsView: View {
                         if !subscriptionManager.hasActiveSubscription {
                             VStack(spacing: 0) {
                             Button(action: {
-                                appManager.showPaywall = true
+                                appManager.presentPaywall()
                             }) {
                                 VStack(spacing: 20) {
                                     // Header with star icon and title
@@ -342,21 +334,15 @@ struct SettingsView: View {
             .background(Color(hex: "121419"))
             .navigationBarHidden(true)
         }
+        .onAppear {
+            // Refresh subscription status when settings view appears
+            subscriptionManager.checkSubscriptionStatus()
+            subscriptionManager.syncCreditsWithServer()
+        }
         .alert("Restore Purchases", isPresented: $showingRestoreAlert) {
             Button("OK") { }
         } message: {
             Text(restoreMessage)
-        }
-        .fullScreenCover(isPresented: $appManager.showPaywall) {
-            PaywallView()
-                .onPurchaseCompleted { customerInfo in
-                    subscriptionManager.updateSubscriptionStatus(customerInfo)
-                    appManager.showPaywall = false
-                }
-                .onRestoreCompleted { customerInfo in
-                    subscriptionManager.updateSubscriptionStatus(customerInfo)
-                    appManager.showPaywall = false
-                }
         }
     }
 }

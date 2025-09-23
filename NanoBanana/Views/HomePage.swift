@@ -9,10 +9,7 @@ struct HomePage: View {
     @StateObject private var viewModel = HomeViewModel()
     @State private var showingSettings = false
     @State private var showingShop = false
-    @State private var dataModel: DataModel?
     @State private var selectedTab: HomeTab = .forYou
-    @State private var isLoadingData = false
-    @State private var loadError: String?
     @ObservedObject private var subscriptionManager = SubscriptionManager.shared
     @ObservedObject private var appManager = AppManager.shared
     
@@ -35,12 +32,12 @@ struct HomePage: View {
                         .padding(.bottom, 20)
                         .background(Color.black)
 
-                    if isLoadingData {
+                    if appManager.isLoadingData {
                         ProgressView("Loading content...")
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .background(Color.black)
-                    } else if let error = loadError {
+                    } else if let error = appManager.loadError {
                         VStack(spacing: 20) {
                             Image(systemName: "exclamationmark.triangle")
                                 .font(.largeTitle)
@@ -57,7 +54,7 @@ struct HomePage: View {
                                 .padding(.horizontal)
 
                             Button("Retry") {
-                                loadData()
+                                appManager.loadData()
                             }
                             .padding(.horizontal, 20)
                             .padding(.vertical, 10)
@@ -74,7 +71,7 @@ struct HomePage: View {
                                 switch selectedTab {
                             case .forYou:
                                 // Lifestyle horizontal list
-                                if let lifestyle = dataModel?.categories["lifestyle"] {
+                                if let lifestyle = appManager.dataModel?.categories["lifestyle"] {
                                     VStack(alignment: .leading, spacing: 12) {
                                         HStack {
                                             Text(lifestyle.name)
@@ -107,7 +104,7 @@ struct HomePage: View {
                                 }
                                 
                                 // Explore Pinterest-style grid
-                                if let explore = dataModel?.categories["explore"] {
+                                if let explore = appManager.dataModel?.categories["explore"] {
                                     VStack(alignment: .leading, spacing: 16) {
                                         HStack {
                                             Text("Explore")
@@ -146,7 +143,7 @@ struct HomePage: View {
                                 
                             case .aiFilters:
                                 // Functionality category - Grid layout, completely free
-                                if let functionality = dataModel?.categories["functionality"] {
+                                if let functionality = appManager.dataModel?.categories["functionality"] {
                                     VStack(alignment: .leading, spacing: 12) {
                                         HStack {
                                             Text("AI Filters")
@@ -193,7 +190,13 @@ struct HomePage: View {
             }
         }
         .onAppear {
-            loadData()
+            // Update viewModel with data from AppManager
+            if let model = appManager.dataModel {
+                viewModel.dataModel = model
+                if let explore = model.categories["explore"] {
+                    viewModel.generateExploreHeights(for: explore.images)
+                }
+            }
         }
         }
     }
@@ -231,42 +234,6 @@ struct HomePage: View {
                 .padding(.vertical, 6)
                 .background(Color.white.opacity(0.15))
                 .cornerRadius(16)
-            }
-        }
-    }
-    
-    private func loadData() {
-        print("📂 [HomePage] Starting to load data from remote server...")
-
-        isLoadingData = true
-        loadError = nil
-
-        APIService.shared.loadData { result in
-            isLoadingData = false
-
-            switch result {
-            case .success(let model):
-                print("✅ [HomePage] Successfully loaded data from remote server")
-                dataModel = model
-                viewModel.dataModel = model
-
-                if let lifestyle = dataModel?.categories["lifestyle"] {
-                    print("✅ [HomePage] Lifestyle category: \(lifestyle.images.count) images")
-                }
-
-                if let explore = dataModel?.categories["explore"] {
-                    print("✅ [HomePage] Explore category: \(explore.images.count) images")
-                    // Pre-generate heights for explore images
-                    viewModel.generateExploreHeights(for: explore.images)
-                }
-
-                if let functionality = dataModel?.categories["functionality"] {
-                    print("✅ [HomePage] Functionality category: \(functionality.images.count) images")
-                }
-
-            case .failure(let error):
-                print("❌ [HomePage] Failed to load data: \(error.localizedDescription)")
-                loadError = error.localizedDescription
             }
         }
     }

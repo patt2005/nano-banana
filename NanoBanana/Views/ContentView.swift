@@ -1,8 +1,12 @@
 import SwiftUI
+import RevenueCat
+import RevenueCatUI
 
 struct ContentView: View {
     @State private var selectedTab = 0
     @State private var showingChat = false
+    @ObservedObject private var appManager = AppManager.shared
+    @ObservedObject private var subscriptionManager = SubscriptionManager.shared
 
     var body: some View {
         NavigationStack {
@@ -74,6 +78,73 @@ struct ContentView: View {
             .fullScreenCover(isPresented: $showingChat) {
                 ChatPage()
             }
+            .fullScreenCover(isPresented: $appManager.showPaywall) {
+                PaywallView()
+                    .onPurchaseCompleted { customerInfo in
+                        // Update subscription status
+                        subscriptionManager.updateSubscriptionStatus(customerInfo)
+
+                        // Add credits based on subscription type
+                        handleSubscriptionCredits(customerInfo)
+
+                        // Fetch offerings and dismiss
+                        subscriptionManager.fetchOfferings()
+                        appManager.dismissPaywall()
+                    }
+                    .onRestoreCompleted { customerInfo in
+                        // Update subscription status
+                        subscriptionManager.updateSubscriptionStatus(customerInfo)
+
+                        // Check and add credits if needed
+                        handleSubscriptionCredits(customerInfo)
+
+                        // Fetch offerings and dismiss
+                        subscriptionManager.fetchOfferings()
+                        appManager.dismissPaywall()
+                    }
+            }
         }
+    }
+
+    private func handleSubscriptionCredits(_ customerInfo: CustomerInfo) {
+        // Check active subscriptions and add credits based on the package type
+        for (_, entitlement) in customerInfo.entitlements.active {
+            let productIdentifier = entitlement.productIdentifier
+            switch productIdentifier {
+            case "com.nano.ai.weekly":
+                // Weekly subscription - add 125 credits
+                if !hasReceivedCreditsForPurchase(productIdentifier, date: entitlement.latestPurchaseDate) {
+                    subscriptionManager.addCredits(125)
+                    markCreditsReceived(productIdentifier, date: entitlement.latestPurchaseDate)
+                    print("✅ Added 125 credits for weekly subscription")
+                }
+
+            case "com.nano.ai.yearly":
+                // Yearly subscription - add 1000 credits
+                if !hasReceivedCreditsForPurchase(productIdentifier, date: entitlement.latestPurchaseDate) {
+                    subscriptionManager.addCredits(1000)
+                    markCreditsReceived(productIdentifier, date: entitlement.latestPurchaseDate)
+                    print("✅ Added 1000 credits for yearly subscription")
+                }
+
+            default:
+                // Handle any other subscription types if needed
+                print("📦 Unknown subscription type: \(productIdentifier)")
+            }
+        }
+    }
+
+    private func hasReceivedCreditsForPurchase(_ productId: String, date: Date?) -> Bool {
+        // Check if we've already given credits for this specific purchase
+        guard let date = date else { return false }
+        let key = "credits_received_\(productId)_\(date.timeIntervalSince1970)"
+        return UserDefaults.standard.bool(forKey: key)
+    }
+
+    private func markCreditsReceived(_ productId: String, date: Date?) {
+        // Mark that we've given credits for this purchase
+        guard let date = date else { return }
+        let key = "credits_received_\(productId)_\(date.timeIntervalSince1970)"
+        UserDefaults.standard.set(true, forKey: key)
     }
 }

@@ -127,8 +127,8 @@ struct ChatHistorySideMenu: View {
                                         .fill(
                                             LinearGradient(
                                                 colors: [
-                                                    Color.white.opacity(0.06),
-                                                    Color.white.opacity(0.03)
+                                                    Color.gray.opacity(0.25),
+                                                    Color.gray.opacity(0.15)
                                                 ],
                                                 startPoint: .topLeading,
                                                 endPoint: .bottomTrailing
@@ -136,7 +136,7 @@ struct ChatHistorySideMenu: View {
                                         )
                                         .overlay(
                                             RoundedRectangle(cornerRadius: 12)
-                                                .stroke(Color.white.opacity(0.08), lineWidth: 0.5)
+                                                .stroke(Color.gray.opacity(0.3), lineWidth: 0.5)
                                         )
                                 )
                             }

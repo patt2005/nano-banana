@@ -3,7 +3,6 @@ import Foundation
 import UserNotifications
 import AVFoundation
 import Photos
-import RevenueCatUI
 
 struct ChatPage: View {
     @StateObject private var chatViewModel = ChatViewModel()
@@ -215,7 +214,7 @@ struct ChatPage: View {
                         } else {
                             Button(action: {
                                 if !subscriptionManager.hasActiveSubscription && subscriptionManager.credits <= 0 {
-                                    appManager.showPaywall = true
+                                    appManager.presentPaywall()
                                     return
                                 }
 
@@ -283,17 +282,6 @@ struct ChatPage: View {
         }
         .fullScreenCover(isPresented: $showingCamera) {
             CameraPickerView(selectedImages: $chatViewModel.selectedImages, isPresented: $showingCamera)
-        }
-        .fullScreenCover(isPresented: $appManager.showPaywall) {
-            PaywallView()
-                .onPurchaseCompleted { customerInfo in
-                    subscriptionManager.updateSubscriptionStatus(customerInfo)
-                    appManager.showPaywall = false
-                }
-                .onRestoreCompleted { customerInfo in
-                    subscriptionManager.updateSubscriptionStatus(customerInfo)
-                    appManager.showPaywall = false
-                }
         }
     }
     
