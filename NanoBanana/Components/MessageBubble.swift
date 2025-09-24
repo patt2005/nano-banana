@@ -157,12 +157,18 @@ struct AIMessageBubble: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .top, spacing: 10) {
-                Image("banana")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 38, height: 38)
-                    .cornerRadius(19)
-                    .padding(.top, 4)
+                ZStack {
+                    Circle()
+                        .fill(Color.gray.opacity(0.2)) // soft gray background
+                        .frame(width: 50, height: 50)  // background circle size
+
+                    Image("banana")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 42, height: 42) // slightly bigger than before
+                        .clipShape(Circle())          // keep it circular
+                }
+                .padding(.top, 4)
                 
                 VStack(alignment: .leading) {
                     if !message.images.isEmpty {
