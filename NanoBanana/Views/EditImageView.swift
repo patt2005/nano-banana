@@ -50,26 +50,17 @@ struct EditImageView: View {
                 // Display generated, uploaded or original image
                 if let generatedImage = viewModel.generatedImage {
                     VStack(spacing: 12) {
-                        Image(uiImage: generatedImage)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(maxHeight: 350)
-                            .cornerRadius(20)
-                            .shadow(color: .white.opacity(0.1), radius: 10)
-                            .overlay(
-                                // Success indicator for generated image
-                                Image(systemName: "checkmark.circle.fill")
-                                    .font(.system(size: 24))
-                                    .foregroundColor(.green)
-                                    .padding(12)
-                                    .background(
-                                        Circle()
-                                            .fill(Color.black.opacity(0.5))
-                                    )
-                                    .offset(x: UIScreen.main.bounds.width / 2 - 80, y: -140)
-                            )
-
-                        // Save and Share buttons for generated image
+                        GeometryReader { geometry in
+                            Image(uiImage: generatedImage)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: geometry.size.width, height: geometry.size.width * 9/16) // 16:9 aspect ratio
+                                .clipped()
+                                .cornerRadius(20)
+                                .shadow(color: .white.opacity(0.1), radius: 10)
+                        }
+                        .frame(height: UIScreen.main.bounds.width * 9/16) // Fixed height based on 16:9
+                        
                         HStack(spacing: 12) {
                             Button(action: {
                                 saveImageToPhotos(generatedImage)
@@ -111,30 +102,41 @@ struct EditImageView: View {
                     }
                     .padding(.horizontal)
                 } else if let uploadedImage = uploadedImage {
-                    Image(uiImage: uploadedImage)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxHeight: 350)
-                        .cornerRadius(20)
-                        .shadow(color: .white.opacity(0.1), radius: 10)
-                        .padding(.horizontal)
-                } else {
-                    AsyncImage(url: URL(string: imageData.imagePath)) { image in
-                        image
+                    GeometryReader { geometry in
+                        Image(uiImage: uploadedImage)
                             .resizable()
-                            .scaledToFit()
-                    } placeholder: {
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.white.opacity(0.1))
-                            .overlay(
-                                ProgressView()
-                                    .tint(.white)
-                                    .scaleEffect(1.5)
-                            )
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: geometry.size.width - 32, height: (geometry.size.width - 32) * 9/16) // 16:9 aspect ratio with padding
+                            .clipped()
+                            .cornerRadius(20)
+                            .shadow(color: .white.opacity(0.1), radius: 10)
+                            .frame(maxWidth: .infinity)
                     }
-                    .frame(maxHeight: 350)
-                    .cornerRadius(20)
-                    .shadow(color: .white.opacity(0.1), radius: 10)
+                    .frame(height: (UIScreen.main.bounds.width - 32) * 9/16) // Fixed height based on 16:9
+                    .padding(.horizontal)
+                } else {
+                    GeometryReader { geometry in
+                        AsyncImage(url: URL(string: imageData.imagePath)) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: geometry.size.width - 32, height: (geometry.size.width - 32) * 9/16) // 16:9 aspect ratio
+                                .clipped()
+                                .cornerRadius(20)
+                                .shadow(color: .white.opacity(0.1), radius: 10)
+                        } placeholder: {
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(Color.white.opacity(0.1))
+                                .frame(width: geometry.size.width - 32, height: (geometry.size.width - 32) * 9/16)
+                                .overlay(
+                                    ProgressView()
+                                        .tint(.white)
+                                        .scaleEffect(1.5)
+                                )
+                        }
+                        .frame(maxWidth: .infinity)
+                    }
+                    .frame(height: (UIScreen.main.bounds.width - 32) * 9/16) // Fixed height based on 16:9
                     .padding(.horizontal)
                 }
 
@@ -285,6 +287,11 @@ struct EditImageView: View {
             // Initialize the edited prompt with the original prompt
             editedPrompt = imageData.prompt
         }
+        .onDisappear {
+            // Clear uploaded image when sheet is dismissed
+            uploadedImage = nil
+            selectedItem = nil
+        }
         .onTapGesture {
             // Dismiss keyboard when tapping outside the text editor
             isPromptFocused = false
@@ -374,7 +381,11 @@ struct EditImageView: View {
 
         switch result {
         case .needsPaywall:
-            AppManager.shared.presentPaywall()
+            // Dismiss the current sheet first, then present paywall after a delay
+            dismiss()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                AppManager.shared.presentPaywall()
+            }
         case .needsShop:
             showingShopPage = true
         case .success:

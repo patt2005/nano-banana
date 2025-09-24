@@ -548,6 +548,7 @@ enum APIError: Error, LocalizedError {
     case networkError(String)
     case serverError(String)
     case unexpectedStatusCode(Int)
+    case imageTooLarge
 
     var errorDescription: String? {
         switch self {
@@ -567,6 +568,8 @@ enum APIError: Error, LocalizedError {
             return "Server error: \(message)"
         case .unexpectedStatusCode(let code):
             return "Unexpected status code: \(code)"
+        case .imageTooLarge:
+            return "Image is too large. Please use a smaller image."
         }
     }
 }
@@ -649,52 +652,59 @@ extension GeminiAPIService {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
 
-        // Create multipart form data
+        // Create multipart form data with a simpler boundary
         let boundary = UUID().uuidString
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
 
         var body = Data()
 
+        // Helper function to append strings to data
+        func append(_ string: String, to data: inout Data) {
+            if let stringData = string.data(using: .utf8) {
+                data.append(stringData)
+            }
+        }
+
         // Add prompt field
-        body.append("--\(boundary)\r\n".data(using: .utf8)!)
-        body.append("Content-Disposition: form-data; name=\"prompt\"\r\n\r\n".data(using: .utf8)!)
-        body.append("\(prompt)\r\n".data(using: .utf8)!)
+        append("--\(boundary)\r\n", to: &body)
+        append("Content-Disposition: form-data; name=\"prompt\"\r\n", to: &body)
+        append("\r\n", to: &body)
+        append("\(prompt)\r\n", to: &body)
 
         // Add model field
-        body.append("--\(boundary)\r\n".data(using: .utf8)!)
-        body.append("Content-Disposition: form-data; name=\"model\"\r\n\r\n".data(using: .utf8)!)
-        body.append("\(model)\r\n".data(using: .utf8)!)
+        append("--\(boundary)\r\n", to: &body)
+        append("Content-Disposition: form-data; name=\"model\"\r\n", to: &body)
+        append("\r\n", to: &body)
+        append("\(model)\r\n", to: &body)
 
-        // Add image field if provided
+        // Add image as file upload if provided
         if let image = image {
-            // Compress image more aggressively if it's large
-            let resizedImage = resizeImageIfNeeded(image, maxSize: 1920)
+            // Convert image to JPEG data with standard quality
+            if let imageData = image.jpegData(compressionQuality: 0.9) {
+                // Send image as binary file upload
+                append("--\(boundary)\r\n", to: &body)
+                append("Content-Disposition: form-data; name=\"image\"; filename=\"image.jpg\"\r\n", to: &body)
+                append("Content-Type: image/jpeg\r\n", to: &body)
+                append("\r\n", to: &body)
+                body.append(imageData)
+                append("\r\n", to: &body)
 
-            // Try different compression qualities based on image size
-            var imageData: Data?
-            var compressionQuality: CGFloat = 0.8
-
-            repeat {
-                imageData = resizedImage.jpegData(compressionQuality: compressionQuality)
-                if let data = imageData, data.count > 1_000_000 { // If still over 1MB
-                    compressionQuality -= 0.1
-                } else {
-                    break
-                }
-            } while compressionQuality > 0.1
-
-            if let finalImageData = imageData {
-                let base64String = finalImageData.base64EncodedString()
-                body.append("--\(boundary)\r\n".data(using: .utf8)!)
-                body.append("Content-Disposition: form-data; name=\"image\"\r\n\r\n".data(using: .utf8)!)
-                body.append("\(base64String)\r\n".data(using: .utf8)!)
+                print("📤 [GeminiAPIService] Image data size: \(imageData.count) bytes (\(Double(imageData.count) / 1_000_000.0) MB)")
             }
         }
 
         // Close boundary
-        body.append("--\(boundary)--\r\n".data(using: .utf8)!)
+        append("--\(boundary)--\r\n", to: &body)
 
         request.httpBody = body
+        request.setValue("\(body.count)", forHTTPHeaderField: "Content-Length")
+
+        print("📤 [GeminiAPIService] Sending multipart request to \(url)")
+        print("📤 [GeminiAPIService] Content-Type: multipart/form-data; boundary=\(boundary)")
+        print("📤 [GeminiAPIService] Total body size: \(body.count) bytes (\(Double(body.count) / 1_000_000.0) MB)")
+        if let image = image {
+            print("📤 [GeminiAPIService] Including image in request")
+        }
 
         safeSession().dataTask(with: request) { data, response, error in
             DispatchQueue.main.async {
@@ -712,6 +722,8 @@ extension GeminiAPIService {
                     completion(.failure(.noData))
                     return
                 }
+                
+                print(String(data: data, encoding: .utf8) ?? "")
 
                 // Log the response for debugging
                 if let jsonString = String(data: data, encoding: .utf8) {
@@ -733,6 +745,10 @@ extension GeminiAPIService {
                     } else {
                         completion(.failure(.serverError("Bad request")))
                     }
+
+                case 413:
+                    // Payload Too Large error
+                    completion(.failure(.imageTooLarge))
 
                 case 500:
                     if let errorResponse = try? JSONDecoder().decode(ErrorResponse.self, from: data) {

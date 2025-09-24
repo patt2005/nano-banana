@@ -61,7 +61,7 @@ struct GalleryPage: View {
                                                     .resizable()
                                                     .aspectRatio(contentMode: .fill)
                                                     .frame(minWidth: 0, maxWidth: .infinity)
-                                                    .frame(height: 200)
+                                                    .frame(height: 180)  // Increased height for more square-like appearance
                                                     .clipped()
 
                                                 // AI Generated badge
@@ -85,7 +85,7 @@ struct GalleryPage: View {
                                                 Rectangle()
                                                     .fill(Color.gray.opacity(0.3))
                                                     .frame(minWidth: 0, maxWidth: .infinity)
-                                                    .frame(height: 200)
+                                                    .frame(height: 180)  // Same increased height
                                                     .overlay(
                                                         Image(systemName: "photo")
                                                             .font(.largeTitle)
@@ -102,13 +102,14 @@ struct GalleryPage: View {
                                                     .foregroundColor(.white)
                                                     .lineLimit(2)
                                                     .multilineTextAlignment(.leading)
+                                                    .frame(maxWidth: .infinity, minHeight: 32, alignment: .topLeading) // Fixed min height for 2 lines
                                             }
 
                                             Text(item.relativeDate)
                                                 .font(.system(size: 11))
                                                 .foregroundColor(.white.opacity(0.7))
                                         }
-                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                        .frame(maxWidth: .infinity, minHeight: 60, alignment: .topLeading) // Fixed total height
                                         .padding(.horizontal, 12)
                                         .padding(.vertical, 10)
                                         .background(

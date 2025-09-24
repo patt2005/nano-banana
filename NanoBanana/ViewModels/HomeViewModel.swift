@@ -121,6 +121,8 @@ class HomeViewModel: ObservableObject {
                         self?.errorMessage = "Invalid response from server."
                     case .decodingError:
                         self?.errorMessage = "Failed to process server response."
+                    case .imageTooLarge:
+                        self?.errorMessage = "Image is too large. Please use a smaller image or reduce the image quality."
                     default:
                         self?.errorMessage = "Failed to generate image. Please try again."
                     }
